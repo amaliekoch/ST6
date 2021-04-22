@@ -7,6 +7,7 @@ public class App {
     public String getGreeting() {
         System.out.println("My name is Amalie");
         return "Hello world. ";
+        System.out.println("My name is Sofie");
     }
 
     public static void main(String[] args) {
