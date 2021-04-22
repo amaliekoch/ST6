@@ -19,9 +19,8 @@ public class DatabaseManipulator {
             
             // Try to get the connection up and running
             try {
-                conn = DriverManager.getConnection(DatabaseDetails.host,
-                DatabaseDetails.username,
-                DatabaseDetails.password);
+                conn = DriverManager.getConnection(DatabaseDetails.host, DatabaseDetails.username, DatabaseDetails.password);
+                System.out.println("Connection til databasen er oprettet :-) ");
             }
             catch (SQLException sqlex) {
                 System.out.println("Connection Error: " + sqlex.getMessage());
@@ -51,8 +50,8 @@ public class DatabaseManipulator {
         if (conn != null) {
             try {
                 stmt = conn.createStatement();
-                rs = stmt.executeQuery(sqlStatement);   // Anvender SELECT puls. temp, sys FROM BiomarkDatabase WHERE cpr==true
-                queryable.processResultSet(rs);         // Anvender rs.getInt("puls"), rs.getString("fornavn") osv.
+                rs = stmt.executeQuery(sqlStatement);   
+                queryable.processResultSet(rs);         
                 queryable.returnSqlQuery();
             } catch (SQLException sqlex) {
                 System.out.println(sqlex.getMessage());
