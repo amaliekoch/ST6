@@ -5,7 +5,7 @@ package ST6;
 
 public class App {
     public String getGreeting() {
-        return "Hello world.";
+        return "Hello Amalie";
     }
 
     public static void main(String[] args) {
