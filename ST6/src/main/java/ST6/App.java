@@ -5,7 +5,12 @@ package ST6;
 
 public class App {
     public String getGreeting() {
+<<<<<<< HEAD
         return "Hello Amalie";
+=======
+        System.out.println("My name is Amalie");
+        return "Hello world. ";
+>>>>>>> 59d3ed5275f72cace8d09b08eb770b755b0f0166
     }
 
     public static void main(String[] args) {
