@@ -34,7 +34,7 @@ public class DatabaseManipulator {
         // Return the connection object
         return conn;
     }
-
+/*
     //metoden kalder sin søstermetode med to input
     public static void executeQueryWithResultSet(Queryable queryable){
         executeQueryWithResultSet(queryable.returnSqlQuery(), queryable);
@@ -68,4 +68,5 @@ public class DatabaseManipulator {
         
         
     }
+    */
 }
