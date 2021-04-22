@@ -6,17 +6,24 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+<<<<<<< HEAD
+=======
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+>>>>>>> 59d3ed5275f72cace8d09b08eb770b755b0f0166
 			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
+<<<<<<< HEAD
+		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
+	</natures>
+=======
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
@@ -31,4 +38,5 @@
 			</matcher>
 		</filter>
 	</filteredResources>
+>>>>>>> 59d3ed5275f72cace8d09b08eb770b755b0f0166
 </projectDescription>
