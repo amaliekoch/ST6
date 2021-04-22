@@ -5,16 +5,8 @@ package ST6;
 
 public class App {
     public String getGreeting() {
-<<<<<<< HEAD
-        return "Hello Amalie";
-=======
         System.out.println("My name is Amalie");
         return "Hello world. ";
-<<<<<<< HEAD
-        System.out.println("My name is Sofie");
-=======
->>>>>>> 59d3ed5275f72cace8d09b08eb770b755b0f0166
->>>>>>> b50ff7682f4bb2cde5abd3fce2c836ef30f1a355
     }
 
     public static void main(String[] args) {
