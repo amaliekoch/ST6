@@ -1,5 +1,6 @@
 package ST6.model;
-import ST6.handler.*;
+import main.java.ST6.handler.*;
+//import ST6.handler.PatientProfileHandler;
 import ST6.database.DatabaseManipulator;
 
 public class PatientProfileModel {
@@ -7,12 +8,12 @@ public class PatientProfileModel {
     private String cprNumber;
     private String name;
     private String gender; 
-    private int age; 
+    private String age; 
 
     //private String CPR;
     //private static String cpr;
 
-    public PatientProfileModel(String cprNumber, String name, String gender, int age) {
+    public PatientProfileModel(String cprNumber, String name, String gender, String age) {
         this.cprNumber = cprNumber;
         this.name = name;
         this.gender = gender; 
@@ -31,12 +32,12 @@ public class PatientProfileModel {
         return gender;
     }
    
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
     public static void getPatientProfiledata(String cprNumber){              // Opretter handler og henter data
-        PatientProfileHandler ph = new PatientProfileHandler();             
+        main.java.ST6.handler.PatientProfileHandler ph = new main.java.ST6.handler.PatientProfileHandler();             
         DatabaseManipulator.executeQueryWithResultSet(ph);
     }
 

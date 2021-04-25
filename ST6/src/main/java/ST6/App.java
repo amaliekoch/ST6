@@ -3,6 +3,7 @@ package ST6;
 
 import ST6.database.DatabaseManipulator;
 import ST6.model.PatientProfileModel;
+import main.java.ST6.handler.PatientProfileHandler;
 
 /*
 SKAL BRUGES TIL CONNECTION MED SCENEBUILDER 
@@ -20,6 +21,8 @@ public class App {
     public static void main(String[] args) {
         //launch(args);
         DatabaseManipulator.getConnection();
-        PatientProfileModel.getPatientProfiledata("1002199902");
+        //PatientProfileModel.getPatientProfiledata("1002199902");
+        PatientProfileModel.getPatientProfiledata("1304081203");
+        System.out.println(main.java.ST6.handler.PatientProfileHandler.tempName);
     }
 }
