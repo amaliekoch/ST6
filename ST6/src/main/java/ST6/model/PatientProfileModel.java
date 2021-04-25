@@ -10,9 +10,6 @@ public class PatientProfileModel {
     private String gender; 
     private String age; 
 
-    //private String CPR;
-    //private static String cpr;
-
     public PatientProfileModel(String cprNumber, String name, String gender, String age) {
         this.cprNumber = cprNumber;
         this.name = name;
@@ -36,7 +33,7 @@ public class PatientProfileModel {
         return age;
     }
 
-    public static void getPatientProfiledata(String cprNumber){              // Opretter handler og henter data
+    public static void getPatientProfiledata(String cprNumber){              // Opretter "handler" og henter data
         main.java.ST6.handler.PatientProfileHandler ph = new main.java.ST6.handler.PatientProfileHandler();             
         DatabaseManipulator.executeQueryWithResultSet(ph);
     }
