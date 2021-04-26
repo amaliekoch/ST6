@@ -10,6 +10,8 @@ public class PatientProfileModel {
     private String gender; 
     private String age; 
 
+    private static String cpr;
+
     public PatientProfileModel(String cprNumber, String name, String gender, String age) {
         this.cprNumber = cprNumber;
         this.name = name;
@@ -31,6 +33,10 @@ public class PatientProfileModel {
    
     public String getAge() {
         return age;
+    }
+
+    public static void setCprNumber(String cprNumber){
+        cpr = cprNumber;
     }
 
     public static void getPatientProfiledata(String cprNumber){              // Opretter "handler" og henter data

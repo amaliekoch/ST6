@@ -41,7 +41,6 @@ public class App extends Application {
              // Show the scene containing the root layout.
              Scene sceneLoginView = new Scene(LoginView);
              primaryStage.setScene(sceneLoginView);
-             // ReferralCtrl controller = loader.getController();
              primaryStage.show();
              
                        

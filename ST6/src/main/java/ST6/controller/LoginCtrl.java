@@ -84,6 +84,7 @@ public class LoginCtrl {
          
          if (loggedInUser!=null)
              {
+                
                 App.closeWindow(); //Lukker login vindue
                 FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); // Ny loader som henter "SearchView" 
                 Parent root1 = (Parent) fxmlloader.load(); 
@@ -91,6 +92,21 @@ public class LoginCtrl {
                 stage.setScene(new Scene(root1));
                 stage.show();
                 stage.setTitle("UDecide - Ucon decision support");
+                
+                // Load View
+            /*
+            App.closeWindow(); //Lukker login vindue
+             FXMLLoader loader = new FXMLLoader();
+             
+             loader.setLocation(App.class.getResource("/SearchPatientView.fxml"));
+             Parent root1 = (Parent) loader.load(); 
+
+             Stage stage = new Stage();
+             stage.setScene(new Scene(root1));
+             stage.show();
+             stage.setTitle("UDecide - Ucon decision support");
+                */
+                
              }
              else
              {
