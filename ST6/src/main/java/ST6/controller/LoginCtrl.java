@@ -20,6 +20,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import ST6.App;
+import javafx.application.Application;
+import javafx.scene.layout.AnchorPane;
 
 public class LoginCtrl {
 
@@ -85,7 +87,7 @@ public class LoginCtrl {
          if (loggedInUser!=null)
              {
                 
-                App.closeWindow(); //Lukker login vindue
+                //App.closeWindow(); //Lukker login vindue
                 FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); // Ny loader som henter "SearchView" 
                 Parent root1 = (Parent) fxmlloader.load(); 
                 Stage stage = new Stage();
@@ -93,20 +95,18 @@ public class LoginCtrl {
                 stage.show();
                 stage.setTitle("UDecide - Ucon decision support");
                 
-                // Load View
-            /*
-            App.closeWindow(); //Lukker login vindue
-             FXMLLoader loader = new FXMLLoader();
+                /*
+                        // Load View
+                        FXMLLoader loader = new FXMLLoader();
              
-             loader.setLocation(App.class.getResource("/SearchPatientView.fxml"));
-             Parent root1 = (Parent) loader.load(); 
-
-             Stage stage = new Stage();
-             stage.setScene(new Scene(root1));
-             stage.show();
-             stage.setTitle("UDecide - Ucon decision support");
+                        loader.setLocation(App.class.getResource("/SearchPatientView.fxml"));
+                        AnchorPane SearchPatientView = (AnchorPane) loader.load();
+                        
+                        // Show the scene containing the root layout.
+                        Scene sceneSearchPatientView = new Scene(SearchPatientView);
+                        primaryStage.setScene(sceneSearchPatientView);
+                        primaryStage.show();
                 */
-                
              }
              else
              {
