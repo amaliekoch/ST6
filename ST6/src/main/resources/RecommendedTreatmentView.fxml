@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ST6.controller.RecommendedTreatmentCtrl">
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: Lightgray;">
          <children>
@@ -30,15 +30,15 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </TextField>
-            <TextField editable="false" layoutX="60.0" layoutY="113.0" prefHeight="26.0" prefWidth="122.0" promptText="Anders Sand" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="113.0">
+            <TextField fx:id="patientName" editable="false" layoutX="60.0" layoutY="113.0" prefHeight="26.0" prefWidth="122.0" promptText="Anders Sand" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="113.0">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <TextField editable="false" layoutX="60.0" layoutY="153.0" prefHeight="26.0" prefWidth="218.0" promptText="231256-7891" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="621.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="153.0">
+            <TextField fx:id="patientCPR" editable="false" layoutX="60.0" layoutY="153.0" prefHeight="26.0" prefWidth="218.0" promptText="231256-7891" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="621.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="153.0">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <TextField editable="false" layoutX="60.0" layoutY="193.0" prefHeight="26.0" prefWidth="121.0" promptText="Male" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="193.0">
+            <TextField fx:id="patientGender" editable="false" layoutX="60.0" layoutY="193.0" prefHeight="26.0" prefWidth="121.0" promptText="Male" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="193.0">
                <font>
                   <Font size="16.0" />
                </font></TextField>
@@ -54,7 +54,7 @@
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <TextField alignment="CENTER" editable="false" layoutX="5.0" layoutY="238.0" style="-fx-background-color: lightgrey;" text="Current treatment" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="238.0">
+            <TextField alignment="CENTER" editable="false" layoutX="5.0" layoutY="313.0" style="-fx-background-color: lightgrey;" text="Current treatment" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="313.0">
                <effect>
                   <Blend />
                </effect>
@@ -65,35 +65,35 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="5.0" layoutY="278.0" prefHeight="36.0" prefWidth="180.0" text="Stimulation paradigm:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="278.0">
+            <Label layoutX="5.0" layoutY="353.0" prefHeight="36.0" prefWidth="180.0" text="Stimulation paradigm:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="353.0">
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Label layoutX="5.0" layoutY="318.0" prefHeight="36.0" prefWidth="180.0" text="Maximum intensity:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="318.0">
+            <Label layoutX="5.0" layoutY="393.0" prefHeight="36.0" prefWidth="180.0" text="Maximum intensity:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="393.0">
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Label layoutX="5.0" layoutY="358.0" prefHeight="36.0" prefWidth="180.0" text="Duration of stimulation:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="358.0">
+            <Label layoutX="5.0" layoutY="433.0" prefHeight="36.0" prefWidth="180.0" text="Duration of stimulation:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="433.0">
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <TextField editable="false" layoutX="188.0" layoutY="278.0" prefHeight="37.0" prefWidth="208.0" promptText="Continuous" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="278.0">
+            <TextField editable="false" layoutX="188.0" layoutY="353.0" prefHeight="37.0" prefWidth="208.0" promptText="Continuous" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="353.0">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <TextField editable="false" layoutX="188.0" layoutY="318.0" prefHeight="37.0" prefWidth="208.0" promptText="20 mA" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="318.0">
+            <TextField editable="false" layoutX="188.0" layoutY="393.0" prefHeight="37.0" prefWidth="208.0" promptText="20 mA" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="393.0">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <TextField editable="false" layoutX="188.0" layoutY="358.0" prefHeight="37.0" prefWidth="208.0" promptText="Not relevant" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="358.0">
+            <TextField editable="false" layoutX="188.0" layoutY="433.0" prefHeight="37.0" prefWidth="208.0" promptText="Not relevant" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="433.0">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <Label layoutX="5.0" layoutY="398.0" prefHeight="36.0" prefWidth="180.0" text="Electrode:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="398.0">
+            <Label layoutX="5.0" layoutY="473.0" prefHeight="36.0" prefWidth="180.0" text="Electrode:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="473.0">
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <TextField editable="false" layoutX="188.0" layoutY="398.0" prefHeight="37.0" prefWidth="208.0" promptText="Percutaneous " AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="398.0">
+            <TextField editable="false" layoutX="188.0" layoutY="473.0" prefHeight="37.0" prefWidth="208.0" promptText="Percutaneous " AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="473.0">
                <font>
                   <Font size="16.0" />
                </font></TextField>
@@ -103,12 +103,22 @@
                </image>
             </ImageView>
             <Separator layoutX="403.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="0.0" />
+            <Label layoutX="8.0" layoutY="232.0" text="Age:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patientAge" layoutX="77.0" layoutY="225.0" promptText="73" style="-fx-background-color: lightgrey;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="409.0" layoutY="-2.0" prefHeight="806.0" prefWidth="874.0" style="-fx-background-color: lightgrey;">
          <children>
-            <ProgressBar layoutX="44.0" layoutY="167.0" prefHeight="42.0" prefWidth="539.0" progress="0.84" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="167.0" />
-            <CheckBox layoutX="597.0" layoutY="167.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="246.0" text="Choose as treatment strategy" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="167.0">
+            <ProgressBar fx:id="effectScore1" layoutX="44.0" layoutY="167.0" prefHeight="42.0" prefWidth="539.0" progress="0.84" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="167.0" />
+            <CheckBox fx:id="chooseTreatment1" layoutX="597.0" layoutY="167.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="246.0" text="Choose as treatment strategy" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="167.0">
                <font>
                   <Font size="16.0" />
                </font></CheckBox>
@@ -127,13 +137,13 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ProgressBar layoutX="44.0" layoutY="304.0" prefHeight="26.0" prefWidth="539.0" progress="0.73" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="304.0" />
-            <ProgressBar layoutX="44.0" layoutY="428.0" prefHeight="26.0" prefWidth="539.0" progress="0.66" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="428.0" />
-            <CheckBox layoutX="597.0" layoutY="304.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="Choose as treatment strategy" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="304.0">
+            <ProgressBar fx:id="effectScore2" layoutX="44.0" layoutY="304.0" prefHeight="26.0" prefWidth="539.0" progress="0.73" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="304.0" />
+            <ProgressBar fx:id="effectScore3" layoutX="44.0" layoutY="428.0" prefHeight="26.0" prefWidth="539.0" progress="0.66" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="428.0" />
+            <CheckBox fx:id="chooseTreatment2" layoutX="597.0" layoutY="304.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="Choose as treatment strategy" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="304.0">
                <font>
                   <Font size="16.0" />
                </font></CheckBox>
-            <CheckBox layoutX="597.0" layoutY="428.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="Choose as treatment strategy" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="428.0">
+            <CheckBox fx:id="chooseTreatment3" layoutX="597.0" layoutY="428.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="Choose as treatment strategy" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="428.0">
                <font>
                   <Font size="16.0" />
                </font></CheckBox>
@@ -146,28 +156,28 @@
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <TextArea editable="false" layoutX="46.0" layoutY="217.0" prefHeight="62.0" prefWidth="539.0" promptText="Continuous stimulation - Intensity low...." AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0">
+            <TextArea fx:id="treatmentInfo1" editable="false" layoutX="46.0" layoutY="217.0" prefHeight="62.0" prefWidth="539.0" promptText="Continuous stimulation - Intensity low...." AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0">
                <font>
                   <Font size="16.0" />
                </font></TextArea>
-            <TextArea editable="false" layoutX="46.0" layoutY="344.0" prefHeight="62.0" prefWidth="539.0" promptText="Timed stimulation - 4 hrs - Intensity low-medium....." AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0">
+            <TextArea fx:id="treatmentInfo2" editable="false" layoutX="46.0" layoutY="344.0" prefHeight="62.0" prefWidth="539.0" promptText="Timed stimulation - 4 hrs - Intensity low-medium....." AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="293.0">
                <font>
                   <Font size="16.0" />
                </font></TextArea>
-            <TextArea editable="false" layoutX="46.0" layoutY="475.0" prefHeight="62.0" prefWidth="539.0" promptText="On-demand - Intensity high...." AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="292.0">
+            <TextArea fx:id="treatmentInfo3" editable="false" layoutX="46.0" layoutY="475.0" prefHeight="62.0" prefWidth="539.0" promptText="On-demand - Intensity high...." AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="292.0">
                <font>
                   <Font size="16.0" />
                </font></TextArea>
-            <Button layoutX="523.0" layoutY="511.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="94.0" text="Save" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <Button fx:id="saveChosenTreatment" layoutX="523.0" layoutY="511.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="94.0" text="Save" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <CheckBox layoutX="44.0" layoutY="112.0" mnemonicParsing="false" text="Percutaneous">
+            <CheckBox fx:id="preferPercutaneous" layoutX="44.0" layoutY="112.0" mnemonicParsing="false" text="Percutaneous">
                <font>
                   <Font size="16.0" />
                </font></CheckBox>
-            <CheckBox layoutX="44.0" layoutY="137.0" mnemonicParsing="false" text="Surface">
+            <CheckBox fx:id="preferSurface" layoutX="44.0" layoutY="137.0" mnemonicParsing="false" text="Surface">
                <font>
                   <Font size="16.0" />
                </font></CheckBox>
