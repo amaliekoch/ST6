@@ -96,7 +96,7 @@ public class LoginCtrl {
              {
          
              Alert alert = new Alert(AlertType.ERROR); //Fejldiaglogboks loades hvis loginoplysningerne er forkerte.
-               alert.setHeaderText("You have entered wrong or invalid username and/or password"); 
+               alert.setHeaderText("WARNING: You have entered wrong or invalid username and/or password"); 
                alert.showAndWait();
              }
             }
