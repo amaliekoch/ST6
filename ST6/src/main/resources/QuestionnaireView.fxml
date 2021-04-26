@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ST6.controller.QuestionnaireCtrl">
+   <children>
+      <AnchorPane prefHeight="799.0" prefWidth="253.0" style="-fx-background-color: Lightgray;">
+         <children>
+            <TextField alignment="CENTER" editable="false" layoutX="5.0" layoutY="72.0" style="-fx-background-color: lightgrey;" text="Patient profile" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="72.0">
+               <effect>
+                  <Blend />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="60.0" layoutY="147.0" prefHeight="26.0" prefWidth="122.0" promptText="Anders Sand" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="147.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="60.0" layoutY="187.0" prefHeight="26.0" prefWidth="218.0" promptText="231256-7891" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="587.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="187.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="60.0" layoutY="227.0" prefHeight="26.0" prefWidth="121.0" promptText="Male" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="227.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="5.0" layoutY="147.0" prefHeight="36.0" prefWidth="63.0" text="Name:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="147.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="5.0" layoutY="187.0" prefHeight="36.0" prefWidth="63.0" text="CPR:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="187.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="5.0" layoutY="227.0" prefHeight="36.0" prefWidth="63.0" text="Gender:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="227.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="62.0" fitWidth="137.0" layoutX="23.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="253.0" prefHeight="806.0" prefWidth="1035.0">
+         <children>
+            <TextField alignment="CENTER" editable="false" layoutX="483.0" layoutY="38.0" style="-fx-background-color: seethrough;" text="OAB data" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
+               <effect>
+                  <Blend />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </TextField>
+            <Button layoutX="712.0" layoutY="699.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="278.0" text="Estimate effectiveness scores" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="712.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="699.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="numberIEday" layoutX="277.0" layoutY="163.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="70.0" layoutY="166.0" prefHeight="20.0" prefWidth="182.0" text="Number of IEs per day:" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="68.0" layoutY="216.0" prefHeight="20.0" prefWidth="182.0" text="Bladder capacity:" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="277.0" layoutY="276.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="71.0" layoutY="279.0" prefHeight="20.0" prefWidth="203.0" text="Number of urinations per day:" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="277.0" layoutY="326.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="62.0" layoutY="329.0" prefHeight="20.0" prefWidth="230.0" text="Nocturia (numer of episodes/night):" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="297.0" prefHeight="20.0" prefWidth="205.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="50.0" />
+            <TextField layoutX="277.0" layoutY="387.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="62.0" layoutY="390.0" prefHeight="20.0" prefWidth="213.0" text="Number of urge episodes per day:" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="72.0" layoutY="440.0" prefHeight="20.0" prefWidth="182.0" text="Detrusor overactivity?" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ChoiceBox layoutX="277.0" layoutY="223.0" prefWidth="150.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0" />
+            <CheckBox layoutX="277.0" layoutY="442.0" mnemonicParsing="false" text="Yes" AnchorPane.leftAnchor="277.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="352.0" layoutY="442.0" mnemonicParsing="false" text="No" AnchorPane.rightAnchor="638.2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="414.0" layoutY="442.0" mnemonicParsing="false" text="Unknown">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <Slider blockIncrement="1.0" layoutX="51.0" layoutY="518.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="118.0" prefWidth="530.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Label layoutX="50.0" layoutY="501.0" prefHeight="26.0" prefWidth="182.0" text="Patient quality of life:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="347.0" prefHeight="20.0" prefWidth="205.0" text="(Numer of episodes per night)" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
