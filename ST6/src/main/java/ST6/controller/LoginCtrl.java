@@ -85,7 +85,7 @@ public class LoginCtrl {
          if (loggedInUser!=null)
              {
                 App.closeWindow(); //Lukker login vindue
-                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchView.fxml")); // Ny loader som henter "SearchView" 
+                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); // Ny loader som henter "SearchView" 
                 Parent root1 = (Parent) fxmlloader.load(); 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
