@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import main.java.ST6.controller.SearchPatientCtrl;
 import main.java.ST6.model.SpecialistModel;
 import java.io.IOException;
 import java.util.*;
@@ -26,12 +27,6 @@ import javafx.scene.layout.Pane;
 import javafx.fxml.Initializable;
 
 public class LoginCtrl {
-
-    //@FXML
-    //private ResourceBundle resources;
-
-    //@FXML
-    //private URL location;
 
     @FXML
     private TextField username;
@@ -63,16 +58,13 @@ public class LoginCtrl {
        }
     }
 
-    /*
     @FXML
     void initialize() {
-        assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert username != null : "fx:id=\"username\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginView.fxml'.";
-
     }
-    */
+    
 
     void checkLogin() throws IOException {
         /*Tilføj specialister der skal kunne logge ind her*/
@@ -89,17 +81,10 @@ public class LoginCtrl {
                 }
             } 
          
-         if (loggedInUser!=null)
-             {
-
+         if (loggedInUser!=null) {
                 App.closeWindow(); //Lukker login vindue
-                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); // Ny loader som henter "SearchView"
-               Parent root1 = (Parent) fxmlloader.load(); 
-               Stage stage = new Stage();
-               stage.setScene(new Scene(root1));
-               stage.show();
-               stage.setTitle("UCon");
-
+                SearchPatientCtrl searchView = new SearchPatientCtrl();
+                searchView.showSearchView();
              }
              else
              {
@@ -108,11 +93,5 @@ public class LoginCtrl {
                alert.setHeaderText("WARNING: You have entered wrong or invalid username and/or password"); 
                alert.showAndWait();
              }
-            }
-
-            //Test: 
-        //public void loadSearchPatientView() throws IOException{
-           // AnchorPane pane = FXMLLoader.load(getClass().getResource("/SearchPatientView.fxml"));
-           // rootPane.getChildren().setAll(pane);
-        //}
+        }
 }

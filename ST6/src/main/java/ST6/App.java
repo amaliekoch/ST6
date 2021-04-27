@@ -37,7 +37,7 @@ public class App extends Application {
     //}
         */ 
     
-    private static Stage primaryStage;
+    public static Stage primaryStage;
     // public BorderPane rootLayout;
  
      @Override
@@ -54,9 +54,7 @@ public class App extends Application {
              
              // Load View
              FXMLLoader loader = new FXMLLoader();
-             
-             //loader.setLocation(App.class.getResource("/LoginView.fxml"));
-             loader.setLocation(App.class.getResource("/resources/main/SearchPatientView.fxml"));
+             loader.setLocation(App.class.getResource("/LoginView.fxml"));
              AnchorPane LoginView = (AnchorPane) loader.load();
              
              // Show the scene containing the root layout.

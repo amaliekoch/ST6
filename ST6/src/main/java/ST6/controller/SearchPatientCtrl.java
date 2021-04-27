@@ -71,6 +71,15 @@ public class SearchPatientCtrl {
 
     }
 
+    public void showSearchView() throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/LoginView1.fxml")); 
+        Parent root1 = (Parent) fxmlloader.load(); 
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+        stage.setTitle("UCon");
+    }
+
     void checkCPR() throws IOException {
         PatientProfileModel.setCprNumber(cprTextfield.getText());
         PatientProfileModel.getPatientProfiledata(cprNumber);
