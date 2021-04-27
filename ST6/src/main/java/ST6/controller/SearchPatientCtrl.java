@@ -45,13 +45,16 @@ public class SearchPatientCtrl {
 
     @FXML
     void SearchButtonPressed(ActionEvent event) {
-        //checkCPR();
+        checkCPR();
     }
-
+/*
     @FXML
     void Search_enter(KeyEvent event) {
-        //checkCPR();
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            checkCPR();
+        }
     }
+    */
 
     @FXML
     public void initialize() {
@@ -59,7 +62,9 @@ public class SearchPatientCtrl {
         assert EnteredCprNumer != null : "fx:id=\"cprNumer\" was not injected: check your FXML file 'SearchPatientView.fxml'.";
         assert SearchButton != null : "fx:id=\"SearchButton\" was not injected: check your FXML file 'SearchPatientView.fxml'.";
     }
-    void checkCPR() throws IOException {
+    
+
+    public void checkCPR() {
         if (main.java.ST6.handler.PatientProfileHandler.patientCPR.equals(EnteredCprNumer.getText())) {
             System.out.println("Patient fundet - stil videre til systemet og find patient info");
            /*public void showSearchView() throws IOException {
@@ -75,25 +80,6 @@ public class SearchPatientCtrl {
             System.out.println("Patient ikke fundet - stil videre til systemet og efterspørg patient info");
         }
     }
-
-    public void showSearchView() throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); 
-        Parent root1 = (Parent) fxmlloader.load(); 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
-        stage.show();
-        stage.setTitle("UCon");
-    } 
-/*
-    public void showSearchPatientView() throws IOException {
-        FXMLLoader fxmlloader1 = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
-        Parent root2 = (Parent) fxmlloader1.load(); 
-        Stage stage1 = new Stage();
-        stage1.setScene(new Scene(root2));
-        stage1.show();
-        stage1.setTitle("UCon");
-    } 
-    */
 
 }
 

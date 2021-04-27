@@ -28,28 +28,6 @@ import javafx.fxml.Initializable;
 
 public class LoginCtrl {
 
-    // test start
-
-    
-    @FXML
-        private AnchorPane rootPane;
-    
-    @FXML
-        private TextField EnteredCprNumer;
-    
-    @FXML
-        private Button SearchButton;
-    
-    @FXML
-    void SearchButtonPressed(ActionEvent event) {
-    
-        }
-    
-    @FXML
-    void Search_enter(KeyEvent event) {
-    }
-    // test slut 
-
     @FXML
     private TextField username;
 
@@ -85,9 +63,6 @@ public class LoginCtrl {
         assert username != null : "fx:id=\"username\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginView.fxml'.";
-        assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file 'LoginView.fxml'.";
-        assert EnteredCprNumer != null : "fx:id=\"EnteredCprNumer\" was not injected: check your FXML file 'LoginView.fxml'.";
-        assert SearchButton != null: "fx:id=\"SearchButton\" was not injected: check your FXML file 'LoginView.fxml'.";
     }
     
 
@@ -108,9 +83,7 @@ public class LoginCtrl {
          
          if (loggedInUser!=null) {
                 App.closeWindow(); //Lukker login vindue
-                //SearchPatientCtrl searchView = new SearchPatientCtrl();
-                //searchView.showSearchView();
-                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchView.fxml")); 
+                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
                 Parent root1 = (Parent) fxmlloader.load(); 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
