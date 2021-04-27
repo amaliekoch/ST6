@@ -1,6 +1,7 @@
 
 package ST6;
 
+import ST6.controller.LoginCtrl;
 import ST6.database.DatabaseManipulator;
 import ST6.model.PatientProfileModel;
 import main.java.ST6.handler.PatientProfileHandler;
@@ -13,10 +14,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 
 public class App extends Application {
 //public class App {
    
+    /* TEST YOUTUBE: 
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
+
+        Scene scene = new Scene(root);
+        stage.setTitle("UCon");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+      //Test: 
+    //public void loadLoginView() throws IOException{
+       // AnchorPane pane = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
+       // rootPane.getChildren().setAll(pane);
+    //}
+        */ 
+    
     private static Stage primaryStage;
     // public BorderPane rootLayout;
  
@@ -35,7 +55,8 @@ public class App extends Application {
              // Load View
              FXMLLoader loader = new FXMLLoader();
              
-             loader.setLocation(App.class.getResource("/LoginView.fxml"));
+             //loader.setLocation(App.class.getResource("/LoginView.fxml"));
+             loader.setLocation(App.class.getResource("/resources/main/SearchPatientView.fxml"));
              AnchorPane LoginView = (AnchorPane) loader.load();
              
              // Show the scene containing the root layout.
@@ -57,6 +78,7 @@ public class App extends Application {
  
     public static void main(String[] args) {
         launch(args);
+
         DatabaseManipulator.getConnection();
         //PatientProfileModel.getPatientProfiledata("1002199902"); <-- Hanne Hansen
         PatientProfileModel.getPatientProfiledata("1304081203"); // <-- Viggo Viggosen 

@@ -23,14 +23,15 @@ import ST6.App;
 import javafx.application.Application;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.fxml.Initializable;
 
 public class LoginCtrl {
 
-    @FXML
-    private ResourceBundle resources;
+    //@FXML
+    //private ResourceBundle resources;
 
-    @FXML
-    private URL location;
+    //@FXML
+    //private URL location;
 
     @FXML
     private TextField username;
@@ -62,14 +63,16 @@ public class LoginCtrl {
        }
     }
 
-    
+    /*
     @FXML
     void initialize() {
+        assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert username != null : "fx:id=\"username\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginView.fxml'.";
 
     }
+    */
 
     void checkLogin() throws IOException {
         /*Tilføj specialister der skal kunne logge ind her*/
@@ -88,27 +91,14 @@ public class LoginCtrl {
          
          if (loggedInUser!=null)
              {
-                /*
+
                 App.closeWindow(); //Lukker login vindue
-                //FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); // Ny loader som henter "SearchView"
-               //Parent root1 = (Parent) fxmlloader.load(); 
-               
-               Parent parent = FXMLLoader.load(getClass().getResource("/resources/SearchPatientView.fxml"));
-               
+                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); // Ny loader som henter "SearchView"
+               Parent root1 = (Parent) fxmlloader.load(); 
                Stage stage = new Stage();
-               stage.setScene(new Scene(parent));
+               stage.setScene(new Scene(root1));
                stage.show();
-               stage.setTitle("SmartHealthShare"); 
-               */
-
-               App.closeWindow(); //Lukker login vindue
-               FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); // Ny loader som henter "SearchView"
-              Parent root1 = (Parent) fxmlloader.load(); 
-              Stage stage = new Stage();
-              stage.setScene(new Scene(root1));
-              stage.show();
-              stage.setTitle("UDecide - Ucon decision support");
-
+               stage.setTitle("UCon");
 
              }
              else
@@ -119,4 +109,10 @@ public class LoginCtrl {
                alert.showAndWait();
              }
             }
+
+            //Test: 
+        //public void loadSearchPatientView() throws IOException{
+           // AnchorPane pane = FXMLLoader.load(getClass().getResource("/SearchPatientView.fxml"));
+           // rootPane.getChildren().setAll(pane);
+        //}
 }
