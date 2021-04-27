@@ -110,7 +110,7 @@ public class LoginCtrl {
                 App.closeWindow(); //Lukker login vindue
                 //SearchPatientCtrl searchView = new SearchPatientCtrl();
                 //searchView.showSearchView();
-                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); 
+                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchView.fxml")); 
                 Parent root1 = (Parent) fxmlloader.load(); 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
