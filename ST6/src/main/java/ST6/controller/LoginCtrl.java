@@ -83,12 +83,18 @@ public class LoginCtrl {
          
          if (loggedInUser!=null) {
                 App.closeWindow(); //Lukker login vindue
-                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
-                Parent root1 = (Parent) fxmlloader.load(); 
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));
-                stage.show();
-                stage.setTitle("UCon");
+                try {
+                    FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
+                    Parent root1 = (Parent) fxmlloader.load(); 
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                    stage.setTitle("UCon");
+                   }
+                    catch (IOException e) {
+                         
+                        e.printStackTrace();
+                    } 
              }
              else
              {

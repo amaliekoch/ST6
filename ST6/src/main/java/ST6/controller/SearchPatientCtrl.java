@@ -28,6 +28,8 @@ import ST6.App;
 
 public class SearchPatientCtrl {
 
+    public Parent root1;
+
     @FXML
     private ResourceBundle resources;
 
@@ -45,7 +47,7 @@ public class SearchPatientCtrl {
 
     @FXML
     void SearchButtonPressed(ActionEvent event) {
-        checkCPR();
+        //checkCPR();
     }
 /*
     @FXML
@@ -62,7 +64,6 @@ public class SearchPatientCtrl {
         assert EnteredCprNumer != null : "fx:id=\"cprNumer\" was not injected: check your FXML file 'SearchPatientView.fxml'.";
         assert SearchButton != null : "fx:id=\"SearchButton\" was not injected: check your FXML file 'SearchPatientView.fxml'.";
     }
-    
 
     public void checkCPR() {
         if (main.java.ST6.handler.PatientProfileHandler.patientCPR.equals(EnteredCprNumer.getText())) {
