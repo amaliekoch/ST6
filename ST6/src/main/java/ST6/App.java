@@ -13,29 +13,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
 public class App extends Application {
-//public class App {
-   
-    /* TEST YOUTUBE: 
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
-
-        Scene scene = new Scene(root);
-        stage.setTitle("UCon");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-      //Test: 
-    //public void loadLoginView() throws IOException{
-       // AnchorPane pane = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
-       // rootPane.getChildren().setAll(pane);
-    //}
-        */ 
     
     public static Stage primaryStage;
     // public BorderPane rootLayout;
@@ -44,9 +26,8 @@ public class App extends Application {
      public void start(Stage primaryStage) {
          App.primaryStage = primaryStage;
          App.primaryStage.setTitle("UDecide - Ucon decision support");
- 
+         
          showLoginView();
-     
      }
  
      public void showLoginView() {
