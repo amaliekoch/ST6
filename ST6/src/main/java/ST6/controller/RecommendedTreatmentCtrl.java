@@ -84,7 +84,7 @@ public class RecommendedTreatmentCtrl {
 
     @FXML
     void saveButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); //// Ny loader instantieres - skal bruges til at hente viewet
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/ReportEffectView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
         Stage stage = new Stage(); // Laver en ny stage

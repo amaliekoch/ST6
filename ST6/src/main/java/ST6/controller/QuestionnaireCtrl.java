@@ -70,6 +70,7 @@ public class QuestionnaireCtrl {
 
     @FXML
     void EstimateButtonPressed(ActionEvent event) throws IOException {
+        //App.closeWindow(); <-- skal måske bruges senere 
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/RecommendedTreatmentView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
