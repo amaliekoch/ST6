@@ -1,14 +1,16 @@
 package ST6.controller;
 
 import java.net.URL;
+import java.security.KeyStore.SecretKeyEntry;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import main.java.ST6.controller.SearchPatientCtrl;
+import ST6.controller.SearchPatientCtrl;
 import main.java.ST6.model.SpecialistModel;
 import java.io.IOException;
 import java.util.*;
@@ -38,10 +40,22 @@ public class LoginCtrl {
     private Button loginButton;
 
     SpecialistModel loggedInUser = null; 
+    
 
     @FXML
     void loginPressed(ActionEvent event) throws IOException {
-        checkLogin();
+         //Flyt tilbage til linje 102 ------------
+         App.closeWindow();
+         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
+         Parent root1 = (Parent) fxmlloader.load(); 
+         Stage stage = new Stage();
+         stage.setScene(new Scene(root1));
+         stage.show();
+         stage.setTitle("UCon");
+         //--------------------------------------
+
+        
+        //checkLogin();
     }
 
     @FXML
@@ -64,7 +78,7 @@ public class LoginCtrl {
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginView.fxml'.";
     }
-    
+
 
     void checkLogin() throws IOException {
         /*Tilføj specialister der skal kunne logge ind her*/
@@ -82,7 +96,11 @@ public class LoginCtrl {
             } 
          
          if (loggedInUser!=null) {
-                App.closeWindow(); //Lukker login vindue
+
+                 
+            
+
+                /*App.closeWindow(); //Lukker login vindue
                 try {
                     FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
                     Parent root1 = (Parent) fxmlloader.load(); 
@@ -94,7 +112,7 @@ public class LoginCtrl {
                     catch (IOException e) {
                          
                         e.printStackTrace();
-                    } 
+                    } */
              }
              else
              {

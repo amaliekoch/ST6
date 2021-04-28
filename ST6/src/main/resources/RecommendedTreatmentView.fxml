@@ -168,7 +168,7 @@
                <font>
                   <Font size="16.0" />
                </font></TextArea>
-            <Button fx:id="saveChosenTreatment" layoutX="523.0" layoutY="511.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="94.0" text="Save" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <Button fx:id="saveButton" layoutX="523.0" layoutY="511.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="43.0" prefWidth="94.0" text="Save" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font size="16.0" />
                </font>

@@ -1,4 +1,4 @@
-package main.java.ST6.handler;
+package ST6.handler;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import ST6.database.*;

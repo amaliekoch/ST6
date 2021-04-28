@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ST6.controller.EffectCtrl">
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ST6.controller.ReportEffectCtrl">
    <items>
       <SplitPane dividerPositions="0.2535982478097622, 0.6329787234042553" prefHeight="673.0" prefWidth="834.0">
         <items>
@@ -58,7 +58,7 @@
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                  <Button fx:id="viewTreatmentHistory" layoutX="114.0" layoutY="642.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="143.0" text="View treatment history" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                  <Button fx:id="viewTreatmentHistoryButton" layoutX="114.0" layoutY="642.0" mnemonicParsing="false" onAction="#viewTreatmentHistoryButtonPressed" prefHeight="23.0" prefWidth="143.0" text="View treatment history" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -124,7 +124,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="799.0" prefWidth="464.0" style="-fx-background-color: darkgrey;">
                <children>
-                  <Button fx:id="treatmentNotFollowed" layoutX="69.0" layoutY="628.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="143.0" text="Treatment has NOT been followed" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                  <Button fx:id="treatmentNotFollowedButton" layoutX="69.0" layoutY="628.0" mnemonicParsing="false" onAction="#TreatmentNotFollowedButtonPressed" prefHeight="23.0" prefWidth="143.0" text="Treatment has NOT been followed" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -190,12 +190,12 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <Slider fx:id="qolScaleAfter" blockIncrement="1.0" layoutX="5.0" layoutY="100.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="42.0" prefWidth="181.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                  <Slider fx:id="qolScaleAfter" blockIncrement="1.0" layoutX="5.0" layoutY="100.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onKeyPressed="#qolScaleAfter_enter" prefHeight="42.0" prefWidth="181.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
                   <Label alignment="CENTER" layoutX="5.0" layoutY="70.0" prefHeight="16.0" prefWidth="140.0" text="Patient quality of life:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                  <Button fx:id="save" layoutX="166.0" layoutY="554.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" text="Save" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="20.0">
+                  <Button fx:id="saveReportButton" layoutX="166.0" layoutY="554.0" mnemonicParsing="false" onAction="#saveReportButtonPressed" prefHeight="37.0" prefWidth="90.0" text="Save" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -204,24 +204,24 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="skinIrritation" layoutX="27.0" layoutY="594.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="Skin irritation" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="228.0">
+                  <CheckBox fx:id="skinIrritationCheckbox" layoutX="27.0" layoutY="594.0" mnemonicParsing="false" onKeyPressed="#skinIrritationCheckbox_enter" prefHeight="18.0" prefWidth="154.0" text="Skin irritation" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="228.0">
                      <font>
                         <Font size="16.0" />
                      </font></CheckBox>
-                  <CheckBox fx:id="pain" layoutX="245.0" layoutY="594.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="Pain" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="10.0">
+                  <CheckBox fx:id="painCheckbox" layoutX="245.0" layoutY="594.0" mnemonicParsing="false" onKeyPressed="#painCheckbox_enter" prefHeight="18.0" prefWidth="154.0" text="Pain" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="10.0">
                      <font>
                         <Font size="16.0" />
                      </font></CheckBox>
-                  <Button fx:id="estimateNewEffectivenessScore" layoutX="68.0" layoutY="592.0" mnemonicParsing="false" text="Estimate new effectiveness scores" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                  <Button fx:id="estimateNewButton" layoutX="68.0" layoutY="592.0" mnemonicParsing="false" onAction="#estimateNewButtonPressed" text="Estimate new effectiveness scores" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                  <Slider fx:id="adverseEventsScale" blockIncrement="1.0" layoutX="11.0" layoutY="535.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="42.0" prefWidth="181.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="535.0" />
+                  <Slider fx:id="adverseEventsScale" blockIncrement="1.0" layoutX="11.0" layoutY="535.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onKeyPressed="#adverseEventsScale_enter" prefHeight="42.0" prefWidth="181.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="535.0" />
                   <Label alignment="CENTER" layoutX="14.0" layoutY="513.0" prefHeight="16.0" prefWidth="140.0" text="Patient's experience of adverse events:" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="513.0">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                  <TextField fx:id="otherAdverseEvents" layoutX="87.0" layoutY="664.0">
+                  <TextField fx:id="otherAdverseEvents" layoutX="87.0" layoutY="664.0" onKeyPressed="#otherAdverseEvents_enter">
                      <font>
                         <Font size="16.0" />
                      </font></TextField>
@@ -229,7 +229,7 @@
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                  <TextField fx:id="numberIEdayAfter" layoutX="225.0" layoutY="147.0" AnchorPane.rightAnchor="15.0">
+                  <TextField fx:id="numberIEdayAfter" layoutX="225.0" layoutY="147.0" onKeyPressed="#numberIEdayAfter_enter" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -244,7 +244,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="numberUrinationDayAfter" layoutX="225.0" layoutY="260.0" AnchorPane.rightAnchor="15.0">
+                  <TextField fx:id="numberUrinationDayAfter" layoutX="225.0" layoutY="260.0" onKeyPressed="#numberUrinationDayAfter_enter" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -254,7 +254,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="numberNocturiaDayAfter" layoutX="225.0" layoutY="310.0" AnchorPane.rightAnchor="15.0">
+                  <TextField fx:id="numberNocturiaDayAfter" layoutX="225.0" layoutY="310.0" onKeyPressed="#numberNocturiaDayAfter_enter" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -265,7 +265,7 @@
                      </font>
                   </Label>
                   <Label layoutX="5.0" layoutY="280.0" prefHeight="20.0" prefWidth="205.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="5.0" />
-                  <TextField fx:id="numberUrgeDayAfter" layoutX="225.0" layoutY="371.0" AnchorPane.rightAnchor="15.0">
+                  <TextField fx:id="numberUrgeDayAfter" layoutX="225.0" layoutY="371.0" onKeyPressed="#numberUrgeDayAfter_enter" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -281,21 +281,21 @@
                      </font>
                   </Label>
                   <ChoiceBox layoutX="225.0" layoutY="196.0" prefHeight="37.0" prefWidth="199.0" AnchorPane.rightAnchor="15.0" />
-                  <CheckBox fx:id="DOyesAfter" layoutX="225.0" layoutY="426.0" mnemonicParsing="false" text="Yes">
+                  <CheckBox fx:id="DOyesAfter" layoutX="225.0" layoutY="426.0" mnemonicParsing="false" onKeyPressed="#DOyesAfter_enter" text="Yes">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="DOnoAfter" layoutX="288.0" layoutY="426.0" mnemonicParsing="false" text="No">
+                  <CheckBox fx:id="DOnoAfter" layoutX="288.0" layoutY="426.0" mnemonicParsing="false" onKeyPressed="#DOnoAfter_enter" text="No">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="worseningSymptoms" layoutX="29.0" layoutY="639.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="230.0" text="Worsening of symptoms">
+                  <CheckBox fx:id="worseningSymptomsCheckbox" layoutX="29.0" layoutY="639.0" mnemonicParsing="false" onKeyPressed="#worseningSymptomsCheckbox_enter" prefHeight="26.0" prefWidth="230.0" text="Worsening of symptoms">
                      <font>
                         <Font size="16.0" />
                      </font></CheckBox>
-                  <CheckBox fx:id="DOunknownAfter" layoutX="351.0" layoutY="427.0" mnemonicParsing="false" text="Unknown">
+                  <CheckBox fx:id="DOunknownAfter" layoutX="351.0" layoutY="427.0" mnemonicParsing="false" onKeyPressed="#DOunknownAfter_enter" text="Unknown">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -1,5 +1,5 @@
 package ST6.model;
-import main.java.ST6.handler.*;
+import ST6.handler.*;
 //import ST6.handler.PatientProfileHandler;
 import ST6.database.DatabaseManipulator;
 
@@ -40,7 +40,7 @@ public class PatientProfileModel {
     }
 
     public static void getPatientProfiledata(String cprNumber){              // Opretter "handler" og henter data
-        main.java.ST6.handler.PatientProfileHandler ph = new main.java.ST6.handler.PatientProfileHandler();             
+        PatientProfileHandler ph = new PatientProfileHandler();             
         DatabaseManipulator.executeQueryWithResultSet(ph);
     }
 
