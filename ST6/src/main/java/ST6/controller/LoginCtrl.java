@@ -1,5 +1,10 @@
 package ST6.controller;
+import ST6.App;
+import ST6.controller.SearchPatientCtrl;
+//import ST6.model.SpecialistModel;
+import main.java.ST6.model.SpecialistModel; // den her skal fikses til ovenstående 
 
+//IMPORT DER BRUGES TIL SCENEBUILDER 
 import java.net.URL;
 import java.security.KeyStore.SecretKeyEntry;
 import java.util.ResourceBundle;
@@ -10,11 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import ST6.controller.SearchPatientCtrl;
-import main.java.ST6.model.SpecialistModel;
 import java.io.IOException;
 import java.util.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,7 +24,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import ST6.App;
 import javafx.application.Application;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -44,17 +45,15 @@ public class LoginCtrl {
 
     @FXML
     void loginPressed(ActionEvent event) throws IOException {
-         //Flyt tilbage til linje 102 ------------
+         //Flyt til metoden "check login"  ------------
          App.closeWindow();
-         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
-         Parent root1 = (Parent) fxmlloader.load(); 
-         Stage stage = new Stage();
-         stage.setScene(new Scene(root1));
-         stage.show();
-         stage.setTitle("UCon");
+         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); // Ny loader instantieres - skal bruges til at hente viewet via fxml-filen som ligger under "Resources"
+         Parent root1 = (Parent) fxmlloader.load(); // Loader (henter) fxml-filen, som indeholdet det view vi gerne vil vise
+         Stage stage = new Stage(); // Vi laver en ny stage
+         stage.setScene(new Scene(root1)); // Sætter scenen på vores stage (scenen = root = SearchPatient view)
+         stage.show(); // Viser den nye stage
+         stage.setTitle("UCon"); // Sætter titel på "vinduet" som vises
          //--------------------------------------
-
-        
         //checkLogin();
     }
 
@@ -98,28 +97,13 @@ public class LoginCtrl {
          if (loggedInUser!=null) {
 
                  
-            
-
-                /*App.closeWindow(); //Lukker login vindue
-                try {
-                    FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); 
-                    Parent root1 = (Parent) fxmlloader.load(); 
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root1));
-                    stage.show();
-                    stage.setTitle("UCon");
-                   }
-                    catch (IOException e) {
-                         
-                        e.printStackTrace();
-                    } */
              }
              else
              {
          
              Alert alert = new Alert(AlertType.ERROR); //Fejldiaglogboks loades hvis loginoplysningerne er forkerte.
-               alert.setHeaderText("WARNING: You have entered wrong or invalid username and/or password"); 
-               alert.showAndWait();
+               alert.setHeaderText("WARNING: You have entered wrong or invalid username and/or password"); // Fejl meddelelse 
+               alert.showAndWait(); // Viser fejl meddelelse
              }
         }
 
