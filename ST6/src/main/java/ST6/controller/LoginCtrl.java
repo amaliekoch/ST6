@@ -45,16 +45,7 @@ public class LoginCtrl {
 
     @FXML
     void loginPressed(ActionEvent event) throws IOException {
-         //Flyt til metoden "check login"  ------------
-         App.closeWindow();
-         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); // Ny loader instantieres - skal bruges til at hente viewet via fxml-filen som ligger under "Resources"
-         Parent root1 = (Parent) fxmlloader.load(); // Loader (henter) fxml-filen, som indeholdet det view vi gerne vil vise
-         Stage stage = new Stage(); // Vi laver en ny stage
-         stage.setScene(new Scene(root1)); // Sætter scenen på vores stage (scenen = root = SearchPatient view)
-         stage.show(); // Viser den nye stage
-         stage.setTitle("UCon"); // Sætter titel på "vinduet" som vises
-         //--------------------------------------
-        //checkLogin();
+        checkLogin();
     }
 
     @FXML
@@ -81,30 +72,34 @@ public class LoginCtrl {
 
     void checkLogin() throws IOException {
         /*Tilføj specialister der skal kunne logge ind her*/
-        List<SpecialistModel> listOfSpecialists = new ArrayList<>(); //Laver en array liste hvor specialister kan smides ind i. 
-        listOfSpecialists.add(new SpecialistModel("1234","9876"));
-        listOfSpecialists.add(new SpecialistModel("2222","yes"));
+        List<SpecialistModel> listOfSpecialists = new ArrayList<>(); //Laver en array-liste hvor specialister kan smides ind i. 
+        listOfSpecialists.add(new SpecialistModel("1234","9876")); // specialist 1
+        listOfSpecialists.add(new SpecialistModel("2222","yes")); // specialist 2
              
-         for (SpecialistModel SpecialistModel : listOfSpecialists){  //Loop der kører hele listen igennem
-             if (username.getText().equals(SpecialistModel.getUsername())){ // Sammenligner brugernavn med det der står i textfield
-                 if (password.getText().equals(SpecialistModel.getPassword())){ //Sammenligner password med det der står i passwordfield
-                     loggedInUser = SpecialistModel;
+         for (SpecialistModel SpecialistModel : listOfSpecialists){  //Loop der kører hele array-listen igennem
+             if (username.getText().equals(SpecialistModel.getUsername())){ // Sammenligner brugernavn med det der der er indtastet i textfield
+                 if (password.getText().equals(SpecialistModel.getPassword())){ //Sammenligner password med det der der er indtastet i passwordfield
+                     loggedInUser = SpecialistModel; // sætter loggedInUser = SpecialistModel, hvis username og password er korrekt  
                      break;
                     }
                 }
             } 
          
-         if (loggedInUser!=null) {
-
-                 
-             }
-             else
-             {
-         
-             Alert alert = new Alert(AlertType.ERROR); //Fejldiaglogboks loades hvis loginoplysningerne er forkerte.
-               alert.setHeaderText("WARNING: You have entered wrong or invalid username and/or password"); // Fejl meddelelse 
-               alert.showAndWait(); // Viser fejl meddelelse
-             }
+         if (loggedInUser!=null) { //hvis username og password er korrekt --> viser searchPatientView 
+            App.closeWindow();
+            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); // Ny loader instantieres - skal bruges til at hente viewet via fxml-filen som ligger under "Resources"
+            Parent root1 = (Parent) fxmlloader.load(); // Loader (henter) fxml-filen, som indeholdet det view vi gerne vil vise
+            Stage stage = new Stage(); // Vi laver en ny stage
+            stage.setScene(new Scene(root1)); // Sætter scenen på vores stage (scenen = root = SearchPatient view)
+            stage.show(); // Viser den nye stage
+            stage.setTitle("UCon"); // Sætter titel på "vinduet" som vises   
+            
         }
+        else { //hvis username og password er forker --> viser fejl meddelelse
+            Alert alert = new Alert(AlertType.ERROR); //Fejldiaglogboks loades 
+            alert.setHeaderText("WARNING: You have entered wrong or invalid username and/or password"); // definerer fejl meddelelse 
+            alert.showAndWait(); // Viser fejl meddelelse
+        }
+    }
 
 }
