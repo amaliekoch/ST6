@@ -31,6 +31,8 @@ import javafx.fxml.Initializable;
 
 public class LoginCtrl {
 
+    public static Stage stage;
+
     @FXML
     private TextField username;
 
@@ -90,9 +92,10 @@ public class LoginCtrl {
             FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView1.fxml")); // Ny loader instantieres - skal bruges til at hente viewet via fxml-filen som ligger under "Resources"
             Parent root1 = (Parent) fxmlloader.load(); // Loader (henter) fxml-filen, som indeholdet det view vi gerne vil vise
             Stage stage = new Stage(); // Vi laver en ny stage
+            LoginCtrl.stage = stage;
             stage.setScene(new Scene(root1)); // Sætter scenen på vores stage (scenen = root = SearchPatient view)
             stage.show(); // Viser den nye stage
-            stage.setTitle("UCon"); // Sætter titel på "vinduet" som vises   
+            stage.setTitle("UDecide - UCon Decision support"); // Sætter titel på "vinduet" som vises   
             
         }
         else { //hvis username og password er forker --> viser fejl meddelelse

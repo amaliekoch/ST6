@@ -69,15 +69,13 @@ public class QuestionnaireCtrl {
     private Slider qolScale;
 
     @FXML
-    void EstimateButtonPressed(ActionEvent event) throws IOException {
-        //App.closeWindow(); <-- skal måske bruges senere 
+    void EstimateButtonPressed(ActionEvent event) throws IOException { 
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/RecommendedTreatmentView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-        Stage stage = new Stage(); //Vi laver en ny stage
-        stage.setScene(new Scene(root));//Sætter scenen på vores stage (scenen = root = RecommendedTreatment view)
-        stage.show(); //Vi viser den nye stage
-        stage.setTitle("UCon"); // Sætter titel på "vinduet" som vises
+        
+        LoginCtrl.stage.setScene(new Scene(root));//Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = RecommendedTreatment view)
+        LoginCtrl.stage.show(); //Vi viser den nye stage
     }
 
     @FXML
