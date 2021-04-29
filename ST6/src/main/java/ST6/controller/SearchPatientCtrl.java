@@ -1,5 +1,7 @@
 package ST6.controller;
 import ST6.App;
+import ST6.model.PatientProfileModel;
+import ST6.handler.PatientProfileHandler;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import java.net.URL;
@@ -7,6 +9,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -39,53 +43,75 @@ public class SearchPatientCtrl {
     private Button SearchButton;
 
     @FXML
-    void SearchButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-
-        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
-        LoginCtrl.stage.show(); // Vi viser den nye stage
-        
-        /*//Flyt ovenstående tilbage til metoder der tjekker CPR
-
-        //checkCPR();
-    }
-
-
-    @FXML
-    void Search_enter(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.ENTER)) {
+    void enteredCPRnumber_enter(KeyEvent event) throws IOException {
+        if(event.getCode().equals(KeyCode.ENTER)) {
             checkCPR();
-        }
-        /*
+       }
     }
-
 
     @FXML
-    public void initialize() {
-        assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file 'SearchPatientView.fxml'.";
-        assert EnteredCprNumer != null : "fx:id=\"cprNumer\" was not injected: check your FXML file 'SearchPatientView.fxml'.";
-        assert SearchButton != null : "fx:id=\"SearchButton\" was not injected: check your FXML file 'SearchPatientView.fxml'.";
+    void SearchButtonPressed(ActionEvent event) throws IOException {
+        checkCPR();
     }
 
-    /*public void checkCPR() {
-        if (PatientProfileHandler.patientCPR.equals(EnteredCprNumer.getText())) {
-            System.out.println("Patient fundet - stil videre til systemet og find patient info");
-           /*public void showSearchView() throws IOException {
-                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/SearchPatientView.fxml")); 
-                Parent root1 = (Parent) fxmlloader.load(); 
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));
-                stage.show();
-                stage.setTitle("UCon");
-            } 
+    @FXML
+    void initialize() {
+        assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file 'SearchPatientView1.fxml'.";
+        assert EnteredCprNumer != null : "fx:id=\"EnteredCprNumer\" was not injected: check your FXML file 'SearchPatientView1.fxml'.";
+        assert SearchButton != null : "fx:id=\"SearchButton\" was not injected: check your FXML file 'SearchPatientView1.fxml'.";
+
+    }
+
+    public void checkCPR() throws IOException {
+        PatientProfileModel.setCprNumber(EnteredCprNumer.getText()); // det indtastede CPR nummer gemmes i patientProfileModel
+        PatientProfileModel.getPatientProfiledata(EnteredCprNumer.getText()); // det tjekkes om CPR nummeret, der er indtastet findes i databasen
+        if (PatientProfileHandler.patientCPR.equals(EnteredCprNumer.getText())) {   //Hvis det indtastede CPR nummer matcher et CPR nummer i databasen 
+            // Alert vindue der efterspørg consent: 
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("UDecide - UCon decision support");
+            alert.setHeaderText("The next page will contain information about: " + PatientProfileHandler.patientName + "                                             ");
+            alert.setContentText("If you click on 'Accept' you confirm, that it is the right patient and that you have consent from the patient to see patient information.");
+            ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Accept");
+            ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                // ...If the user chose "accept" kommer man videre til "questionnaire"
+                FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+                fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+                final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+                LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+                LoginCtrl.stage.show(); // Vi viser den nye stage
+            }
+            else {
+                EnteredCprNumer.clear(); // clear cpr nummeret hvis det er den forkerte patient
+            }
         }
         else {
-            System.out.println("Patient ikke fundet - stil videre til systemet og efterspørg patient info");
-        }
-        */
+            // ... user chose CANCEL or closed the dialog
+             // Alert vindue: 
+             Alert alert2 = new Alert(AlertType.CONFIRMATION);
+             alert2.setTitle("UDecide - UCon decision support");
+             alert2.setHeaderText("The CPR-number does not match a patient in the system. Do you want to create a new patient?                     ");
+             alert2.setContentText("On the next page you will be able to create a new patient by entering patient information about the patient with CPR-number: " + EnteredCprNumer.getText() + ". If you click on 'Accept' you confirm, that it is the right patient and that you have consent from the patient to use patient information.");
+             ((Button) alert2.getDialogPane().lookupButton(ButtonType.OK)).setText("Accept");
+             ((Button) alert2.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
+ 
+             Optional<ButtonType> result2 = alert2.showAndWait();
+             if (result2.get() == ButtonType.OK) {
+                 // ...If the user chose "accept" kommer man videre til "questionnaire"
+                 FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+                 fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+                 final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+ 
+                 LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+                 LoginCtrl.stage.show(); // Vi viser den nye stage
+             }
+             else {
+            EnteredCprNumer.clear(); // clear cpr nummeret hvis det er den forkerte patient
+            }
+        } 
     }
-
 }
-
+        
