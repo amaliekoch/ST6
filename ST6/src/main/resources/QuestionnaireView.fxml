@@ -13,12 +13,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ST6.controller.QuestionnaireCtrl">
    <children>
-      <AnchorPane prefHeight="799.0" prefWidth="253.0" style="-fx-background-color: Lightgray;">
+      <AnchorPane prefHeight="800.0" prefWidth="372.0" style="-fx-background-color: Lightgray;">
          <children>
-            <TextField alignment="CENTER" editable="false" layoutX="5.0" layoutY="72.0" style="-fx-background-color: lightgrey;" text="Patient profile" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="72.0">
+            <TextField alignment="CENTER" editable="false" layoutX="5.0" layoutY="109.0" prefHeight="32.0" prefWidth="366.0" style="-fx-background-color: lightgrey;" text="Patient profile" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="109.0">
                <effect>
                   <Blend />
                </effect>
@@ -26,35 +27,35 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </TextField>
-            <TextField fx:id="patientName" layoutX="60.0" layoutY="147.0" prefHeight="26.0" prefWidth="122.0" promptText="Patient name" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="147.0">
+            <TextField fx:id="patientName" layoutX="75.0" layoutY="214.0" onKeyPressed="#patientName_enter" prefHeight="32.0" prefWidth="230.0" promptText="Patient name" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="214.0">
                <font>
-                  <Font size="16.0" />
+                  <Font size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="patientCPR" layoutX="60.0" layoutY="187.0" prefHeight="26.0" prefWidth="218.0" promptText="Patient CPR" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="587.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="187.0">
+            <TextField fx:id="patientCPR" layoutX="75.0" layoutY="254.0" onKeyPressed="#patientCPR_enter" prefHeight="32.0" prefWidth="230.0" promptText="Patient CPR" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="254.0">
                <font>
-                  <Font size="16.0" />
+                  <Font size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="patientGender" layoutX="60.0" layoutY="227.0" prefHeight="26.0" prefWidth="121.0" promptText="Patient gender" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="227.0">
+            <TextField fx:id="patientGender" layoutX="74.0" layoutY="294.0" onKeyPressed="#patientGender_enter" prefHeight="32.0" prefWidth="230.0" promptText="Patient gender" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="294.0">
                <font>
-                  <Font size="16.0" />
+                  <Font size="12.0" />
                </font>
             </TextField>
-            <Label layoutX="5.0" layoutY="147.0" prefHeight="36.0" prefWidth="63.0" text="Name:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="147.0">
+            <Label layoutX="11.0" layoutY="212.0" prefHeight="36.0" prefWidth="63.0" text="Name:" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="212.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="5.0" layoutY="187.0" prefHeight="36.0" prefWidth="63.0" text="CPR:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="187.0">
+            <Label layoutX="11.0" layoutY="252.0" prefHeight="36.0" prefWidth="63.0" text="CPR:" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="252.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="5.0" layoutY="227.0" prefHeight="36.0" prefWidth="63.0" text="Gender:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="227.0">
+            <Label layoutX="11.0" layoutY="292.0" prefHeight="36.0" prefWidth="63.0" text="Gender:" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="292.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -64,11 +65,92 @@
                   <Image url="@Logo.png" />
                </image>
             </ImageView>
+            <Text fill="#58585a" layoutX="18.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The patient profile contains general information about the patient. Please enter answers in the fields below, if they are blank." textAlignment="CENTER" wrappingWidth="342.21630859375">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Label layoutX="11.0" layoutY="336.0" text="Age:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="74.0" layoutY="333.0" onKeyPressed="#patientAge_enter" prefHeight="32.0" prefWidth="289.0" promptText="Patient age">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" editable="false" layoutX="86.0" layoutY="413.0" style="-fx-background-color: lightgrey;" text="Current treatment strategy">
+               <effect>
+                  <Blend />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="9.0" layoutY="458.0" prefHeight="36.0" prefWidth="180.0" text="Stimulation paradigm:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="498.0" prefHeight="36.0" prefWidth="180.0" text="Maximum intensity:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="538.0" prefHeight="36.0" prefWidth="180.0" text="Duration of stimulation:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="currentParadigm" editable="false" layoutX="168.0" layoutY="460.0" prefHeight="37.0" prefWidth="195.0" promptText="Continuous">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="currentIntensity" editable="false" layoutX="168.0" layoutY="500.0" prefHeight="37.0" prefWidth="195.0" promptText="20 mA">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="currentDuration" editable="false" layoutX="168.0" layoutY="540.0" prefHeight="37.0" prefWidth="195.0" promptText="Not relevant for this strategy">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <Label layoutX="9.0" layoutY="578.0" prefHeight="36.0" prefWidth="180.0" text="Electrode:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="CurrentElectrode" editable="false" layoutX="168.0" layoutY="580.0" prefHeight="37.0" prefWidth="195.0" promptText="Percutaneous ">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <Button fx:id="reportEffectButton" layoutX="70.0" layoutY="646.0" mnemonicParsing="false" onAction="#reportEffectButtonPressed" prefHeight="57.0" prefWidth="230.0" text="Report effect of treatment ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="goBackButton" layoutX="195.0" layoutY="9.0" mnemonicParsing="false" onAction="#goBackButtonPressed" prefHeight="45.0" prefWidth="166.0" text="Go back to previous page">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="logOutButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="45.0" prefWidth="172.0" text="Log out ">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="253.0" prefHeight="806.0" prefWidth="1035.0">
+      <AnchorPane layoutX="371.0" prefHeight="806.0" prefWidth="921.0">
          <children>
-            <TextField alignment="CENTER" editable="false" layoutX="483.0" layoutY="38.0" style="-fx-background-color: seethrough;" text="OAB data" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
+            <TextField alignment="CENTER" editable="false" layoutX="483.0" layoutY="38.0" style="-fx-background-color: seethrough;" text="Patient's OAB data - Questionnaire" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
                <effect>
                   <Blend />
                </effect>
@@ -79,85 +161,91 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </TextField>
-            <Button fx:id="estimateEffectivenessScores" layoutX="712.0" layoutY="699.0" mnemonicParsing="false" onAction="#EstimateButtonPressed" prefHeight="62.0" prefWidth="278.0" text="Estimate effectiveness scores" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="712.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="699.0">
+            <Button fx:id="estimateEffectivenessScores" layoutX="348.0" layoutY="638.0" mnemonicParsing="false" onAction="#EstimateButtonPressed" prefHeight="62.0" prefWidth="276.0" text="Estimate effectiveness scores" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="348.0" AnchorPane.rightAnchor="297.0" AnchorPane.topAnchor="638.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="numberIEday" layoutX="277.0" layoutY="163.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+            <TextField fx:id="numberIEday" layoutX="431.0" layoutY="159.0" onKeyPressed="#numberIEday_enter" prefHeight="32.0" prefWidth="230.0" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="70.0" layoutY="166.0" prefHeight="20.0" prefWidth="182.0" text="Number of IEs per day:" AnchorPane.leftAnchor="50.0">
+            <Label layoutX="191.0" layoutY="162.0" prefHeight="20.0" prefWidth="195.0" text="Number of IEs per day:" AnchorPane.leftAnchor="191.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="68.0" layoutY="216.0" prefHeight="20.0" prefWidth="182.0" text="Bladder capacity:" AnchorPane.leftAnchor="50.0">
+            <Label layoutX="191.0" layoutY="212.0" prefHeight="20.0" prefWidth="195.0" text="Bladder capacity:" AnchorPane.leftAnchor="191.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="numberUrinationDay" layoutX="277.0" layoutY="276.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+            <TextField fx:id="numberUrinationDay" layoutX="431.0" layoutY="272.0" onKeyPressed="#numberUrinationDay_enter" prefHeight="32.0" prefWidth="230.0" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="71.0" layoutY="279.0" prefHeight="20.0" prefWidth="203.0" text="Number of urinations per day:" AnchorPane.leftAnchor="50.0">
+            <Label layoutX="190.0" layoutY="275.0" prefHeight="20.0" prefWidth="217.0" text="Number of urinations per day:" AnchorPane.leftAnchor="190.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="numberNocturiaDay" layoutX="277.0" layoutY="326.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+            <TextField fx:id="numberNocturiaDay" layoutX="431.0" layoutY="322.0" onKeyPressed="#numberNocturiaDay_enter" prefHeight="32.0" prefWidth="230.0" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="62.0" layoutY="329.0" prefHeight="20.0" prefWidth="230.0" text="Nocturia (numer of episodes/night):" AnchorPane.leftAnchor="50.0">
+            <Label layoutX="189.0" layoutY="325.0" prefHeight="20.0" prefWidth="245.0" text="Nocturia per night:" AnchorPane.leftAnchor="189.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="50.0" layoutY="297.0" prefHeight="20.0" prefWidth="205.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="50.0" />
-            <TextField fx:id="numberUrgeDay" layoutX="277.0" layoutY="387.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0">
+            <Label layoutX="192.0" layoutY="293.0" prefHeight="20.0" prefWidth="217.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="192.0" />
+            <TextField fx:id="numberUrgeDay" layoutX="431.0" layoutY="383.0" onKeyPressed="#numberUrgeDay_enter" prefHeight="32.0" prefWidth="230.0" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="62.0" layoutY="390.0" prefHeight="20.0" prefWidth="213.0" text="Number of urge episodes per day:" AnchorPane.leftAnchor="50.0">
+            <Label layoutX="187.0" layoutY="386.0" prefHeight="20.0" prefWidth="230.0" text="Number of urge episodes per day:" AnchorPane.leftAnchor="187.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="72.0" layoutY="440.0" prefHeight="20.0" prefWidth="182.0" text="Detrusor overactivity?" AnchorPane.leftAnchor="50.0">
+            <Label layoutX="191.0" layoutY="436.0" prefHeight="20.0" prefWidth="195.0" text="Detrusor overactivity?" AnchorPane.leftAnchor="191.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="277.0" layoutY="223.0" prefWidth="150.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="608.0" />
-            <CheckBox fx:id="DOyes" layoutX="277.0" layoutY="442.0" mnemonicParsing="false" text="Yes" AnchorPane.leftAnchor="277.0">
+            <ChoiceBox layoutX="431.0" layoutY="219.0" prefHeight="27.0" prefWidth="230.0" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0" />
+            <CheckBox fx:id="DOyes" layoutX="431.0" layoutY="438.0" mnemonicParsing="false" text="Yes" AnchorPane.leftAnchor="431.0">
                <font>
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="DOno" layoutX="352.0" layoutY="442.0" mnemonicParsing="false" text="No" AnchorPane.rightAnchor="638.2">
+            <CheckBox fx:id="DOno" layoutX="502.0" layoutY="438.0" mnemonicParsing="false" text="No" AnchorPane.rightAnchor="370.0">
                <font>
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="DOunknown" layoutX="414.0" layoutY="442.0" mnemonicParsing="false" text="Unknown">
+            <CheckBox fx:id="DOunknown" layoutX="568.0" layoutY="438.0" mnemonicParsing="false" text="Unknown">
                <font>
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <Slider fx:id="qolScale" blockIncrement="1.0" layoutX="51.0" layoutY="518.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="118.0" prefWidth="530.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-            <Label layoutX="50.0" layoutY="501.0" prefHeight="26.0" prefWidth="182.0" text="Patient quality of life:">
+            <Slider fx:id="qolScale" blockIncrement="1.0" layoutX="193.0" layoutY="509.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="118.0" prefWidth="542.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Label layoutX="191.0" layoutY="493.0" prefHeight="26.0" prefWidth="195.0" text="Patient quality of life:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="50.0" layoutY="347.0" prefHeight="20.0" prefWidth="205.0" text="(Numer of episodes per night)" />
+            <Label layoutX="192.0" layoutY="343.0" prefHeight="20.0" prefWidth="217.0" text="(Numer of episodes per night)" />
+            <Text fill="#58585a" layoutX="199.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To estimate recommended neurostimulation treatments with Ucon, please enter answers in the following fields. The questions is about the patient's current OAB condition." textAlignment="CENTER" wrappingWidth="530.0">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Label layoutX="192.0" layoutY="180.0" prefHeight="20.0" prefWidth="217.0" text="(IE = incontinence episodes)" />
          </children>
       </AnchorPane>
    </children>

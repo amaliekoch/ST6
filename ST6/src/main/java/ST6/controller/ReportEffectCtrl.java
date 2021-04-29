@@ -33,6 +33,9 @@ public class ReportEffectCtrl {
     private URL location;
 
     @FXML
+    private Button viewTreatmentHistoryButton;
+
+    @FXML
     private TextField patientName;
 
     @FXML
@@ -42,22 +45,22 @@ public class ReportEffectCtrl {
     private TextField patientGender;
 
     @FXML
-    private Button viewTreatmentHistoryButton;
-
-    @FXML
     private TextField currentParadigm;
 
     @FXML
-    private TextField currentMaxIntensity;
+    private TextField currentIntensity;
 
     @FXML
-    private TextField currentDurationOfStim;
+    private TextField currentDuration;
 
     @FXML
-    private TextField electrode;
+    private TextField CurrentElectrode;
 
     @FXML
-    private TextField patientAge;
+    private Button goBackButton;
+
+    @FXML
+    private Button logOutButton;
 
     @FXML
     private Button treatmentNotFollowedButton;
@@ -136,31 +139,47 @@ public class ReportEffectCtrl {
 
     @FXML
     void TreatmentNotFollowedButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader som henter "DatacategoryView"
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml"));
-       // Parent root1 = (Parent) fxmlloader.load(); 
-        final Parent root = fxmlloader.load();
-        Stage stage = new Stage(); //Vi laver en ny stage
-        stage.setScene(new Scene(root));
-        stage.show(); //Vi viser den nye stage
-        stage.setTitle("UCon");
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
     }
 
     @FXML
-    void adverseEventsScale_enter(KeyEvent event) { 
+    void adverseEventsScale_enter(KeyEvent event) {
 
     }
 
     @FXML
     void estimateNewButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader som henter "DatacategoryView"
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml"));
-       // Parent root1 = (Parent) fxmlloader.load(); 
-        final Parent root = fxmlloader.load();
-        Stage stage = new Stage(); //Vi laver en ny stage
-        stage.setScene(new Scene(root));
-        stage.show(); //Vi viser den nye stage
-        stage.setTitle("UCon");
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+    @FXML
+    void goBackButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+    @FXML
+    void logOutButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/LoginView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
     }
 
     @FXML
@@ -194,20 +213,38 @@ public class ReportEffectCtrl {
     }
 
     @FXML
+    void patientAge_enter(KeyEvent event) {
+
+    }
+
+    @FXML
+    void patientCPR_enter(KeyEvent event) {
+
+    }
+
+    @FXML
+    void patientGender_enter(KeyEvent event) {
+
+    }
+
+    @FXML
+    void patientName_enter(KeyEvent event) {
+
+    }
+
+    @FXML
     void qolScaleAfter_enter(KeyEvent event) {
 
     }
 
     @FXML
     void saveReportButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader som henter "DatacategoryView"
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml"));
-       // Parent root1 = (Parent) fxmlloader.load(); 
-        final Parent root = fxmlloader.load();
-        Stage stage = new Stage(); //Vi laver en ny stage
-        stage.setScene(new Scene(root));
-        stage.show(); //Vi viser den nye stage
-        stage.setTitle("UCon");
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
     }
 
     @FXML
@@ -216,15 +253,8 @@ public class ReportEffectCtrl {
     }
 
     @FXML
-    void viewTreatmentHistoryButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader som henter "DatacategoryView"
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml"));
-       // Parent root1 = (Parent) fxmlloader.load(); 
-        final Parent root = fxmlloader.load();
-        Stage stage = new Stage(); //Vi laver en ny stage
-        stage.setScene(new Scene(root));
-        stage.show(); //Vi viser den nye stage
-        stage.setTitle("UCon");
+    void viewTreatmentHistoryButtonPressed(ActionEvent event) {
+
     }
 
     @FXML
@@ -234,15 +264,16 @@ public class ReportEffectCtrl {
 
     @FXML
     void initialize() {
+        assert viewTreatmentHistoryButton != null : "fx:id=\"viewTreatmentHistoryButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert patientName != null : "fx:id=\"patientName\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert patientCPR != null : "fx:id=\"patientCPR\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert patientGender != null : "fx:id=\"patientGender\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
-        assert viewTreatmentHistoryButton != null : "fx:id=\"viewTreatmentHistoryButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert currentParadigm != null : "fx:id=\"currentParadigm\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
-        assert currentMaxIntensity != null : "fx:id=\"currentMaxIntensity\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
-        assert currentDurationOfStim != null : "fx:id=\"currentDurationOfStim\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
-        assert electrode != null : "fx:id=\"electrode\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
-        assert patientAge != null : "fx:id=\"patientAge\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert currentIntensity != null : "fx:id=\"currentIntensity\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert currentDuration != null : "fx:id=\"currentDuration\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert CurrentElectrode != null : "fx:id=\"CurrentElectrode\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert goBackButton != null : "fx:id=\"goBackButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert logOutButton != null : "fx:id=\"logOutButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert treatmentNotFollowedButton != null : "fx:id=\"treatmentNotFollowedButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert numberOfButtonPress != null : "fx:id=\"numberOfButtonPress\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert durationOfStimulation != null : "fx:id=\"durationOfStimulation\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
