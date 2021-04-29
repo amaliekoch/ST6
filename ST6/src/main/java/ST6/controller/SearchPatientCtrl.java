@@ -27,6 +27,8 @@ import javafx.stage.Stage;
 
 public class SearchPatientCtrl {
 
+    public static String registeredPatient;
+
     @FXML
     private ResourceBundle resources;
 
@@ -66,6 +68,7 @@ public class SearchPatientCtrl {
         PatientProfileModel.setCprNumber(EnteredCprNumer.getText()); // det indtastede CPR nummer gemmes i patientProfileModel
         PatientProfileModel.getPatientProfiledata(EnteredCprNumer.getText()); // det tjekkes om CPR nummeret, der er indtastet findes i databasen
         if (PatientProfileHandler.patientCPR.equals(EnteredCprNumer.getText())) {   //Hvis det indtastede CPR nummer matcher et CPR nummer i databasen 
+            registeredPatient = "yes";
             // Alert vindue der efterspørg consent: 
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("UDecide - UCon decision support");
@@ -89,8 +92,9 @@ public class SearchPatientCtrl {
             }
         }
         else {
-            // ... user chose CANCEL or closed the dialog
+             // hvis ikke det indtastede CPR-nummer eksisterer i databasen
              // Alert vindue: 
+             registeredPatient = "no";
              Alert alert2 = new Alert(AlertType.CONFIRMATION);
              alert2.setTitle("UDecide - UCon decision support");
              alert2.setHeaderText("The CPR-number does not match a patient in the system. Do you want to create a new patient?                     ");
@@ -109,7 +113,7 @@ public class SearchPatientCtrl {
                  LoginCtrl.stage.show(); // Vi viser den nye stage
              }
              else {
-            EnteredCprNumer.clear(); // clear cpr nummeret hvis det er den forkerte patient
+            EnteredCprNumer.clear(); // ... user chose CANCEL
             }
         } 
     }

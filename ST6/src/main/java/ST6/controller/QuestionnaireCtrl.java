@@ -1,5 +1,7 @@
 package ST6.controller;
 import ST6.App;
+import ST6.handler.PatientProfileHandler;
+import ST6.controller.SearchPatientCtrl;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import java.net.URL;
@@ -39,6 +41,9 @@ public class QuestionnaireCtrl {
 
     @FXML
     private TextField patientGender;
+
+    @FXML
+    private TextField patientAge;
 
     @FXML
     private TextField currentParadigm;
@@ -170,7 +175,7 @@ public class QuestionnaireCtrl {
     }
 
     @FXML
-    void initialize() {
+    void initialize() throws IOException {
         assert patientName != null : "fx:id=\"patientName\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert patientCPR != null : "fx:id=\"patientCPR\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert patientGender != null : "fx:id=\"patientGender\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
@@ -190,6 +195,26 @@ public class QuestionnaireCtrl {
         assert DOno != null : "fx:id=\"DOno\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert DOunknown != null : "fx:id=\"DOunknown\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert qolScale != null : "fx:id=\"qolScale\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
-
+        
+        updatePatientProfileFields(); //opdaterer patient information på interfacet 
     }
+
+    public void updatePatientProfileFields() throws IOException {   // hvis patienten allerede er i databasen 
+        if (SearchPatientCtrl.registeredPatient.equals("yes")){
+            patientName.setText(PatientProfileHandler.patientName);
+            patientCPR.setText(PatientProfileHandler.patientCPR);
+            patientGender.setText(PatientProfileHandler.patientGender);
+            patientAge.setText(PatientProfileHandler.patientAge);
+        }
+        else { // hvis ikke patienten allerede er i databasen 
+            patientName.setText("   ");
+            patientCPR.setText("   ");
+            patientGender.setText("   ");
+            patientAge.setText("   ");
+        }
+    }
+
 }
+
+
+    
