@@ -27,8 +27,8 @@ public class PatientProfileHandler implements Queryable {
     // kommandoen til SQL databasen 
     @Override
     public String returnSqlQuery() {
-        String sqlStatement = "SELECT * FROM `PInfo` WHERE `cprNumber` = 1304081203"; // CPR er lige nu tastet manuelt. Brug nedenstående når GUI kører
-       // String sqlStatement = "SELECT * FROM `PatientProfile` WHERE `cprNumber` =" + PatientProfileModel.getcprNumber();
+        //String sqlStatement = "SELECT * FROM `PInfo` WHERE `cprNumber` = 1304081203"; // CPR-nummer fra databasen er her tastet manuelt. 
+       String sqlStatement = "SELECT * FROM `PInfo` WHERE `cprNumber` =" + PatientProfileModel.getCprInput(); //Bruger CPR der er modtaget som input i GUI til at søge efter patient i databasen 
         return sqlStatement;
     }
 }

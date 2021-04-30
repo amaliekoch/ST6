@@ -41,12 +41,13 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
 
-        DatabaseManipulator.getConnection(); 
+        //DatabaseManipulator.getConnection(); 
         //PatientProfileModel.getPatientProfiledata("1002199902"); <-- Hanne Hansen
-        PatientProfileModel.getPatientProfiledata("1304081203"); // <-- Viggo Viggosen 
+        //PatientProfileModel.getPatientProfiledata("1304081203"); // <-- Viggo Viggosen 
         //System.out.println(PatientProfileHandler.patientCPR); // Test - printer cpr i terminalen
         //System.out.println(PatientProfileHandler.patientName); // Test - printer navn i terminalen
         //System.out.println(PatientProfileHandler.patientAge); //Test - printer alder i terminalen
         //System.out.println(PatientProfileHandler.patientGender); //Test - printer køn i terminalen
+
     }
 }

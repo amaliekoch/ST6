@@ -47,12 +47,14 @@ public class SearchPatientCtrl {
     @FXML
     void enteredCPRnumber_enter(KeyEvent event) throws IOException {
         if(event.getCode().equals(KeyCode.ENTER)) {
+            // her kan vi indsætte at der skal input skal tjekkes 
             checkCPR();
        }
     }
 
     @FXML
     void SearchButtonPressed(ActionEvent event) throws IOException {
+        // her kan vi indsætte at der skal input skal tjekkes 
         checkCPR();
     }
 
@@ -61,13 +63,12 @@ public class SearchPatientCtrl {
         assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file 'SearchPatientView1.fxml'.";
         assert EnteredCprNumer != null : "fx:id=\"EnteredCprNumer\" was not injected: check your FXML file 'SearchPatientView1.fxml'.";
         assert SearchButton != null : "fx:id=\"SearchButton\" was not injected: check your FXML file 'SearchPatientView1.fxml'.";
-
     }
 
     public void checkCPR() throws IOException {
-        PatientProfileModel.setCprNumber(EnteredCprNumer.getText()); // det indtastede CPR nummer gemmes i patientProfileModel
+        PatientProfileModel.checkCprNumber(EnteredCprNumer.getText()); // det indtastede CPR nummer gemmes i patientProfileModel
         PatientProfileModel.getPatientProfiledata(EnteredCprNumer.getText()); // det tjekkes om CPR nummeret, der er indtastet findes i databasen
-        if (PatientProfileHandler.patientCPR.equals(EnteredCprNumer.getText())) {   //Hvis det indtastede CPR nummer matcher et CPR nummer i databasen 
+        if (!PatientProfileHandler.patientName.equals("fejl")) {   //Hvis det indtastede CPR nummer matcher et CPR nummer i databasen 
             registeredPatient = "yes";
             // Alert vindue der efterspørg consent: 
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -88,6 +89,7 @@ public class SearchPatientCtrl {
                 LoginCtrl.stage.show(); // Vi viser den nye stage
             }
             else {
+                PatientProfileHandler.patientName = "fejl";
                 EnteredCprNumer.clear(); // clear cpr nummeret hvis det er den forkerte patient
             }
         }

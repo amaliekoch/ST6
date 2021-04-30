@@ -1,6 +1,7 @@
 package ST6.controller;
 import ST6.App;
 import ST6.handler.PatientProfileHandler;
+import ST6.model.PatientProfileModel;
 import ST6.controller.SearchPatientCtrl;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
@@ -96,6 +97,11 @@ public class QuestionnaireCtrl {
 
     @FXML
     void EstimateButtonPressed(ActionEvent event) throws IOException { 
+        PatientProfileHandler.patientAge = patientAge.getText();
+        PatientProfileHandler.patientGender = patientGender.getText();
+        PatientProfileHandler.patientName = patientName.getText();
+        SearchPatientCtrl.registeredPatient = "yes"; 
+
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/RecommendedTreatmentView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -145,23 +151,23 @@ public class QuestionnaireCtrl {
     }
 
     @FXML
-    void patientAge_enter(KeyEvent event) {
-
+    void patientAge_enter(KeyEvent event) throws IOException {
+        // her kan vi indsætte at der skal input skal tjekkes (eksempelvis at input skal være mellem 0-120)
     }
 
     @FXML
-    void patientCPR_enter(KeyEvent event) {
-
+    void patientCPR_enter(KeyEvent event) throws IOException {
+        // Den her skal vi nok ikke bruge alligevel 
     }
 
     @FXML
-    void patientGender_enter(KeyEvent event) {
-
+    void patientGender_enter(KeyEvent event)  throws IOException {
+        // her kan vi indsætte at der skal input skal tjekkes (eksempelvis at input skal være enten "male" eller "female") 
     }
 
     @FXML
-    void patientName_enter(KeyEvent event) {
-
+    void patientName_enter(KeyEvent event) throws IOException {
+        // her kan vi indsætte at der skal input skal tjekkes
     }
 
     @FXML
@@ -179,6 +185,7 @@ public class QuestionnaireCtrl {
         assert patientName != null : "fx:id=\"patientName\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert patientCPR != null : "fx:id=\"patientCPR\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert patientGender != null : "fx:id=\"patientGender\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
+        assert patientAge != null : "fx:id=\"patientAge\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert currentParadigm != null : "fx:id=\"currentParadigm\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert currentIntensity != null : "fx:id=\"currentIntensity\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert currentDuration != null : "fx:id=\"currentDuration\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
@@ -197,23 +204,26 @@ public class QuestionnaireCtrl {
         assert qolScale != null : "fx:id=\"qolScale\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         
         updatePatientProfileFields(); //opdaterer patient information på interfacet 
+        
+
     }
 
     public void updatePatientProfileFields() throws IOException {   // hvis patienten allerede er i databasen 
         if (SearchPatientCtrl.registeredPatient.equals("yes")){
-            patientName.setText(PatientProfileHandler.patientName);
+            patientName.setText(PatientProfileHandler.patientName); 
             patientCPR.setText(PatientProfileHandler.patientCPR);
             patientGender.setText(PatientProfileHandler.patientGender);
             patientAge.setText(PatientProfileHandler.patientAge);
         }
         else { // hvis ikke patienten allerede er i databasen 
-            patientName.setText("   ");
-            patientCPR.setText("   ");
-            patientGender.setText("   ");
-            patientAge.setText("   ");
+            //patientName.setText(""); // blankt felt 
+            patientCPR.setText(PatientProfileModel.getCprInput()); //indsætter det CPR nummer som er blevet givet som input til viewet: "Search patient"
+            //patientGender.setText(""); //blankt felt 
+            //patientAge.setText(""); //blankt felt 
+
+            PatientProfileHandler.patientCPR = patientCPR.getText();
         }
     }
-
 }
 
 
