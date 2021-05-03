@@ -7,10 +7,10 @@ import ST6.model.PatientProfileModel;
 
 public class PatientProfileHandler implements Queryable {
 
-    public  static String patientName = "fejl"; // bruges til at tjekke om der reelt er hentet et navn. Ellers skrives der "Fejl"
-    public  static String patientCPR;
-    public  static String patientGender;
-    public  static String patientAge; 
+    public static String patientName = "fejl"; // bruges til at tjekke om der reelt er hentet et navn. Ellers skrives der "Fejl"
+    public static String patientCPR;
+    public static String patientGender;
+    public static String patientAge; 
     
     // overskriver kommandoen i interfacet. Denne metode bliver kun kaldt hvis returnSqlQuery kommandoen går igennem
     @Override

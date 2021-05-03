@@ -115,7 +115,7 @@ public class SearchPatientCtrl {
                  LoginCtrl.stage.show(); // Vi viser den nye stage
              }
              else {
-            EnteredCprNumer.clear(); // ... user chose CANCEL
+                EnteredCprNumer.clear(); // ... user chose CANCEL
             }
         } 
     }

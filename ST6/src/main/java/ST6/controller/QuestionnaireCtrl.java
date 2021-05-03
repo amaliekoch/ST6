@@ -4,6 +4,7 @@ import ST6.handler.PatientProfileHandler;
 import ST6.model.PatientProfileModel;
 import ST6.model.QuestionnaireModel;
 import ST6.controller.SearchPatientCtrl;
+import ST6.controller.LoginCtrl;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import java.net.URL;
@@ -11,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -31,6 +33,7 @@ public class QuestionnaireCtrl {
 
     public String bladderCapacity = "default";
     public String detrusorOveractivity = "default";
+    public String qolValueEntered = "default";
 
     @FXML
     private ResourceBundle resources;
@@ -149,26 +152,43 @@ public class QuestionnaireCtrl {
 
     @FXML
     void EstimateButtonPressed(ActionEvent event) throws IOException { //Når knappen "Estimate effectiveness scores" bliver trykket på:
-        //gemmer de input, som er blevet givet til patient profilen
+        Alert alert3 = new Alert(AlertType.CONFIRMATION);
+        alert3.setTitle("UDecide - UCon decision support");
+        alert3.setHeaderText("Do you want to save the patient profile informaiton and questionnaire answers?");
+        alert3.setContentText("On the next page you will be able to see the recommended treatments estimated for " + savePatientProfile().getName()+ ".");
+        ((Button) alert3.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
+        ((Button) alert3.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("No");
+
+        Optional<ButtonType> result3 = alert3.showAndWait();
+        if (result3.get() == ButtonType.OK) { // Hvis "yes" vælges
+           //Loader og viser nyt view (recommended treatment): 
+            FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+            fxmlloader.setLocation(getClass().getResource("/RecommendedTreatmentView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+            final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+            LoginCtrl.stage.setScene(new Scene(root));//Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = RecommendedTreatment view)
+            LoginCtrl.stage.show(); //Vi viser den nye stage
+
+            // ALGORITME KØRES HER
+        }
+        else { // Hvis "No" vælges
+       System.out.println("Do nothing");
+       }
+        
+       //gemmer de input, som er blevet givet til patient profilen
         PatientProfileHandler.patientAge = patientAge.getText();
         PatientProfileHandler.patientGender = patientGender.getText();
         PatientProfileHandler.patientName = patientName.getText();
-        SearchPatientCtrl.registeredPatient = "yes"; 
-        //savePatientProfileModel();
-
+        savePatientProfile(); 
+  
+        qolValueEntered = String.valueOf(qolScale.getValue()); //værdi inputtet fra slider = double --> konverterer derfor inputtet i "qol-slideren" til en string
+  
         // gemmer de input, som er blevet givet til questionnaire i "nyQuestionnaire"
-        QuestionnaireModel nyQuestionnaire = new QuestionnaireModel(numberIEday.getText(), numberUrinationDay.getText(), numberNocturiaDay.getText(), numberUrgeDay.getText(), bladderCapacity, detrusorOveractivity, "5");
-
-        //Loader og viser nyt view (recommended treatment): 
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/RecommendedTreatmentView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-        LoginCtrl.stage.setScene(new Scene(root));//Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = RecommendedTreatment view)
-        LoginCtrl.stage.show(); //Vi viser den nye stage
-    }
+        QuestionnaireModel nyQuestionnaire = new QuestionnaireModel(numberIEday.getText(), numberUrinationDay.getText(), numberNocturiaDay.getText(), numberUrgeDay.getText(), bladderCapacity, detrusorOveractivity, qolValueEntered);
+   } 
 
     @FXML
     void goBackButtonPressed(ActionEvent event) throws IOException { 
+        LoginCtrl.resetInformation();
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/SearchPatientView1.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -179,6 +199,7 @@ public class QuestionnaireCtrl {
 
     @FXML
     void logOutButtonPressed(ActionEvent event) throws IOException { 
+        LoginCtrl.resetInformation();
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/LoginView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -191,7 +212,6 @@ public class QuestionnaireCtrl {
     void numberIEday_enter(KeyEvent event) {
         // her kan vi indsætte at input skal tjekkes (eksempelvis at input skal være mellem 0-30)
     }
-
 
     // Metode til at håndtere bladder capacity check-boxes
     @FXML
@@ -300,12 +320,12 @@ public class QuestionnaireCtrl {
 
     @FXML
     void patientGender_enter(KeyEvent event)  throws IOException {
-        // her kan vi indsætte at der skal input skal tjekkes (eksempelvis at input skal være enten "male" eller "female") 
+        // her kan vi indsætte at input skal tjekkes (eksempelvis at input skal være enten "male" eller "female") 
     }
 
     @FXML
     void patientName_enter(KeyEvent event) throws IOException {
-        // her kan vi indsætte at der skal input skal tjekkes
+        // her kan vi indsætte at input skal tjekkes
     }
 
     @FXML
@@ -349,16 +369,16 @@ public class QuestionnaireCtrl {
         assert bcUnknown != null : "fx:id=\"bcUnknown\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         
         updatePatientProfileFields(); //opdaterer patient information på interfacet   
-        updateCurrentTreatmentFields();      
+        updateCurrentTreatmentFields(); //opdaterer current treatment informationer på interfacet   
     }
 
+    // Metode til at opdatere felterne under patient profilen
     public void updatePatientProfileFields() throws IOException {   // hvis patienten allerede er i databasen 
         if (SearchPatientCtrl.registeredPatient.equals("yes")){
             patientName.setText(PatientProfileHandler.patientName); 
             patientCPR.setText(PatientProfileHandler.patientCPR);
             patientGender.setText(PatientProfileHandler.patientGender);
             patientAge.setText(PatientProfileHandler.patientAge);
-            //savePatientProfileModel();
         }
         else { // hvis ikke patienten allerede er i databasen 
             patientCPR.setText(PatientProfileModel.getCprInput()); //indsætter det CPR nummer som er blevet givet som input til viewet: "Search patient"
@@ -366,6 +386,7 @@ public class QuestionnaireCtrl {
         }
     }
 
+    // Metode til at opdatere felterne under current treatment 
     public void updateCurrentTreatmentFields() throws IOException {   // hvis patienten allerede er i databasen 
         if (SearchPatientCtrl.registeredPatient.equals("yes")){
             currentParadigm.setText("On-Demand"); // 
@@ -375,15 +396,24 @@ public class QuestionnaireCtrl {
         }
         else { // hvis ikke patienten allerede er i databasen 
             currentParadigm.setText("The patient has no current paradigm"); 
-            currentIntensity.setText("No current intensity");
-            currentDuration.setText("No current duration");
-            currentElectrode.setText("No current electrode");
+            currentIntensity.setText("The patient has no current intensity");
+            currentDuration.setText("The patient has no current duration");
+            currentElectrode.setText("The patient has no current electrode");
         }
     }
 
-    //public void savePatientProfileModel(){ // så kan vi smide info det i databasen 
-    //    PatientProfileModel nyPatient = new PatientProfileModel(PatientProfileHandler.patientCPR, PatientProfileHandler.patientName, PatientProfileHandler.patientGender, PatientProfileHandler.patientAge);
-    //}
+      // Metode til at opdatere felterne under patient profilen
+      public PatientProfileModel savePatientProfile() throws IOException {  // hvis patienten allerede er i databasen 
+        PatientProfileModel newPatient = new PatientProfileModel(PatientProfileHandler.patientCPR, PatientProfileHandler.patientName, PatientProfileHandler.patientGender, PatientProfileHandler.patientAge);
+        if (SearchPatientCtrl.registeredPatient.equals("yes")){
+            System.out.println("Do nothing");
+        }
+        else { // hvis ikke patienten allerede er i databasen, så gemmes informationerne der er blevet indtastet  
+            System.out.println("Save new patient profile in the UDecide database");
+            // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "newPatient" I DATABASEN
+        }
+        return newPatient;
+    }
 
 }
 

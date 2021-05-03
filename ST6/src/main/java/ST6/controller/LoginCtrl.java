@@ -3,6 +3,8 @@ import ST6.App;
 import ST6.controller.SearchPatientCtrl;
 //import ST6.model.SpecialistModel;
 import main.java.ST6.model.SpecialistModel; // den her skal fikses til ovenstående 
+import ST6.handler.*;
+import ST6.controller.*;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import java.net.URL;
@@ -103,6 +105,14 @@ public class LoginCtrl {
             alert.setHeaderText("WARNING: You have entered wrong or invalid username and/or password"); // definerer fejl meddelelse 
             alert.showAndWait(); // Viser fejl meddelelse
         }
+    }
+
+    public static void resetInformation() throws IOException {
+        PatientProfileHandler.patientCPR = "default"; 
+        PatientProfileHandler.patientName = "fejl";
+        PatientProfileHandler.patientGender = "default";
+        PatientProfileHandler.patientAge = "default"; 
+        SearchPatientCtrl.registeredPatient = "default"; 
     }
 
 }
