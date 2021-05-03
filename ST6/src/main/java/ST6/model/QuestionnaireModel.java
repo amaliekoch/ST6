@@ -1,38 +1,54 @@
 package ST6.model;
 
-public class QuestionnaireModel {
+import ST6.controller.*;
 
-    /*
+public class QuestionnaireModel {
     //ATTRIBUTTER:
-    private String ;
-    private String ;
-    private String ; 
-    private String ; 
+    private String numberIEday;
+    private String numberUrinationDay;
+    private String numberNocturiaDay;
+    private String numberUrgeDay;
+    private String bladderCapacity;
+    private String detrusorOveractivity;
+    private String qolScale;
 
     //CONSTRUCTOR
-    public QuestionnaireModel(String , String , String , String ) {
-        this.xx = xx;
-        this.xx = xx;
-        this.xx = xx; 
-        this.xx = xx; 
+    public QuestionnaireModel(String numberIEday, String numberUrinationDay, String numberNocturiaDay, String numberUrgeDay, String bladderCapacity, String detrusorOveractivity, String qolScale) {
+        this.numberIEday = numberIEday;
+        this.numberUrinationDay = numberUrinationDay;
+        this.numberNocturiaDay = numberNocturiaDay; 
+        this.numberUrgeDay = numberUrgeDay; 
+        this.bladderCapacity = bladderCapacity;
+        this.detrusorOveractivity = detrusorOveractivity;
+        this.qolScale = qolScale;
+    }
+
+    //GETTERS
+    public String getNumberIEday() {
+        return numberIEday;
+    }
+
+    public String getNumberUrinationDay() {
+        return numberUrinationDay;
     }
   
-    //GETTERS
-    public String getxx() {
-        return xx;
+    public String getNumberNocturiaDay() {
+        return numberNocturiaDay;
     }
 
-     public String getxx() {
-        return xx;
+    public String getNumberUrgeDay() {
+        return numberUrgeDay;
     }
 
-    public String getxx() {
-        return xx;
+    public String getBladderCapacity() {
+        return bladderCapacity;
     }
-   
-     public String getxx() {
-        return xx;
+
+    public String getDetrusorOveractivity() {
+        return detrusorOveractivity;
     }
-    */
-    
+
+    public String getQolscale() {
+        return qolScale;
+    }
 }
