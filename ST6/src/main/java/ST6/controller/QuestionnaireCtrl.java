@@ -60,7 +60,7 @@ public class QuestionnaireCtrl {
     private TextField currentDuration;
 
     @FXML
-    private TextField CurrentElectrode;
+    private TextField currentElectrode;
 
     @FXML
     private Button reportEffectButton;
@@ -158,13 +158,6 @@ public class QuestionnaireCtrl {
 
         // gemmer de input, som er blevet givet til questionnaire i "nyQuestionnaire"
         QuestionnaireModel nyQuestionnaire = new QuestionnaireModel(numberIEday.getText(), numberUrinationDay.getText(), numberNocturiaDay.getText(), numberUrgeDay.getText(), bladderCapacity, detrusorOveractivity, "5");
-        System.out.println(nyQuestionnaire.getNumberIEday());
-        System.out.println(nyQuestionnaire.getNumberUrinationDay());
-        System.out.println(nyQuestionnaire.getNumberNocturiaDay());
-        System.out.println(nyQuestionnaire.getNumberUrgeDay());
-        System.out.println(nyQuestionnaire.getBladderCapacity());
-        System.out.println(nyQuestionnaire.getDetrusorOveractivity());
-        System.out.println(nyQuestionnaire.getQolscale());
 
         //Loader og viser nyt view (recommended treatment): 
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
@@ -334,7 +327,7 @@ public class QuestionnaireCtrl {
         assert currentParadigm != null : "fx:id=\"currentParadigm\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert currentIntensity != null : "fx:id=\"currentIntensity\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert currentDuration != null : "fx:id=\"currentDuration\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
-        assert CurrentElectrode != null : "fx:id=\"CurrentElectrode\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
+        assert currentElectrode != null : "fx:id=\"CurrentElectrode\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert reportEffectButton != null : "fx:id=\"reportEffectButton\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert goBackButton != null : "fx:id=\"goBackButton\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert logOutButton != null : "fx:id=\"logOutButton\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
@@ -355,7 +348,8 @@ public class QuestionnaireCtrl {
         assert bcOver500 != null : "fx:id=\"bcOver500\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         assert bcUnknown != null : "fx:id=\"bcUnknown\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         
-        updatePatientProfileFields(); //opdaterer patient information på interfacet         
+        updatePatientProfileFields(); //opdaterer patient information på interfacet   
+        updateCurrentTreatmentFields();      
     }
 
     public void updatePatientProfileFields() throws IOException {   // hvis patienten allerede er i databasen 
@@ -369,6 +363,21 @@ public class QuestionnaireCtrl {
         else { // hvis ikke patienten allerede er i databasen 
             patientCPR.setText(PatientProfileModel.getCprInput()); //indsætter det CPR nummer som er blevet givet som input til viewet: "Search patient"
             PatientProfileHandler.patientCPR = patientCPR.getText();
+        }
+    }
+
+    public void updateCurrentTreatmentFields() throws IOException {   // hvis patienten allerede er i databasen 
+        if (SearchPatientCtrl.registeredPatient.equals("yes")){
+            currentParadigm.setText("On-Demand"); // 
+            currentIntensity.setText("15 mA");
+            currentDuration.setText("15 minutes");
+            currentElectrode.setText("Surface");
+        }
+        else { // hvis ikke patienten allerede er i databasen 
+            currentParadigm.setText("The patient has no current paradigm"); // 
+            currentIntensity.setText("No current intensity");
+            currentDuration.setText("No current duration");
+            currentElectrode.setText("No current electrode");
         }
     }
 
