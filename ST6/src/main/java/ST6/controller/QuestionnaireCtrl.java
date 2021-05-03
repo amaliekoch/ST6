@@ -374,7 +374,7 @@ public class QuestionnaireCtrl {
             currentElectrode.setText("Surface");
         }
         else { // hvis ikke patienten allerede er i databasen 
-            currentParadigm.setText("The patient has no current paradigm"); // 
+            currentParadigm.setText("The patient has no current paradigm"); 
             currentIntensity.setText("No current intensity");
             currentDuration.setText("No current duration");
             currentElectrode.setText("No current electrode");
