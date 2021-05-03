@@ -1,6 +1,7 @@
 
 package ST6;
 import ST6.controller.LoginCtrl;
+import ST6.controller.QuestionnaireCtrl;
 import ST6.database.DatabaseManipulator;
 import ST6.model.PatientProfileModel;
 import ST6.handler.PatientProfileHandler;
@@ -48,6 +49,5 @@ public class App extends Application {
         //System.out.println(PatientProfileHandler.patientName); // Test - printer navn i terminalen
         //System.out.println(PatientProfileHandler.patientAge); //Test - printer alder i terminalen
         //System.out.println(PatientProfileHandler.patientGender); //Test - printer køn i terminalen
-
     }
 }
