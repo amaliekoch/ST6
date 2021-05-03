@@ -244,7 +244,7 @@
                </font>
             </Text>
             <Label layoutX="192.0" layoutY="180.0" prefHeight="20.0" prefWidth="217.0" text="(IE = incontinence episodes)" />
-            <CheckBox fx:id="bc200" layoutX="434.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleBC200" text="0-200ml">
+            <CheckBox fx:id="bc200" layoutX="434.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleBC200" text="0-200 ml">
                <font>
                   <Font size="12.0" />
                </font>
@@ -254,7 +254,7 @@
                   <Font size="12.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="bc400" layoutX="530.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleBC400" text="300-400ml">
+            <CheckBox fx:id="bc400" layoutX="530.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleBC400" text="300-400 ml">
                <font>
                   <Font size="12.0" />
                </font>
