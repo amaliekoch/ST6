@@ -1,6 +1,7 @@
 package ST6.controller;
 import ST6.App;
 import ST6.handler.PatientProfileHandler;
+import ST6.model.PatientProfileModel;
 import ST6.controller.*;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
@@ -204,9 +205,11 @@ public class RecommendedTreatmentCtrl {
     }
 
     public void updatePatientProfileFields() throws IOException {   
-        patientName.setText(PatientProfileHandler.patientName + "    "); 
-        patientCPR.setText(PatientProfileHandler.patientCPR);
-        patientGender.setText(PatientProfileHandler.patientGender);
-        patientAge.setText(PatientProfileHandler.patientAge); 
+        PatientProfileModel patientModel = new PatientProfileModel();
+        patientModel = QuestionnaireCtrl.savePatientProfile(); 
+        patientName.setText(patientModel.getName()); 
+        patientCPR.setText(patientModel.getCprNumber());
+        patientGender.setText(patientModel.getGender());
+        patientAge.setText(patientModel.getAge()); 
         }
 }
