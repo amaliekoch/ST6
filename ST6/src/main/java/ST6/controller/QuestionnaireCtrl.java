@@ -124,6 +124,10 @@ public class QuestionnaireCtrl {
             DOno.setSelected(false);
             DOunknown.setSelected(false);
         }
+        else {
+            detrusorOveractivity = "default"; 
+        }
+        System.out.println(detrusorOveractivity);
     }
 
     // Metode til at håndtere detrusor overaktivitet check-box
@@ -133,6 +137,9 @@ public class QuestionnaireCtrl {
             detrusorOveractivity = "No";
             DOyes.setSelected(false);
             DOunknown.setSelected(false);
+        }
+        else {
+            detrusorOveractivity = "default"; 
         }
     }
 
@@ -144,6 +151,9 @@ public class QuestionnaireCtrl {
              DOyes.setSelected(false);
              DOno.setSelected(false);
          }
+         else {
+            detrusorOveractivity = "default"; 
+        }
      }
 
     @FXML
@@ -152,39 +162,50 @@ public class QuestionnaireCtrl {
 
     @FXML
     void EstimateButtonPressed(ActionEvent event) throws IOException { //Når knappen "Estimate effectiveness scores" bliver trykket på:
-        Alert alert3 = new Alert(AlertType.CONFIRMATION);
-        alert3.setTitle("UDecide - UCon decision support");
-        alert3.setHeaderText("Do you want to save the patient profile informaiton and questionnaire answers?");
-        alert3.setContentText("On the next page you will be able to see the recommended treatments estimated for " + savePatientProfile().getName()+ ".");
-        ((Button) alert3.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
-        ((Button) alert3.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("No");
-
-        Optional<ButtonType> result3 = alert3.showAndWait();
-        if (result3.get() == ButtonType.OK) { // Hvis "yes" vælges
-           //Loader og viser nyt view (recommended treatment): 
-            FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-            fxmlloader.setLocation(getClass().getResource("/RecommendedTreatmentView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-            final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-            LoginCtrl.stage.setScene(new Scene(root));//Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = RecommendedTreatment view)
-            LoginCtrl.stage.show(); //Vi viser den nye stage
-
-            // ALGORITME KØRES HER
-        }
-        else { // Hvis "No" vælges
-       System.out.println("Do nothing");
-       }
-        
-       //gemmer de input, som er blevet givet til patient profilen
-        PatientProfileHandler.patientAge = patientAge.getText();
-        PatientProfileHandler.patientGender = patientGender.getText();
-        PatientProfileHandler.patientName = patientName.getText();
-        savePatientProfile(); 
-  
+        //gemmer de input, som er blevet givet til patient profilen
         qolValueEntered = String.valueOf(qolScale.getValue()); //værdi inputtet fra slider = double --> konverterer derfor inputtet i "qol-slideren" til en string
-  
-        // gemmer de input, som er blevet givet til questionnaire i "nyQuestionnaire"
-        QuestionnaireModel nyQuestionnaire = new QuestionnaireModel(numberIEday.getText(), numberUrinationDay.getText(), numberNocturiaDay.getText(), numberUrgeDay.getText(), bladderCapacity, detrusorOveractivity, qolValueEntered);
-   } 
+
+        //Tjek at alle felter er udfyldt    
+        if(checkInputFields()) {
+            PatientProfileHandler.patientAge = patientAge.getText();
+            PatientProfileHandler.patientGender = patientGender.getText();
+            PatientProfileHandler.patientName = patientName.getText();
+            savePatientProfile(); 
+            saveQuestionnaire();
+            System.out.println("helloooooo");
+            // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
+            Alert alert3 = new Alert(AlertType.CONFIRMATION);
+            alert3.setTitle("UDecide - UCon decision support");
+            alert3.setHeaderText("Do you want to save the patient profile informaiton and questionnaire answers?");
+            alert3.setContentText("On the next page you will be able to see the recommended treatments estimated for " + savePatientProfile().getName()+ ".");
+            ((Button) alert3.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
+            ((Button) alert3.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("No");
+
+            Optional<ButtonType> result3 = alert3.showAndWait();
+            if (result3.get() == ButtonType.OK) { // Hvis "yes" vælges
+            //Loader og viser nyt view (recommended treatment): 
+                FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+                fxmlloader.setLocation(getClass().getResource("/RecommendedTreatmentView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+                final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+                LoginCtrl.stage.setScene(new Scene(root));//Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = RecommendedTreatment view)
+                LoginCtrl.stage.show(); //Vi viser den nye stage
+
+                // ALGORITME KØRES HER
+            }
+            else { // Hvis "No" vælges
+                System.out.println("Do nothing");
+            }
+        } 
+        else {
+            // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
+            Alert alert4 = new Alert(AlertType.WARNING);
+            alert4.setTitle("UDecide - UCon decision support");
+            alert4.setHeaderText("Please enter all the fields?");
+            alert4.setContentText("There are missing information in either the profile informaiton or in the questionnaire. Please enter information to all the fields.");
+            ((Button) alert4.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
+            alert4.show();
+        }
+    }
 
     @FXML
     void goBackButtonPressed(ActionEvent event) throws IOException { 
@@ -224,6 +245,9 @@ public class QuestionnaireCtrl {
             bcOver500.setSelected(false);
             bcUnknown.setSelected(false);
         }
+        else {
+            bladderCapacity = "default"; 
+        }
     }
 
     // Metode til at håndtere bladder capacity check-boxes
@@ -236,6 +260,9 @@ public class QuestionnaireCtrl {
             bc500.setSelected(false);
             bcOver500.setSelected(false);
             bcUnknown.setSelected(false);
+        }
+        else {
+            bladderCapacity = "default"; 
         }
     }
 
@@ -250,6 +277,9 @@ public class QuestionnaireCtrl {
             bcOver500.setSelected(false);
             bcUnknown.setSelected(false);
         }
+        else {
+            bladderCapacity = "default"; 
+        }
     }
 
      // Metode til at håndtere bladder capacity check-boxes
@@ -262,6 +292,9 @@ public class QuestionnaireCtrl {
             bc400.setSelected(false);
             bcOver500.setSelected(false);
             bcUnknown.setSelected(false);
+        }
+        else {
+            bladderCapacity = "default"; 
         }
     }
 
@@ -276,6 +309,9 @@ public class QuestionnaireCtrl {
             bc500.setSelected(false);
             bcUnknown.setSelected(false);
         }
+        else {
+            bladderCapacity = "default"; 
+        }
     }
 
     // Metode til at håndtere bladder capacity check-boxes
@@ -288,6 +324,9 @@ public class QuestionnaireCtrl {
             bc400.setSelected(false);
             bc500.setSelected(false);
             bcOver500.setSelected(false);
+        }
+        else {
+            bladderCapacity = "default"; 
         }
     }
 
@@ -402,8 +441,8 @@ public class QuestionnaireCtrl {
         }
     }
 
-      // Metode til at opdatere felterne under patient profilen
-      public PatientProfileModel savePatientProfile() throws IOException {  // hvis patienten allerede er i databasen 
+    // Metode til at opdatere felterne under patient profilen
+    public PatientProfileModel savePatientProfile() throws IOException {  // hvis patienten allerede er i databasen 
         PatientProfileModel newPatient = new PatientProfileModel(PatientProfileHandler.patientCPR, PatientProfileHandler.patientName, PatientProfileHandler.patientGender, PatientProfileHandler.patientAge);
         if (SearchPatientCtrl.registeredPatient.equals("yes")){
             System.out.println("Do nothing");
@@ -415,6 +454,24 @@ public class QuestionnaireCtrl {
         return newPatient;
     }
 
+    public QuestionnaireModel saveQuestionnaire() throws IOException { 
+        // gemmer de input, som er blevet givet til questionnaire i "nyQuestionnaire"
+        QuestionnaireModel nyQuestionnaire = new QuestionnaireModel(numberIEday.getText(), numberUrinationDay.getText(), numberNocturiaDay.getText(), numberUrgeDay.getText(), bladderCapacity, detrusorOveractivity, qolValueEntered);
+        return nyQuestionnaire; 
+    }
+
+    public boolean checkInputFields() throws IOException {
+    //Felter der skal tjekkes: 
+    //patientName, patientCPR, patientGender, patientAge,numberIEday, numberUrinationDay, numberNocturiaDay, numberUrgeDay, DO, BC, qolValueEntered
+        if (!patientName.getText().isEmpty() && !patientAge.getText().isEmpty() && !patientGender.getText().isEmpty() && !numberIEday.getText().isEmpty() && !numberUrinationDay.getText().isEmpty() && !numberNocturiaDay.getText().isEmpty() && !numberUrgeDay.getText().isEmpty() && detrusorOveractivity != "default" && bladderCapacity != "default" && qolValueEntered != "default") {
+            System.out.println("Do nothing");
+            return true;
+        }
+        else {
+            System.out.println("error");
+            return false; 
+        }
+    }
 }
 
 
