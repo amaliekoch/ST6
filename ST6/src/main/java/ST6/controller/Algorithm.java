@@ -5,7 +5,10 @@ import ST6.model.PatientProfileModel;
 import ST6.model.QuestionnaireModel;
 import ST6.controller.SearchPatientCtrl;
 import ST6.controller.LoginCtrl;
+import ST6.controller.QuestionnaireCtrl;
 
 public class Algorithm {
     
+    QuestionnaireCtrl.nyPatient(getName); 
+
 }
