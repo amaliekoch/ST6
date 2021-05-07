@@ -39,7 +39,7 @@
                   <Font size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="patientGender" layoutX="74.0" layoutY="291.0" onKeyPressed="#patientGender_enter" prefHeight="28.0" prefWidth="291.0" promptText="Patient gender" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="291.0">
+            <TextField fx:id="patientGender" layoutX="74.0" layoutY="291.0" onKeyPressed="#patientGender_enter" prefHeight="28.0" prefWidth="291.0" promptText="Enter patient gender - either male or female" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="291.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -74,7 +74,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="patientAge" layoutX="73.0" layoutY="331.0" onKeyPressed="#patientAge_enter" prefHeight="28.0" prefWidth="289.0" promptText="Patient age">
+            <TextField fx:id="patientAge" layoutX="73.0" layoutY="331.0" onKeyPressed="#patientAge_enter" prefHeight="28.0" prefWidth="289.0" promptText="Enter patient age between 18-125">
                <font>
                   <Font size="12.0" />
                </font>
@@ -105,17 +105,17 @@
                   <Font size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="currentParadigm" editable="false" layoutX="127.0" layoutY="464.0" prefHeight="28.0" prefWidth="236.0" promptText="Continuous">
+            <TextField fx:id="currentParadigm" editable="false" layoutX="127.0" layoutY="464.0" prefHeight="28.0" prefWidth="236.0" promptText="Current paradigm">
                <font>
                   <Font size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="currentIntensity" editable="false" layoutX="126.0" layoutY="501.0" prefHeight="28.0" prefWidth="236.0" promptText="20 mA">
+            <TextField fx:id="currentIntensity" editable="false" layoutX="126.0" layoutY="501.0" prefHeight="28.0" prefWidth="236.0" promptText="Current intensity">
                <font>
                   <Font size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="currentDuration" editable="false" layoutX="126.0" layoutY="538.0" prefHeight="28.0" prefWidth="236.0" promptText="Not relevant for this strategy">
+            <TextField fx:id="currentDuration" editable="false" layoutX="126.0" layoutY="538.0" prefHeight="28.0" prefWidth="236.0" promptText="Current stimulation">
                <font>
                   <Font size="12.0" />
                </font>
@@ -125,7 +125,7 @@
                   <Font size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="currentElectrode" editable="false" layoutX="126.0" layoutY="577.0" prefHeight="32.0" prefWidth="236.0" promptText="Percutaneous ">
+            <TextField fx:id="currentElectrode" editable="false" layoutX="126.0" layoutY="577.0" prefHeight="32.0" prefWidth="236.0" promptText="Current electrode">
                <font>
                   <Font size="12.0" />
                </font>
@@ -165,7 +165,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="numberIEday" layoutX="431.0" layoutY="159.0" onKeyPressed="#numberIEday_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 1-30" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
+            <TextField fx:id="numberIEday" layoutX="431.0" layoutY="159.0" onKeyPressed="#numberIEday_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-100" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -180,7 +180,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="numberUrinationDay" layoutX="431.0" layoutY="272.0" onKeyPressed="#numberUrinationDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 1-30" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
+            <TextField fx:id="numberUrinationDay" layoutX="431.0" layoutY="272.0" onKeyPressed="#numberUrinationDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-50" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -190,7 +190,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="numberNocturiaDay" layoutX="431.0" layoutY="325.0" onKeyPressed="#numberNocturiaDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 1-30" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
+            <TextField fx:id="numberNocturiaDay" layoutX="431.0" layoutY="325.0" onKeyPressed="#numberNocturiaDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-30" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -201,7 +201,7 @@
                </font>
             </Label>
             <Label layoutX="192.0" layoutY="293.0" prefHeight="20.0" prefWidth="217.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="192.0" />
-            <TextField fx:id="numberUrgeDay" layoutX="430.0" layoutY="382.0" onKeyPressed="#numberUrgeDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 1-30" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="261.0">
+            <TextField fx:id="numberUrgeDay" layoutX="430.0" layoutY="382.0" onKeyPressed="#numberUrgeDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-100" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="261.0">
                <font>
                   <Font size="12.0" />
                </font>

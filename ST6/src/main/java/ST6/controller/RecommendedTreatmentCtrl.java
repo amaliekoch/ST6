@@ -30,6 +30,12 @@ import javafx.stage.Stage;
 
 public class RecommendedTreatmentCtrl {
 
+    public String preferElectrode; // variabel der fortæller om der er valgt ønske til elektrode via checkbox
+    public String chosenTreatment; // variabel der fortæller hvilken treatment der er valgt via checkbox
+    public double effectivenessScore1 = 0.6; // variabel der skal indeholde effectiveness score for treatment 1
+    public double effectivenessScore2 = 0.4; // variabel der skal indeholde effectiveness score for treatment 2
+    public double effectivenessScore3 = 0.2; // variabel der skal indeholde effectiveness score for treatment 3
+
     @FXML
     private ResourceBundle resources;
 
@@ -58,7 +64,10 @@ public class RecommendedTreatmentCtrl {
     private TextField currentDuration;
 
     @FXML
-    private TextField CurrentElectrode;
+    private TextField currentElectrode;
+
+    @FXML
+    private Button reportEffectButton;
 
     @FXML
     private ProgressBar effectScore1;
@@ -97,27 +106,31 @@ public class RecommendedTreatmentCtrl {
     private CheckBox preferSurface;
 
     @FXML
+    private TextField stimulationParadigm3;
+
+    @FXML
+    private TextField stimulationParadigm2;
+
+    @FXML
+    private TextField stimulationParadigm1;
+
+    @FXML
+    private TextField eScore3;
+
+    @FXML
+    private TextField eScore2;
+
+    @FXML
+    private TextField eScore1;
+
+    @FXML
     private Button goBackButton;
 
     @FXML
     private Button logOutButton;
 
     @FXML
-    void chosenTreatment1_enter(KeyEvent event) {
-
-    }
-
-    @FXML
-    void chosenTreatment2_enter(KeyEvent event) {
-
-    }
-
-    @FXML
-    void chosenTreatment3_enter(KeyEvent event) {
-
-    }
-    @FXML
-    void goBackButtonPressed(ActionEvent event) throws IOException { 
+    void goBackButtonPressed(ActionEvent event) throws IOException { //trukkes der på tilbage, vises questionnaire
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -127,7 +140,65 @@ public class RecommendedTreatmentCtrl {
     }
 
     @FXML
-    void logOutButtonPressed(ActionEvent event) throws IOException { 
+    void handleChooseTreatment1(ActionEvent event) throws IOException{ //håndterer checkbox til valg af treatment1
+        if(chooseTreatment1.isSelected()){
+            chosenTreatment = "Treatment1";
+            chooseTreatment2.setSelected(false);
+            chooseTreatment3.setSelected(false);
+        }
+        else {
+            chosenTreatment = "default"; 
+        }
+    }
+
+    @FXML
+    void handleChooseTreatment2(ActionEvent event) throws IOException{ //håndterer checkbox til valg af treatment2
+        if(chooseTreatment2.isSelected()){
+            chosenTreatment = "Treatment2";
+            chooseTreatment1.setSelected(false);
+            chooseTreatment3.setSelected(false);
+        }
+        else {
+            chosenTreatment = "default"; 
+        }
+    }
+
+    @FXML
+    void handleChooseTreatment3(ActionEvent event) throws IOException{ //håndterer checkbox til valg af treatment3
+        if(chooseTreatment3.isSelected()){
+            chosenTreatment = "Treatment3";
+            chooseTreatment1.setSelected(false);
+            chooseTreatment2.setSelected(false);
+        }
+        else {
+            chosenTreatment = "default"; 
+        }
+    }
+
+    @FXML
+    void handlePreferPercutaneous(ActionEvent event) throws IOException{ //håndterer checkbox til valg af elektrode
+        if(preferPercutaneous.isSelected()){
+            preferElectrode = "Percutaneous";
+            preferSurface.setSelected(false);
+        }
+        else {
+            preferElectrode = "default"; 
+        }
+    }
+
+    @FXML
+    void handlePreferSurface(ActionEvent event) throws IOException{ //håndterer checkbox til valg af elektrode
+        if(preferSurface.isSelected()){
+            preferElectrode = "Surface";
+            preferPercutaneous.setSelected(false);
+        }
+        else {
+            preferElectrode = "default"; 
+        }
+    }
+
+    @FXML
+    void logOutButtonPressed(ActionEvent event)throws IOException { //trukkes der på log ud, vises login skærmen
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/LoginView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -136,38 +207,17 @@ public class RecommendedTreatmentCtrl {
         LoginCtrl.stage.show(); //Vi viser den nye stage
     }
 
-    @FXML
-    void patientAge_enter(KeyEvent event) {
 
+    @FXML
+    void reportEffectButtonPressed(ActionEvent event) {
+        // ved ikke helt om den her knap skal være en mulighed når man står på recommended treatment page
     }
 
     @FXML
-    void patientCPR_enter(KeyEvent event) {
-
-    }
-
-    @FXML
-    void patientGender_enter(KeyEvent event) {
-
-    }
-
-    @FXML
-    void patientName_enter(KeyEvent event) {
-
-    }
-
-    @FXML
-    void preferPercutaneous_enter(KeyEvent event) {
-
-    }
-
-    @FXML
-    void preferSurface_enter(KeyEvent event) {
-
-    }
-
-    @FXML
-    void saveButtonPressed(ActionEvent event) throws IOException {
+    void saveButtonPressed(ActionEvent event) throws IOException { //trukkes der på gem knappen, gemmes valgt treatment og questionnaire skærmen vises
+        // Her mangler der kode, som gemmer den valgte treatment 
+        // gem info i en "recommendedTreatmentModel"
+        
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -185,7 +235,8 @@ public class RecommendedTreatmentCtrl {
         assert currentParadigm != null : "fx:id=\"currentParadigm\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert currentIntensity != null : "fx:id=\"currentIntensity\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert currentDuration != null : "fx:id=\"currentDuration\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
-        assert CurrentElectrode != null : "fx:id=\"CurrentElectrode\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert currentElectrode != null : "fx:id=\"currentElectrode\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert reportEffectButton != null : "fx:id=\"reportEffectButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert effectScore1 != null : "fx:id=\"effectScore1\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert chooseTreatment1 != null : "fx:id=\"chooseTreatment1\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert effectScore2 != null : "fx:id=\"effectScore2\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
@@ -198,18 +249,69 @@ public class RecommendedTreatmentCtrl {
         assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert preferPercutaneous != null : "fx:id=\"preferPercutaneous\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert preferSurface != null : "fx:id=\"preferSurface\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert stimulationParadigm3 != null : "fx:id=\"stimulationParadigm3\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert stimulationParadigm2 != null : "fx:id=\"stimulationParadigm2\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert stimulationParadigm1 != null : "fx:id=\"stimulationParadigm1\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert eScore3 != null : "fx:id=\"eScore3\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert eScore2 != null : "fx:id=\"eScore2\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
+        assert eScore1 != null : "fx:id=\"eScore1\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert goBackButton != null : "fx:id=\"goBackButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert logOutButton != null : "fx:id=\"logOutButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
 
-       updatePatientProfileFields();
+        updatePatientProfileFields(); // opdaterer felterne til patient profile 
+        updateCurrentTreatmentFields(); // opdaterer felterne til current treatment 
+        updateRecommendedTreatments(); // opdaterer felterne til recommended treatments
     }
 
+    
     public void updatePatientProfileFields() throws IOException {   
-        PatientProfileModel patientModel = new PatientProfileModel();
-        patientModel = QuestionnaireCtrl.savePatientProfile(); 
-        patientName.setText(patientModel.getName()); 
-        patientCPR.setText(patientModel.getCprNumber());
-        patientGender.setText(patientModel.getGender());
-        patientAge.setText(patientModel.getAge()); 
+        //System.out.println(QuestionnaireCtrl.nyPatient.getAge()); TEST
+        patientName.setText(QuestionnaireCtrl.nyPatient.getName()); 
+        patientCPR.setText(QuestionnaireCtrl.nyPatient.getCprNumber());
+        patientGender.setText(QuestionnaireCtrl.nyPatient.getGender());
+        patientAge.setText(QuestionnaireCtrl.nyPatient.getAge()); 
+    }
+
+      // Metode til at opdatere felterne under current treatment 
+      public void updateCurrentTreatmentFields() throws IOException { 
+      if (SearchPatientCtrl.registeredPatient.equals("yes")){ // hvis patienten allerede er i databasen 
+          // Nedenstående information skal hentes fra databasen (lige nu indtastet manuelt)
+          currentParadigm.setText("On-Demand"); // 
+          currentIntensity.setText("15 mA");
+          currentDuration.setText("15 minutes");
+          currentElectrode.setText("Surface");
+      }
+      else { // hvis ikke patienten har en tidligere behandling 
+          currentParadigm.setText("The patient has no current paradigm"); 
+          currentIntensity.setText("The patient has no current intensity");
+          currentDuration.setText("The patient has no current duration");
+          currentElectrode.setText("The patient has no current electrode");
         }
+    }
+
+    public void updateRecommendedTreatments() throws IOException {
+        updateRecommendedTreatment1(); 
+        updateRecommendedTreatment2(); 
+        updateRecommendedTreatment3(); 
+    }
+
+    public void updateRecommendedTreatment1() throws IOException {
+        stimulationParadigm1.setText("Paradigm" + " - Surface OR Percutaneous");
+        effectScore1.setProgress(effectivenessScore1);
+        eScore1.setText("Effectiveness score: " + String.valueOf(effectivenessScore1*100)+"% ");
+        treatmentInfo1.setText("This field will contain information about recommended treatment 1");
+    }
+    public void updateRecommendedTreatment2() throws IOException {
+        stimulationParadigm2.setText("Paradigm" + " - Surface OR Percutaneous");
+        effectScore2.setProgress(effectivenessScore2);
+        eScore2.setText("Effectiveness score: " + String.valueOf(effectivenessScore2*100)+"%  ");
+        treatmentInfo2.setText("This field will contain information about recommended treatment 2");
+    }
+    public void updateRecommendedTreatment3() throws IOException {
+        stimulationParadigm3.setText("Paradigm" + " - Surface OR Percutaneous");
+        effectScore3.setProgress(effectivenessScore3);
+        eScore3.setText("Effectiveness score: " + String.valueOf(effectivenessScore3*100)+"%  ");
+        treatmentInfo3.setText("This field will contain information about recommended treatment 3");
+    }
+
 }
