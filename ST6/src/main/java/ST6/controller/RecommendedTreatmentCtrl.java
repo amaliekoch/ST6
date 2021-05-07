@@ -28,7 +28,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
-public class RecommendedTreatmentCtrl {
+public class RecommendedTreatmentCtrl extends Algorithm{
 
     public String preferElectrode; // variabel der fortæller om der er valgt ønske til elektrode via checkbox
     public String chosenTreatment; // variabel der fortæller hvilken treatment der er valgt via checkbox
@@ -258,11 +258,24 @@ public class RecommendedTreatmentCtrl {
         assert goBackButton != null : "fx:id=\"goBackButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert logOutButton != null : "fx:id=\"logOutButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
 
+        runAlgorithm(); //kører algoritmen (indtil videre grupperings algoritmen)
         updatePatientProfileFields(); // opdaterer felterne til patient profile 
         updateCurrentTreatmentFields(); // opdaterer felterne til current treatment 
         updateRecommendedTreatments(); // opdaterer felterne til recommended treatments
     }
 
+    public String runAlgorithm() throws IOException {
+        ageGroup = getAgeGroup(QuestionnaireCtrl.nyPatient.getAge()); 
+        if (ageGroup.equals("old")){ 
+            //getPatientGroupOld(numberIEday, numberUrinationDay, numberNocturiaDay) <-- input parametre 
+            patientGroup = getPatientGroupOld(QuestionnaireCtrl.nyQuestionnaire.getNumberIEday(), QuestionnaireCtrl.nyQuestionnaire.getNumberUrinationDay(), QuestionnaireCtrl.nyQuestionnaire.getNumberNocturiaDay());
+            return patientGroup; 
+        }
+        else { 
+            patientGroup = getPatientGroupYoung(QuestionnaireCtrl.nyQuestionnaire.getNumberIEday(), QuestionnaireCtrl.nyQuestionnaire.getNumberUrinationDay(), QuestionnaireCtrl.nyQuestionnaire.getNumberNocturiaDay());
+            return patientGroup; 
+        }
+    }
     
     public void updatePatientProfileFields() throws IOException {   
         //System.out.println(QuestionnaireCtrl.nyPatient.getAge()); TEST
@@ -299,7 +312,7 @@ public class RecommendedTreatmentCtrl {
         stimulationParadigm1.setText("Paradigm" + " - Surface OR Percutaneous");
         effectScore1.setProgress(effectivenessScore1);
         eScore1.setText("Effectiveness score: " + String.valueOf(effectivenessScore1*100)+"% ");
-        treatmentInfo1.setText("This field will contain information about recommended treatment 1");
+        treatmentInfo1.setText("Patient group: " + patientGroup + ". This field will contain information about recommended treatment 1");
     }
     public void updateRecommendedTreatment2() throws IOException {
         stimulationParadigm2.setText("Paradigm" + " - Surface OR Percutaneous");
