@@ -34,6 +34,8 @@ public class QuestionnaireCtrl {
     public String bladderCapacity = "default";
     public String detrusorOveractivity = "default";
     public String qolValueEntered = "default";
+    public static PatientProfileModel nyPatient; 
+    public static QuestionnaireModel nyQuestionnaire;
 
     @FXML
     private ResourceBundle resources;
@@ -161,7 +163,7 @@ public class QuestionnaireCtrl {
 
 
     @FXML
-    void EstimateButtonPressed(ActionEvent event) throws IOException { //Når knappen "Estimate effectiveness scores" bliver trykket på:
+    public void EstimateButtonPressed(ActionEvent event) throws IOException { //Når knappen "Estimate effectiveness scores" bliver trykket på:
         //gemmer de input, som er blevet givet til patient profilen
         qolValueEntered = String.valueOf(qolScale.getValue()); //værdi inputtet fra slider = double --> konverterer derfor inputtet i "qol-slideren" til en string
 
@@ -170,9 +172,8 @@ public class QuestionnaireCtrl {
             PatientProfileHandler.patientAge = patientAge.getText();
             PatientProfileHandler.patientGender = patientGender.getText();
             PatientProfileHandler.patientName = patientName.getText();
-            savePatientProfile(); 
-            saveQuestionnaire();
-            System.out.println("helloooooo");
+            nyPatient = savePatientProfile(); 
+            nyQuestionnaire = saveQuestionnaire();
             // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
             Alert alert3 = new Alert(AlertType.CONFIRMATION);
             alert3.setTitle("UDecide - UCon decision support");
@@ -190,7 +191,7 @@ public class QuestionnaireCtrl {
                 LoginCtrl.stage.setScene(new Scene(root));//Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = RecommendedTreatment view)
                 LoginCtrl.stage.show(); //Vi viser den nye stage
 
-                // ALGORITME KØRES HER
+                // ALGORITME SKAL KALDES HER
             }
             else { // Hvis "No" vælges
                 System.out.println("Do nothing");
@@ -200,8 +201,8 @@ public class QuestionnaireCtrl {
             // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
             Alert alert4 = new Alert(AlertType.WARNING);
             alert4.setTitle("UDecide - UCon decision support");
-            alert4.setHeaderText("Please enter all the fields?");
-            alert4.setContentText("There are missing information in either the profile informaiton or in the questionnaire. Please enter information to all the fields.");
+            alert4.setHeaderText("There are missing information. Please enter informaiton in all the fields?");
+            alert4.setContentText("There are missing information in either the profile informaiton or in the questionnaire. Please enter the missing information to get to the next page.");
             ((Button) alert4.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
             alert4.show();
         }
@@ -426,8 +427,9 @@ public class QuestionnaireCtrl {
     }
 
     // Metode til at opdatere felterne under current treatment 
-    public void updateCurrentTreatmentFields() throws IOException {   // hvis patienten allerede er i databasen 
-        if (SearchPatientCtrl.registeredPatient.equals("yes")){
+    public void updateCurrentTreatmentFields() throws IOException { 
+        if (SearchPatientCtrl.registeredPatient.equals("yes")){ // hvis patienten allerede er i databasen 
+            // Nedenstående information skal hentes fra databasen
             currentParadigm.setText("On-Demand"); // 
             currentIntensity.setText("15 mA");
             currentDuration.setText("15 minutes");
@@ -457,10 +459,11 @@ public class QuestionnaireCtrl {
     public QuestionnaireModel saveQuestionnaire() throws IOException { 
         // gemmer de input, som er blevet givet til questionnaire i "nyQuestionnaire"
         QuestionnaireModel nyQuestionnaire = new QuestionnaireModel(numberIEday.getText(), numberUrinationDay.getText(), numberNocturiaDay.getText(), numberUrgeDay.getText(), bladderCapacity, detrusorOveractivity, qolValueEntered);
+        // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "nyQuestionnaire" I DATABASEN
         return nyQuestionnaire; 
     }
 
-    public boolean checkInputFields() throws IOException {
+    public boolean checkInputFields() throws IOException { //tjekker at der er udfyldt noget i alle felterne inden der kan fortsættes
     //Felter der skal tjekkes: 
     //patientName, patientCPR, patientGender, patientAge,numberIEday, numberUrinationDay, numberNocturiaDay, numberUrgeDay, DO, BC, qolValueEntered
         if (!patientName.getText().isEmpty() && !patientAge.getText().isEmpty() && !patientGender.getText().isEmpty() && !numberIEday.getText().isEmpty() && !numberUrinationDay.getText().isEmpty() && !numberNocturiaDay.getText().isEmpty() && !numberUrgeDay.getText().isEmpty() && detrusorOveractivity != "default" && bladderCapacity != "default" && qolValueEntered != "default") {
