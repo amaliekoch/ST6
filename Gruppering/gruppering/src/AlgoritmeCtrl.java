@@ -22,10 +22,10 @@ public class AlgoritmeCtrl {
 
     public String groupOld(){
         if (Integer.parseInt(numberUrinationDay) < 9 && Integer.parseInt(numberNocturiaDay) == 0 && Integer.parseInt(numberIEday) ==0 ){
-            group = "Urg";
+            group = "Urge";
         }
         else if (Integer.parseInt(numberUrinationDay) < 9 && Integer.parseInt(numberNocturiaDay) == 0 && Integer.parseInt(numberIEday) >0 ){
-            group = "UrgIE";
+            group = "UrgeIE";
         }
         else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >1 && Integer.parseInt(numberIEday) ==0 ){
             group = "FreqUrge";
