@@ -9,9 +9,25 @@ public abstract class Algorithm {
     public String ageGroup;
     public String patientGroup;
 
+    public double effectivenessScore1 = 0.6; // variabel der skal indeholde effectiveness score for treatment 1
+    public double effectivenessScore2 = 0.4; // variabel der skal indeholde effectiveness score for treatment 2
+    public double effectivenessScore3 = 0.2; // variabel der skal indeholde effectiveness score for treatment 3
+
+    public String paradigm1; 
+    public String electrodeType1;
+    public String info1; 
+
+    public String paradigm2; 
+    public String electrodeType2;
+    public String info2; 
+
+    public String paradigm3; 
+    public String electrodeType3;
+    public String info3; 
+
     public String getAgeGroup(String age){ 
-        if (Integer.parseInt(age) > 64){ // Her tjekkes alder som en int i stedet for en String.
-            ageGroup = "old"; // Denne linje er sådan set en setter, der er inde i getteren.
+        if (Integer.parseInt(age) > 64){ 
+            ageGroup = "old"; 
             return ageGroup; 
             }
         else {
@@ -36,10 +52,10 @@ public abstract class Algorithm {
         else if (Integer.parseInt(numberUrinationDay) < 9 && Integer.parseInt(numberNocturiaDay) == 0 && Integer.parseInt(numberIEday) >0 ){
             patientGroup = "UrgIE";
         }
-        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >1 && Integer.parseInt(numberIEday) ==0 ){
+        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >0 && Integer.parseInt(numberIEday) ==0 ){
             patientGroup = "FreqUrge";
         }
-        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >1 && Integer.parseInt(numberIEday) >0 ){
+        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >0 && Integer.parseInt(numberIEday) >0 ){
             patientGroup = "FreqUrgeIE";
         }
         return patientGroup;
@@ -59,7 +75,87 @@ public abstract class Algorithm {
             patientGroup = "FreqUrgeIE";
         }
         return patientGroup;    
-        
+    }
+
+    public void recommendedTreatments (String patientGroup){ 
+        if (patientGroup == "Urge"){ // hvis patienten er grupperet som "urge"
+            //recommended treatment 1
+             paradigm1 = "Urge stimulation";
+             electrodeType1 = "Surface electrode"; 
+             effectivenessScore1 = 0.0;
+             info1 = "Urge stimulation, with a duration of 60 seconds per stimulation and with a surface electrode. Because of the short stimulation period, the intensity can be set higher compared to continuous stimulation - remember that it shall still be tolerable for the patient.";            
+            
+             //recommended treatment 2
+             paradigm2 = "xx";
+             electrodeType2 = "yy"; 
+             effectivenessScore2 = 0.0;
+             info2 = "zz"; 
+
+            //recommended treatment 2
+             paradigm3 = "xx";
+             electrodeType3 = "yy"; 
+             effectivenessScore3 = 0.0;
+             info3 = "zz"; 
+        }
+        else if (patientGroup == "UrgeIE"){ // hvis patienten er grupperet som "UrgeIE"
+             //recommended treatment 1
+             paradigm1 = "xx";
+             electrodeType1 = "yy"; 
+             effectivenessScore1 = 0.0;
+             info1 = "zz"; 
+            
+            //recommended treatment 2
+             paradigm2 = "xx";
+             electrodeType2 = "yy"; 
+             effectivenessScore2 = 0.0;
+             info2 = "zz"; 
+
+            //recommended treatment 3
+             paradigm3 = "xx";
+             electrodeType3 = "yy"; 
+             effectivenessScore3 = 0.0;
+             info3 = "zz";
+
+        }
+        else if (patientGroup == "FreqUrge"){ // hvis patienten er grupperet som FreqUrge
+             //recommended treatment 1
+             paradigm1 = "xx";
+             electrodeType1 = "yy";
+             effectivenessScore1 = 0.0; 
+             info1 = "zz"; 
+            
+            //recommended treatment 2
+             paradigm2 = "xx";
+             electrodeType2 = "yy"; 
+             effectivenessScore2 = 0.0;
+             info2 = "zz"; 
+
+            //recommended treatment 3
+             paradigm3 = "xx";
+             electrodeType3 = "yy"; 
+             effectivenessScore3 = 0.0;
+             info3 = "zz";
+
+        }
+        else if (patientGroup == "FreqUrgeIE"){ // hvis patienten er grupperet som "FreqUrgeIE"
+             //recommended treatment 1
+             paradigm1 = "xx";
+             electrodeType1 = "yy";
+             effectivenessScore1 = 0.0; 
+             info1 = "zz"; 
+            
+            //recommended treatment 2
+             paradigm2 = "xx";
+             electrodeType2 = "yy"; 
+             effectivenessScore2 = 0.0;
+             info2 = "zz"; 
+
+            //recommended treatment 3
+             paradigm3 = "xx";
+             electrodeType3 = "yy"; 
+             effectivenessScore3 = 0.0;
+             info3 = "zz";
+        }
     }
 }
 

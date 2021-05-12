@@ -7,6 +7,9 @@ import ST6.controller.*;
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.w3c.dom.Text;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,9 +35,6 @@ public class RecommendedTreatmentCtrl extends Algorithm{
 
     public String preferElectrode; // variabel der fortæller om der er valgt ønske til elektrode via checkbox
     public String chosenTreatment; // variabel der fortæller hvilken treatment der er valgt via checkbox
-    public double effectivenessScore1 = 0.6; // variabel der skal indeholde effectiveness score for treatment 1
-    public double effectivenessScore2 = 0.4; // variabel der skal indeholde effectiveness score for treatment 2
-    public double effectivenessScore3 = 0.2; // variabel der skal indeholde effectiveness score for treatment 3
 
     @FXML
     private ResourceBundle resources;
@@ -218,6 +218,8 @@ public class RecommendedTreatmentCtrl extends Algorithm{
         // Her mangler der kode, som gemmer den valgte treatment 
         // gem info i en "recommendedTreatmentModel"
         
+
+        //
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -258,7 +260,11 @@ public class RecommendedTreatmentCtrl extends Algorithm{
         assert goBackButton != null : "fx:id=\"goBackButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
         assert logOutButton != null : "fx:id=\"logOutButton\" was not injected: check your FXML file 'RecommendedTreatmentView.fxml'.";
 
-        runAlgorithm(); //kører algoritmen (indtil videre grupperings algoritmen)
+        //Metoder der kører algoritme på baggrund af input data til brugergrænsefladen:
+        runAlgorithm(); //kører grupperings-algoritmen 
+        recommendedTreatments(patientGroup); //kører recommended treatment algoritme med patientgruppe som input 
+
+        //Metoder der opdaterer brugergrænsefladen med information
         updatePatientProfileFields(); // opdaterer felterne til patient profile 
         updateCurrentTreatmentFields(); // opdaterer felterne til current treatment 
         updateRecommendedTreatments(); // opdaterer felterne til recommended treatments
@@ -309,22 +315,24 @@ public class RecommendedTreatmentCtrl extends Algorithm{
     }
 
     public void updateRecommendedTreatment1() throws IOException {
-        stimulationParadigm1.setText("Paradigm" + " - Surface OR Percutaneous");
+        stimulationParadigm1.setText(paradigm1 + " - " + electrodeType1);
         effectScore1.setProgress(effectivenessScore1);
         eScore1.setText("Effectiveness score: " + String.valueOf(effectivenessScore1*100)+"% ");
-        treatmentInfo1.setText("Patient group: " + patientGroup + ". This field will contain information about recommended treatment 1");
+        treatmentInfo1.setWrapText(true);
+        treatmentInfo1.setText(info1);
     }
     public void updateRecommendedTreatment2() throws IOException {
-        stimulationParadigm2.setText("Paradigm" + " - Surface OR Percutaneous");
+        stimulationParadigm2.setText(paradigm2 + " - " + electrodeType2);
         effectScore2.setProgress(effectivenessScore2);
         eScore2.setText("Effectiveness score: " + String.valueOf(effectivenessScore2*100)+"%  ");
-        treatmentInfo2.setText("This field will contain information about recommended treatment 2");
+        treatmentInfo1.setWrapText(true);
+        treatmentInfo2.setText(info2);
     }
     public void updateRecommendedTreatment3() throws IOException {
-        stimulationParadigm3.setText("Paradigm" + " - Surface OR Percutaneous");
+        stimulationParadigm3.setText(paradigm3 + " - " + electrodeType3);
         effectScore3.setProgress(effectivenessScore3);
         eScore3.setText("Effectiveness score: " + String.valueOf(effectivenessScore3*100)+"%  ");
-        treatmentInfo3.setText("This field will contain information about recommended treatment 3");
+        treatmentInfo1.setWrapText(true);
+        treatmentInfo3.setText(info3);
     }
-
 }
