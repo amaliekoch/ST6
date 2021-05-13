@@ -5,6 +5,7 @@ import ST6.database.DatabaseManipulator;
 
 public class PatientProfileModel {
 
+    //ATTRIBUTTER
     private String cprNumber;
     private String name;
     private String gender; 

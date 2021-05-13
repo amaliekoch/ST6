@@ -6,7 +6,6 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
@@ -22,9 +21,9 @@
    <items>
       <SplitPane dividerPositions="0.2535982478097622, 0.6329787234042553" prefHeight="755.0" prefWidth="1213.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="346.0" style="-fx-background-color: Lightgray;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="346.0" style="-fx-background-color: #a1cdff;">
                <children>
-                  <Button fx:id="viewTreatmentHistoryButton" layoutX="22.0" layoutY="621.0" mnemonicParsing="false" onAction="#viewTreatmentHistoryButtonPressed" prefHeight="23.0" prefWidth="143.0" text="View treatment history" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="18.0">
+                  <Button fx:id="viewTreatmentHistoryButton" layoutX="22.0" layoutY="621.0" mnemonicParsing="false" onAction="#viewTreatmentHistoryButtonPressed" prefHeight="23.0" prefWidth="143.0" style="-fx-background-color: #89aed9;" text="View treatment history" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="18.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -73,7 +72,7 @@
                         <Font size="12.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="103.0" layoutY="382.0" style="-fx-background-color: lightgrey;" text="Current treatment strategy">
+                  <TextField alignment="CENTER" editable="false" layoutX="-4.0" layoutY="382.0" prefHeight="32.0" prefWidth="326.0" style="-fx-background-color: #89aed9;" text="Current treatment strategy">
                      <effect>
                         <Blend />
                      </effect>
@@ -99,17 +98,17 @@
                         <Font size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="currentParadigm" editable="false" layoutX="131.0" layoutY="429.0" prefHeight="37.0" prefWidth="180.0" promptText="Continuous">
+                  <TextField fx:id="currentParadigm" editable="false" layoutX="131.0" layoutY="429.0" prefHeight="37.0" prefWidth="180.0" promptText="Current paradigm">
                      <font>
                         <Font size="12.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="currentIntensity" editable="false" layoutX="131.0" layoutY="469.0" prefHeight="37.0" prefWidth="180.0" promptText="20 mA">
+                  <TextField fx:id="currentIntensity" editable="false" layoutX="131.0" layoutY="469.0" prefHeight="37.0" prefWidth="180.0" promptText="Current intensity">
                      <font>
                         <Font size="12.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="currentDuration" editable="false" layoutX="131.0" layoutY="509.0" prefHeight="37.0" prefWidth="180.0" promptText="Not relevant for this strategy">
+                  <TextField fx:id="currentDuration" editable="false" layoutX="131.0" layoutY="509.0" prefHeight="37.0" prefWidth="180.0" promptText="Current duration">
                      <font>
                         <Font size="12.0" />
                      </font>
@@ -119,12 +118,12 @@
                         <Font size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="CurrentElectrode" editable="false" layoutX="131.0" layoutY="549.0" prefHeight="37.0" prefWidth="180.0" promptText="Percutaneous ">
+                  <TextField fx:id="CurrentElectrode" editable="false" layoutX="131.0" layoutY="549.0" prefHeight="37.0" prefWidth="180.0" promptText="Current electrode">
                      <font>
                         <Font size="12.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="-2.0" layoutY="129.0" prefHeight="32.0" prefWidth="320.0" style="-fx-background-color: lightgrey;" text="Patient profile">
+                  <TextField alignment="CENTER" editable="false" layoutX="-2.0" layoutY="129.0" prefHeight="32.0" prefWidth="326.0" style="-fx-background-color: #89aed9;" text="Patient profile">
                      <effect>
                         <Blend />
                      </effect>
@@ -135,12 +134,12 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="goBackButton" layoutX="162.0" layoutY="29.0" mnemonicParsing="false" onAction="#goBackButtonPressed" prefHeight="45.0" prefWidth="144.0" text="Go back to previous page">
+                  <Button fx:id="goBackButton" layoutX="162.0" layoutY="29.0" mnemonicParsing="false" onAction="#goBackButtonPressed" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #89aed9;" text="Go back to previous page">
                      <font>
                         <Font size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="logOutButton" layoutX="8.0" layoutY="29.0" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="45.0" prefWidth="144.0" text="Log out ">
+                  <Button fx:id="logOutButton" layoutX="8.0" layoutY="29.0" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #89aed9;" text="Log out ">
                      <font>
                         <Font size="12.0" />
                      </font>
@@ -176,15 +175,15 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <TextField fx:id="numberOfButtonPress" editable="false" layoutX="201.0" layoutY="119.0" prefHeight="37.0" prefWidth="239.0" promptText="22" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
+                  <TextField fx:id="numberOfButtonPress" editable="false" layoutX="201.0" layoutY="119.0" prefHeight="37.0" prefWidth="239.0" promptText="number" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField fx:id="durationOfStimulation" editable="false" layoutX="201.0" layoutY="159.0" prefHeight="37.0" prefWidth="239.0" promptText="10 min" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
+                  <TextField fx:id="durationOfStimulation" editable="false" layoutX="201.0" layoutY="159.0" prefHeight="37.0" prefWidth="239.0" promptText="min" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField fx:id="meanIntensityLevel" editable="false" layoutX="201.0" layoutY="199.0" prefHeight="37.0" prefWidth="239.0" promptText="15 mA" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
+                  <TextField fx:id="meanIntensityLevel" editable="false" layoutX="201.0" layoutY="199.0" prefHeight="37.0" prefWidth="239.0" promptText="mA" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
@@ -229,20 +228,20 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Button fx:id="saveReportButton" layoutX="118.0" layoutY="649.0" mnemonicParsing="false" onAction="#saveReportButtonPressed" prefHeight="37.0" prefWidth="250.0" text="Save reported treatment effect" AnchorPane.bottomAnchor="112.0" AnchorPane.rightAnchor="97.0">
+                  <Button fx:id="saveReportButton" layoutX="118.0" layoutY="644.0" mnemonicParsing="false" onAction="#saveReportButtonPressed" prefHeight="37.0" prefWidth="250.0" text="Save reported treatment effect" AnchorPane.bottomAnchor="117.0" AnchorPane.rightAnchor="97.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                  <Label alignment="CENTER" layoutX="12.0" layoutY="453.0" prefHeight="27.0" prefWidth="404.0" text="Adverse events" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="453.0">
+                  <Label alignment="CENTER" layoutX="2.0" layoutY="448.0" prefHeight="22.0" prefWidth="465.0" text="Adverse events" AnchorPane.bottomAnchor="328.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="448.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="skinIrritationCheckbox" layoutX="27.0" layoutY="552.0" mnemonicParsing="false" onKeyPressed="#skinIrritationCheckbox_enter" prefHeight="18.0" prefWidth="154.0" text="Skin irritation" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="228.0">
+                  <CheckBox fx:id="skinIrritationCheckbox" layoutX="27.0" layoutY="547.0" mnemonicParsing="false" onKeyPressed="#skinIrritationCheckbox_enter" prefHeight="18.0" prefWidth="154.0" text="Skin irritation" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="228.0">
                      <font>
                         <Font size="14.0" />
                      </font></CheckBox>
-                  <CheckBox fx:id="painCheckbox" layoutX="155.0" layoutY="552.0" mnemonicParsing="false" onKeyPressed="#painCheckbox_enter" prefHeight="19.0" prefWidth="90.0" text="Pain" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="220.0">
+                  <CheckBox fx:id="painCheckbox" layoutX="155.0" layoutY="547.0" mnemonicParsing="false" onKeyPressed="#painCheckbox_enter" prefHeight="19.0" prefWidth="90.0" text="Pain" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="220.0">
                      <font>
                         <Font size="14.0" />
                      </font></CheckBox>
@@ -250,22 +249,22 @@
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                  <Slider fx:id="adverseEventsScale" blockIncrement="1.0" layoutX="5.0" layoutY="499.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onKeyPressed="#adverseEventsScale_enter" prefHeight="42.0" prefWidth="181.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="499.0" />
-                  <Label alignment="CENTER" layoutX="7.0" layoutY="481.0" prefHeight="16.0" prefWidth="140.0" text="Patient's experience of adverse events:" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="481.0">
+                  <Slider fx:id="adverseEventsScale" blockIncrement="1.0" layoutX="5.0" layoutY="494.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onKeyPressed="#adverseEventsScale_enter" prefHeight="42.0" prefWidth="181.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="494.0" />
+                  <Label alignment="CENTER" layoutX="7.0" layoutY="476.0" prefHeight="16.0" prefWidth="140.0" text="Patient's experience of adverse events:" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="476.0">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <TextField fx:id="otherAdverseEvents" layoutX="171.0" layoutY="597.0" onKeyPressed="#otherAdverseEvents_enter" prefHeight="32.0" prefWidth="257.0">
+                  <TextField fx:id="otherAdverseEvents" layoutX="171.0" layoutY="592.0" onKeyPressed="#otherAdverseEvents_enter" prefHeight="32.0" prefWidth="257.0" promptText="Enter adverse event">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="12.0" />
                      </font></TextField>
-                  <Label layoutX="27.0" layoutY="602.0" prefHeight="22.0" prefWidth="182.0" text="Other adverse events:">
+                  <Label layoutX="27.0" layoutY="597.0" prefHeight="22.0" prefWidth="182.0" text="Other adverse events:">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <TextField fx:id="numberIEdayAfter" layoutX="253.0" layoutY="173.0" onKeyPressed="#numberIEdayAfter_enter" AnchorPane.rightAnchor="14.5">
+                  <TextField fx:id="numberIEdayAfter" layoutX="253.0" layoutY="173.0" onKeyPressed="#numberIEdayAfter_enter" prefHeight="32.0" prefWidth="222.0" promptText="Enter a number between 0-100" AnchorPane.rightAnchor="15.0">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="12.0" />
                      </font>
                   </TextField>
                   <Label layoutX="6.0" layoutY="171.0" prefHeight="20.0" prefWidth="182.0" text="Number of IEs per day:" AnchorPane.leftAnchor="6.0">
@@ -278,66 +277,65 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="numberUrinationDayAfter" layoutX="253.0" layoutY="275.0" onKeyPressed="#numberUrinationDayAfter_enter" AnchorPane.rightAnchor="14.5">
+                  <TextField fx:id="numberUrinationDayAfter" layoutX="240.0" layoutY="269.0" onKeyPressed="#numberUrinationDayAfter_enter" prefHeight="32.0" prefWidth="222.0" promptText="Enter a number between 0-50" AnchorPane.rightAnchor="15.0">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="12.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="9.0" layoutY="274.0" prefHeight="26.0" prefWidth="230.0" text="Number of urinations per day:" AnchorPane.leftAnchor="9.0">
+                  <Label layoutX="9.0" layoutY="266.0" prefHeight="26.0" prefWidth="230.0" text="Number of urinations per day:" AnchorPane.leftAnchor="9.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="numberNocturiaDayAfter" layoutX="253.0" layoutY="323.0" onKeyPressed="#numberNocturiaDayAfter_enter" AnchorPane.rightAnchor="14.5">
+                  <TextField fx:id="numberNocturiaDayAfter" layoutX="253.0" layoutY="314.0" onKeyPressed="#numberNocturiaDayAfter_enter" prefHeight="32.0" prefWidth="222.0" promptText="Enter a number between 0-30" AnchorPane.rightAnchor="15.0">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="12.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="11.0" layoutY="323.0" prefHeight="26.0" prefWidth="257.0" text="Nocturia:" AnchorPane.leftAnchor="11.0">
+                  <Label layoutX="11.0" layoutY="311.0" prefHeight="26.0" prefWidth="257.0" text="Nocturia:" AnchorPane.leftAnchor="11.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="9.0" layoutY="292.0" prefHeight="20.0" prefWidth="205.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="9.0">
+                  <Label layoutX="9.0" layoutY="284.0" prefHeight="20.0" prefWidth="205.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="9.0">
                      <font>
                         <Font size="12.0" />
                      </font></Label>
-                  <TextField fx:id="numberUrgeDayAfter" layoutX="252.0" layoutY="368.0" onKeyPressed="#numberUrgeDayAfter_enter" AnchorPane.rightAnchor="15.5">
+                  <TextField fx:id="numberUrgeDayAfter" layoutX="228.0" layoutY="359.0" onKeyPressed="#numberUrgeDayAfter_enter" prefHeight="32.0" prefWidth="222.0" promptText="Enter a number between 0-100" AnchorPane.rightAnchor="15.0">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="12.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="9.0" layoutY="371.0" prefHeight="26.0" prefWidth="250.0" text="Number of urge episodes per day:" AnchorPane.leftAnchor="9.0">
+                  <Label layoutX="8.0" layoutY="361.0" prefHeight="26.0" prefWidth="250.0" text="Number of urge episodes per day:" AnchorPane.leftAnchor="8.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="416.0" prefHeight="20.0" prefWidth="182.0" text="Detrusor overactivity?" AnchorPane.leftAnchor="10.0">
+                  <Label layoutX="10.0" layoutY="402.0" prefHeight="20.0" prefWidth="182.0" text="Detrusor overactivity?" AnchorPane.leftAnchor="10.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox layoutX="251.0" layoutY="222.0" prefHeight="37.0" prefWidth="199.0" AnchorPane.rightAnchor="15.0" />
-                  <CheckBox fx:id="DOyesAfter" layoutX="223.0" layoutY="417.0" mnemonicParsing="false" onKeyPressed="#DOyesAfter_enter" text="Yes">
+                  <CheckBox fx:id="DOyesAfter" layoutX="233.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleDOyesAfter" onKeyPressed="#DOyesAfter_enter" text="Yes">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="DOnoAfter" layoutX="290.0" layoutY="417.0" mnemonicParsing="false" onKeyPressed="#DOnoAfter_enter" text="No">
+                  <CheckBox fx:id="DOnoAfter" layoutX="300.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleDOnoAfter" onKeyPressed="#DOnoAfter_enter" text="No">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="worseningSymptomsCheckbox" layoutX="250.0" layoutY="549.0" mnemonicParsing="false" onKeyPressed="#worseningSymptomsCheckbox_enter" prefHeight="26.0" prefWidth="197.0" text="Worsening of symptoms">
+                  <CheckBox fx:id="worseningSymptomsCheckbox" layoutX="250.0" layoutY="544.0" mnemonicParsing="false" onKeyPressed="#worseningSymptomsCheckbox_enter" prefHeight="26.0" prefWidth="197.0" text="Worsening of symptoms">
                      <font>
                         <Font size="14.0" />
                      </font></CheckBox>
-                  <CheckBox fx:id="DOunknownAfter" layoutX="351.0" layoutY="417.0" mnemonicParsing="false" onKeyPressed="#DOunknownAfter_enter" text="Unknown">
+                  <CheckBox fx:id="DOunknownAfter" layoutX="361.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleDOunknownAfter" onKeyPressed="#DOunknownAfter_enter" text="Unknown">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </CheckBox>
-                  <Label layoutX="11.0" layoutY="341.0" prefHeight="20.0" prefWidth="205.0" text="(Numer of episodes per night)">
+                  <Label layoutX="11.0" layoutY="329.0" prefHeight="20.0" prefWidth="205.0" text="(Numer of episodes per night)">
                      <font>
                         <Font size="12.0" />
                      </font></Label>
@@ -351,6 +349,36 @@
                         <Font size="12.0" />
                      </font>
                   </Text>
+                  <CheckBox fx:id="bc200After" layoutX="226.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleBC200After" text="0-200 ml">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="bcOver500After" layoutX="390.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleBCover500After" text="+500 ml">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="bc400After" layoutX="308.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleBC400After" text="300-400 ml">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="bc300After" layoutX="226.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleBC300After" text="200-300 ml">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="bc500After" layoutX="307.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleBC500After" text="400-500 ml">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="bcUnknownAfter" layoutX="390.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleBCunknownAfter" text="Unknown">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
                </children>
             </AnchorPane>
         </items>

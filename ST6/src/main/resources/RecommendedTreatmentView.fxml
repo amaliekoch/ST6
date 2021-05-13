@@ -26,7 +26,7 @@
                </image>
             </ImageView>
             <Separator layoutX="403.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="0.0" />
-            <TextField fx:id="patientName" layoutX="95.0" layoutY="174.0" prefHeight="32.0" prefWidth="289.0" promptText="Patient name">
+            <TextField fx:id="patientName" layoutX="95.0" layoutY="174.0" prefHeight="32.0" prefWidth="289.0" promptText="Enter first and last name">
                <font>
                   <Font size="12.0" />
                </font>
@@ -36,7 +36,7 @@
                   <Font size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="patientGender" layoutX="94.0" layoutY="253.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter patient gender - either male or female">
+            <TextField fx:id="patientGender" layoutX="94.0" layoutY="253.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter gender - either female or female">
                <font>
                   <Font size="12.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="patientAge" layoutX="93.0" layoutY="291.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter patient age between 18-125">
+            <TextField fx:id="patientAge" layoutX="93.0" layoutY="291.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter age between 18-125">
                <font>
                   <Font size="12.0" />
                </font>
@@ -126,109 +126,134 @@
       </AnchorPane>
       <AnchorPane layoutX="406.0" layoutY="-1.0" prefHeight="716.0" prefWidth="759.0" style="-fx-background-color: lightgrey;">
          <children>
-            <ProgressBar fx:id="effectScore1" layoutX="45.0" layoutY="262.0" prefHeight="42.0" prefWidth="477.0" progress="0.84" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="262.0" />
-            <CheckBox fx:id="chooseTreatment1" layoutX="537.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleChooseTreatment1" prefHeight="42.0" prefWidth="211.0" text="Choose this treatment strategy" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="307.0">
+            <ProgressBar fx:id="effectScore1" layoutX="45.0" layoutY="219.0" prefHeight="42.0" prefWidth="477.0" progress="0.84" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="219.0" />
+            <CheckBox fx:id="chooseTreatment1" layoutX="537.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleChooseTreatment1" prefHeight="42.0" prefWidth="211.0" text="Choose this treatment strategy" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="264.0">
                <font>
                   <Font size="14.0" />
                </font></CheckBox>
-            <Label layoutX="17.0" layoutY="225.0" prefHeight="42.0" prefWidth="14.0" text="1" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="225.0">
+            <Label layoutX="17.0" layoutY="182.0" prefHeight="42.0" prefWidth="14.0" text="1" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="182.0">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="17.0" layoutY="382.0" text="2" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="382.0">
+            <Label layoutX="17.0" layoutY="361.0" text="2" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="361.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="16.0" layoutY="513.0" prefHeight="23.0" prefWidth="31.0" text="3" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="712.0" AnchorPane.topAnchor="513.0">
+            <Label layoutX="16.0" layoutY="508.0" prefHeight="23.0" prefWidth="31.0" text="3" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="712.0" AnchorPane.topAnchor="508.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="effectScore2" layoutX="45.0" layoutY="409.0" prefHeight="26.0" prefWidth="477.0" progress="0.73" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="409.0" />
-            <ProgressBar fx:id="effectScore3" layoutX="45.0" layoutY="539.0" prefHeight="26.0" prefWidth="477.0" progress="0.66" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="539.0" />
-            <CheckBox fx:id="chooseTreatment2" layoutX="538.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleChooseTreatment2" prefHeight="26.0" prefWidth="217.0" text="Choose this treatment strategy" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="455.0">
+            <ProgressBar fx:id="effectScore2" layoutX="45.0" layoutY="388.0" prefHeight="26.0" prefWidth="477.0" progress="0.73" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="388.0" />
+            <ProgressBar fx:id="effectScore3" layoutX="45.0" layoutY="534.0" prefHeight="26.0" prefWidth="477.0" progress="0.66" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="534.0" />
+            <CheckBox fx:id="chooseTreatment2" layoutX="538.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleChooseTreatment2" prefHeight="26.0" prefWidth="217.0" text="Choose this treatment strategy" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="434.0">
                <font>
                   <Font size="14.0" />
                </font></CheckBox>
-            <CheckBox fx:id="chooseTreatment3" layoutX="535.0" layoutY="587.0" mnemonicParsing="false" onAction="#handleChooseTreatment3" prefHeight="26.0" prefWidth="211.0" text="Choose this treatment strategy" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="587.0">
+            <CheckBox fx:id="chooseTreatment3" layoutX="535.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleChooseTreatment3" prefHeight="26.0" prefWidth="211.0" text="Choose this treatment strategy" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="582.0">
                <font>
                   <Font size="14.0" />
                </font></CheckBox>
-            <TextField alignment="CENTER" layoutX="151.0" style="-fx-background-color: lightgrey;" text="Recommended treatment strategies" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
+            <TextField alignment="CENTER" layoutX="5.0" layoutY="14.0" style="-fx-background-color: lightgrey;" text="Recommended treatment strategies" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </TextField>
-            <Label layoutX="55.0" layoutY="93.0" text="Preferred electrode:">
+            <TextArea fx:id="treatmentInfo1" editable="false" layoutX="45.0" layoutY="264.0" prefHeight="62.0" prefWidth="477.0" promptText="Treatment information" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0">
                <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <TextArea fx:id="treatmentInfo1" editable="false" layoutX="45.0" layoutY="307.0" prefHeight="62.0" prefWidth="477.0" promptText="Treatment information" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0">
-               <font>
-                  <Font size="12.0" />
+                  <Font size="10.0" />
                </font></TextArea>
-            <TextArea fx:id="treatmentInfo2" editable="false" layoutX="45.0" layoutY="437.0" prefHeight="62.0" prefWidth="477.0" promptText="Treatment information" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0">
+            <TextArea fx:id="treatmentInfo2" editable="false" layoutX="45.0" layoutY="416.0" prefHeight="62.0" prefWidth="477.0" promptText="Treatment information" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="237.0">
                <font>
-                  <Font size="12.0" />
+                  <Font size="10.0" />
                </font></TextArea>
-            <TextArea fx:id="treatmentInfo3" editable="false" layoutX="46.0" layoutY="569.0" prefHeight="62.0" prefWidth="477.0" promptText="Treatment information" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="236.0">
+            <TextArea fx:id="treatmentInfo3" editable="false" layoutX="46.0" layoutY="564.0" prefHeight="62.0" prefWidth="477.0" promptText="Treatment information" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="236.0">
                <font>
-                  <Font size="12.0" />
+                  <Font size="10.0" />
                </font></TextArea>
             <Button fx:id="saveButton" layoutX="257.0" layoutY="648.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="43.0" prefWidth="279.0" text="Save the chosen treatment strategy" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="223.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <CheckBox fx:id="preferPercutaneous" layoutX="55.0" layoutY="124.0" mnemonicParsing="false" onAction="#handlePreferPercutaneous" text="Percutaneous">
+            <CheckBox fx:id="preferPercutaneous" layoutX="241.0" layoutY="132.0" mnemonicParsing="false" onAction="#handlePreferPercutaneous" text="Percutaneous" textAlignment="CENTER" textFill="#9e9c9c">
+               <font>
+                  <Font size="12.0" />
+               </font></CheckBox>
+            <CheckBox fx:id="preferSurface" layoutX="241.0" layoutY="150.0" mnemonicParsing="false" onAction="#handlePreferSurface" text="Surface" textAlignment="CENTER" textFill="#9e9c9c">
+               <font>
+                  <Font size="12.0" />
+               </font></CheckBox>
+            <Text layoutX="134.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In a dialouge with the patient, you can consider the following recommended treatments. Please use the check boxes on the right side to choose the wanted treatment strategy." wrappingWidth="520.0">
                <font>
                   <Font size="14.0" />
-               </font></CheckBox>
-            <CheckBox fx:id="preferSurface" layoutX="55.0" layoutY="152.0" mnemonicParsing="false" onAction="#handlePreferSurface" text="Surface">
+               </font>
+            </Text>
+            <TextField fx:id="stimulationParadigm3" layoutX="106.0" layoutY="505.0" prefHeight="27.0" prefWidth="409.0" promptText="Stimulation paradigm" style="-fx-background-color: none;">
                <font>
                   <Font size="14.0" />
-               </font></CheckBox>
-            <Text fill="#58585a" layoutX="237.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The UDecide system has based on your inputs on the previous page estimated the three best expected treatment strategies for the patient. Each recommended treatment contains: an estimated effectiveness score, stimulation paradigm, stimulation parameters and electrode type. If the patient only prefers either percutaneous or surface electrode, please use the check box on the left to choose the preferred electrode." textAlignment="CENTER" wrappingWidth="460.0">
+               </font></TextField>
+            <Text layoutX="47.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment: " wrappingWidth="147.99999999999994">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="stimulationParadigm2" layoutX="105.0" layoutY="359.0" prefHeight="27.0" prefWidth="409.0" promptText="Stimulation paradigm" style="-fx-background-color: none;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Text layoutX="46.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment: " wrappingWidth="147.99999999999994">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="stimulationParadigm1" layoutX="104.0" layoutY="189.0" prefHeight="27.0" prefWidth="409.0" promptText="Stimulation paradigm" style="-fx-background-color: none;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Text fx:id="treatment1_header" layoutX="46.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment:" wrappingWidth="147.99999999999994">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="eScore1" alignment="CENTER_RIGHT" layoutX="267.0" layoutY="227.0" prefHeight="27.0" prefWidth="253.0" promptText="Effectiveness score" style="-fx-background-color: none;" />
+            <TextField fx:id="eScore2" alignment="CENTER_RIGHT" layoutX="248.0" layoutY="390.0" prefHeight="22.0" prefWidth="271.0" promptText="Effectiveness score" style="-fx-background-color: none;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eScore3" alignment="CENTER_RIGHT" layoutX="293.0" layoutY="536.0" prefHeight="22.0" prefWidth="225.0" promptText="Effectiveness score" style="-fx-background-color: none;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text layoutX="381.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Predetermined parameters:">
                <font>
                   <Font size="12.0" />
                </font>
             </Text>
-            <Text layoutX="120.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In a dialouge with the patient, you can consider the following recommended treatments. Please use the check boxes on the right side to choose the wanted treatment strategy." wrappingWidth="520.0">
+            <Text fill="#9e9c9c" layoutX="404.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency: 20 Hz">
                <font>
-                  <Font size="14.0" />
+                  <Font size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="stimulationParadigm3" layoutX="113.0" layoutY="511.0" prefHeight="27.0" prefWidth="409.0" promptText="Stimulation paradigm" style="-fx-background-color: none;" />
-            <Text layoutX="47.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment: " wrappingWidth="147.99999999999994">
+            <Text fill="#9e9c9c" layoutX="399.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pulse width: 200 ms">
                <font>
-                  <Font size="14.0" />
+                  <Font size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="stimulationParadigm2" layoutX="111.0" layoutY="382.0" prefHeight="27.0" prefWidth="409.0" promptText="Stimulation paradigm" style="-fx-background-color: none;" />
-            <Text layoutX="46.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment: " wrappingWidth="147.99999999999994">
+            <Text fill="#9e9c9c" layoutX="380.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intensity: maximum 25 mA">
                <font>
-                  <Font size="14.0" />
+                  <Font size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="stimulationParadigm1" layoutX="111.0" layoutY="234.0" prefHeight="27.0" prefWidth="409.0" promptText="Stimulation paradigm" style="-fx-background-color: none;" />
-            <Text layoutX="46.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment:" wrappingWidth="147.99999999999994">
+            <Text layoutX="241.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferred electrode:">
                <font>
-                  <Font size="14.0" />
+                  <Font size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="eScore1" alignment="CENTER_RIGHT" layoutX="267.0" layoutY="270.0" prefHeight="27.0" prefWidth="253.0" promptText="Effectiveness score" style="-fx-background-color: none;" />
-            <TextField fx:id="eScore2" alignment="CENTER_RIGHT" layoutX="248.0" layoutY="411.0" prefHeight="22.0" prefWidth="271.0" promptText="Effectiveness score" style="-fx-background-color: none;">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="eScore3" alignment="CENTER_RIGHT" layoutX="293.0" layoutY="541.0" prefHeight="22.0" prefWidth="225.0" promptText="Effectiveness score" style="-fx-background-color: none;">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </TextField>
          </children>
       </AnchorPane>
       <TextField alignment="CENTER" editable="false" layoutX="-1.0" layoutY="118.0" prefHeight="32.0" prefWidth="401.0" style="-fx-background-color: #89aed9;" text="Patient profile">

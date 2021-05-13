@@ -23,7 +23,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-
 public class ReportEffectCtrl {
 
     @FXML
@@ -123,6 +122,24 @@ public class ReportEffectCtrl {
     private CheckBox DOunknownAfter;
 
     @FXML
+    private CheckBox bc200After;
+
+    @FXML
+    private CheckBox bcOver500After;
+
+    @FXML
+    private CheckBox bc400After;
+
+    @FXML
+    private CheckBox bc300After;
+
+    @FXML
+    private CheckBox bc500After;
+
+    @FXML
+    private CheckBox bcUnknownAfter;
+
+    @FXML
     void DOnoAfter_enter(KeyEvent event) {
 
     }
@@ -153,7 +170,7 @@ public class ReportEffectCtrl {
     }
 
     @FXML
-    void estimateNewButtonPressed(ActionEvent event) throws IOException {
+    void estimateNewButtonPressed(ActionEvent event) throws IOException{
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -170,6 +187,51 @@ public class ReportEffectCtrl {
 
         LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
         LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+    @FXML
+    void handleBC200After(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleBC300After(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleBC400After(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleBC500After(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleBCover500After(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleBCunknownAfter(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleDOnoAfter(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleDOunknownAfter(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleDOyesAfter(ActionEvent event) {
+
     }
 
     @FXML
@@ -238,7 +300,7 @@ public class ReportEffectCtrl {
     }
 
     @FXML
-    void saveReportButtonPressed(ActionEvent event) throws IOException {
+    void saveReportButtonPressed(ActionEvent event) throws IOException{
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -294,6 +356,67 @@ public class ReportEffectCtrl {
         assert DOnoAfter != null : "fx:id=\"DOnoAfter\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert worseningSymptomsCheckbox != null : "fx:id=\"worseningSymptomsCheckbox\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert DOunknownAfter != null : "fx:id=\"DOunknownAfter\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
-
+        assert bc200After != null : "fx:id=\"bc200After\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert bcOver500After != null : "fx:id=\"bcOver500After\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert bc400After != null : "fx:id=\"bc400After\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert bc300After != null : "fx:id=\"bc300After\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert bc500After != null : "fx:id=\"bc500After\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert bcUnknownAfter != null : "fx:id=\"bcUnknownAfter\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
     }
 }
+
+
+/*
+public class ReportEffectCtrl {
+
+    @FXML
+    void TreatmentNotFollowedButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+    @FXML
+    void estimateNewButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+    @FXML
+    void goBackButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+    @FXML
+    void logOutButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/LoginView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+    @FXML
+    void saveReportButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+        LoginCtrl.stage.show(); // Vi viser den nye stage
+    }
+
+*/
