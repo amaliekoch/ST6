@@ -5,6 +5,9 @@ import ST6.model.PatientProfileModel;
 import ST6.model.QuestionnaireModel;
 import ST6.controller.SearchPatientCtrl;
 import ST6.controller.LoginCtrl;
+import ST6.model.RecommendedTreatmentModel;
+import ST6.controller.*;
+import ST6.model.*;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import java.net.URL;
@@ -31,11 +34,13 @@ import javafx.stage.Stage;
 
 public class QuestionnaireCtrl {
 
-    public String bladderCapacity = "default";
-    public String detrusorOveractivity = "default";
-    public String qolValueEntered = "default";
+    public static String bladderCapacity = "default";
+    public static String detrusorOveractivity = "default";
+    public static String qolValueEntered = "default";
     public static PatientProfileModel nyPatient; 
     public static QuestionnaireModel nyQuestionnaire;
+    public static String savedQuestionnaire = "0";
+    public static String savedPatient = "0";
 
     @FXML
     private ResourceBundle resources;
@@ -198,7 +203,7 @@ public class QuestionnaireCtrl {
             }
         } 
         else {
-            // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
+            // Pop-op vidue med warning om man vil gemme og komme videre til recommended treatment 
             Alert alert4 = new Alert(AlertType.WARNING);
             alert4.setTitle("UDecide - UCon decision support");
             alert4.setHeaderText("There are missing information. Please enter informaiton in all the fields?");
@@ -409,12 +414,13 @@ public class QuestionnaireCtrl {
         assert bcUnknown != null : "fx:id=\"bcUnknown\" was not injected: check your FXML file 'QuestionnaireView.fxml'.";
         
         updatePatientProfileFields(); //opdaterer patient information på interfacet   
-        updateCurrentTreatmentFields(); //opdaterer current treatment informationer på interfacet   
+        updateCurrentTreatmentFields(); //opdaterer current treatment informationer på interfacet 
+        updateQuestionnaire();   //opdaterer current treatment informationer på interfacet (tomme felter hvis ny patient, udfyldt hvis eksisterende patient)
     }
 
     // Metode til at opdatere felterne under patient profilen
     public void updatePatientProfileFields() throws IOException {   // hvis patienten allerede er i databasen 
-        if (SearchPatientCtrl.registeredPatient.equals("yes")){
+        if (SearchPatientCtrl.registeredPatient.equals("yes") || savedPatient == "1"){
             patientName.setText(PatientProfileHandler.patientName); 
             patientCPR.setText(PatientProfileHandler.patientCPR);
             patientGender.setText(PatientProfileHandler.patientGender);
@@ -428,14 +434,29 @@ public class QuestionnaireCtrl {
 
     // Metode til at opdatere felterne under current treatment 
     public void updateCurrentTreatmentFields() throws IOException { 
-        if (SearchPatientCtrl.registeredPatient.equals("yes")){ // hvis patienten allerede er i databasen 
+        if (SearchPatientCtrl.registeredPatient.equals("yes") && (RecommendedTreatmentCtrl.savedTreatment == "0")){ // hvis patienten allerede er i databasen 
             // Nedenstående information skal hentes fra databasen
-            currentParadigm.setText("On-Demand"); // 
+            currentParadigm.setText("On-Demand");
             currentIntensity.setText("15 mA");
             currentDuration.setText("15 minutes");
             currentElectrode.setText("Surface");
         }
-        else { // hvis ikke patienten allerede er i databasen 
+        else if ((SearchPatientCtrl.registeredPatient.equals("yes")) && (RecommendedTreatmentCtrl.savedTreatment == "1")) {
+            // Nedenstående skal hentes fra gemte variable
+            currentParadigm.setText(RecommendedTreatmentCtrl.newChosenTreatment.getParadigm()); // 
+            currentIntensity.setText(RecommendedTreatmentCtrl.newChosenTreatment.getIntensity());
+            currentDuration.setText(RecommendedTreatmentCtrl.newChosenTreatment.getDuration());
+            currentElectrode.setText(RecommendedTreatmentCtrl.newChosenTreatment.getElectrode());
+        }
+        else if ((SearchPatientCtrl.registeredPatient.equals("no")) && (RecommendedTreatmentCtrl.savedTreatment == "1")) {
+            // Nedenstående skal hentes fra gemte variable
+            System.out.println(RecommendedTreatmentCtrl.newChosenTreatment.getParadigm());
+            currentParadigm.setText(RecommendedTreatmentCtrl.newChosenTreatment.getParadigm()); // 
+            currentIntensity.setText(RecommendedTreatmentCtrl.newChosenTreatment.getIntensity());
+            currentDuration.setText(RecommendedTreatmentCtrl.newChosenTreatment.getDuration());
+            currentElectrode.setText(RecommendedTreatmentCtrl.newChosenTreatment.getElectrode());
+        }
+        else { // hvis ikke patienten allerede er i databasen og hvis ikke der er valg en treatment under recommended treatment
             currentParadigm.setText("The patient has no current paradigm"); 
             currentIntensity.setText("The patient has no current intensity");
             currentDuration.setText("The patient has no current duration");
@@ -453,6 +474,7 @@ public class QuestionnaireCtrl {
             System.out.println("Save new patient profile in the UDecide database");
             // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "newPatient" I DATABASEN
         }
+        savedPatient = "1";
         return newPatient;
     }
 
@@ -460,6 +482,7 @@ public class QuestionnaireCtrl {
         // gemmer de input, som er blevet givet til questionnaire i "nyQuestionnaire"
         QuestionnaireModel nyQuestionnaire = new QuestionnaireModel(numberIEday.getText(), numberUrinationDay.getText(), numberNocturiaDay.getText(), numberUrgeDay.getText(), bladderCapacity, detrusorOveractivity, qolValueEntered);
         // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "nyQuestionnaire" I DATABASEN
+        savedQuestionnaire = "1"; 
         return nyQuestionnaire; 
     }
 
@@ -474,6 +497,58 @@ public class QuestionnaireCtrl {
             System.out.println("error");
             return false; 
         }
+    }
+
+    public void updateQuestionnaire() throws IOException { //opdaterer questionnaire med det gemte information
+        if (savedQuestionnaire == "1") {
+            numberIEday.setText(nyQuestionnaire.getNumberIEday());
+            numberUrinationDay.setText(nyQuestionnaire.getNumberUrinationDay());
+            numberUrgeDay.setText(nyQuestionnaire.getNumberUrgeDay());
+            numberNocturiaDay.setText(nyQuestionnaire.getNumberNocturiaDay());
+            updateBC(); // opdaterer bladder capacity checkbox 
+            updateDO(); // opdaterer detrusor overaktivitet checkbox 
+            updateQol(); // opdaterer quality of life checkbox 
+        }
+        else {
+            System.out.println("Do nothing");
+        }
+    }
+
+    public void updateBC() throws IOException {
+        if(bladderCapacity == "0-200 ml"){
+            bc200.setSelected(true);            
+        }
+        else if(bladderCapacity == "200-300 ml"){
+            bc300.setSelected(true);            
+        }
+        else if(bladderCapacity == "300-400 ml"){
+            bc400.setSelected(true);            
+        }
+        else if(bladderCapacity == "400-500 ml"){
+            bc500.setSelected(true);            
+        }
+        else if(bladderCapacity == "+500 ml"){
+            bcOver500.setSelected(true);            
+        }
+        else {
+            bcUnknown.setSelected(true);
+        }
+    }
+
+    public void updateDO() throws IOException {
+        if(detrusorOveractivity == "Yes"){
+            DOyes.setSelected(true);            
+        }
+        else if(detrusorOveractivity == "No"){
+            DOno.setSelected(true);            
+        }
+        else {
+            DOunknown.setSelected(true);
+        }
+    }
+
+    public void updateQol() throws IOException {
+        qolScale.setValue(Double.valueOf(qolValueEntered));
     }
 }
 
