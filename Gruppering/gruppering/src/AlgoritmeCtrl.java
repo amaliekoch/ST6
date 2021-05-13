@@ -27,10 +27,10 @@ public class AlgoritmeCtrl {
         else if (Integer.parseInt(numberUrinationDay) < 9 && Integer.parseInt(numberNocturiaDay) == 0 && Integer.parseInt(numberIEday) >0 ){
             group = "UrgeIE";
         }
-        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >1 && Integer.parseInt(numberIEday) ==0 ){
+        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >0 && Integer.parseInt(numberIEday) ==0 ){
             group = "FreqUrge";
         }
-        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >1 && Integer.parseInt(numberIEday) >0 ){
+        else if (Integer.parseInt(numberUrinationDay) > 8 || Integer.parseInt(numberNocturiaDay) >0 && Integer.parseInt(numberIEday) >0 ){
             group = "FreqUrgeIE";
         }
         return group;
