@@ -2,6 +2,7 @@ package ST6.controller;
 import ST6.App;
 import ST6.handler.PatientProfileHandler;
 import ST6.model.PatientProfileModel;
+import ST6.model.RecommendedTreatmentModel;
 import ST6.controller.*;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
@@ -217,9 +218,8 @@ public class RecommendedTreatmentCtrl extends Algorithm{
     void saveButtonPressed(ActionEvent event) throws IOException { //trukkes der på gem knappen, gemmes valgt treatment og questionnaire skærmen vises
         // Her mangler der kode, som gemmer den valgte treatment 
         // gem info i en "recommendedTreatmentModel"
-        
+        saveChosenTreatment();
 
-        //
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -316,23 +316,47 @@ public class RecommendedTreatmentCtrl extends Algorithm{
 
     public void updateRecommendedTreatment1() throws IOException {
         stimulationParadigm1.setText(paradigm1 + " - " + electrodeType1);
-        effectScore1.setProgress(effectivenessScore1);
-        eScore1.setText("Effectiveness score: " + String.valueOf(effectivenessScore1*100)+"% ");
+        effectScore1.setProgress(effectivenessScore1/100);
+        eScore1.setText("Effectiveness score: " + String.valueOf(effectivenessScore1)+"% ");
         treatmentInfo1.setWrapText(true);
         treatmentInfo1.setText(info1);
     }
     public void updateRecommendedTreatment2() throws IOException {
         stimulationParadigm2.setText(paradigm2 + " - " + electrodeType2);
-        effectScore2.setProgress(effectivenessScore2);
-        eScore2.setText("Effectiveness score: " + String.valueOf(effectivenessScore2*100)+"%  ");
-        treatmentInfo1.setWrapText(true);
+        effectScore2.setProgress(effectivenessScore2/100);
+        eScore2.setText("Effectiveness score: " + String.valueOf(effectivenessScore2)+"%  ");
+        treatmentInfo2.setWrapText(true);
         treatmentInfo2.setText(info2);
     }
     public void updateRecommendedTreatment3() throws IOException {
         stimulationParadigm3.setText(paradigm3 + " - " + electrodeType3);
-        effectScore3.setProgress(effectivenessScore3);
-        eScore3.setText("Effectiveness score: " + String.valueOf(effectivenessScore3*100)+"%  ");
-        treatmentInfo1.setWrapText(true);
+        effectScore3.setProgress(effectivenessScore3/100);
+        eScore3.setText("Effectiveness score: " + String.valueOf(effectivenessScore3)+"%  ");
+        treatmentInfo3.setWrapText(true);
         treatmentInfo3.setText(info3);
     }
+    
+    public RecommendedTreatmentModel saveChosenTreatment() throws IOException {
+        if(chooseTreatment1.isSelected()){
+            RecommendedTreatmentModel newChosenTreatment = new RecommendedTreatmentModel(paradigm1, duration1, electrodeType1, "No recommendation");
+            return newChosenTreatment;
+        }
+        else if(chooseTreatment2.isSelected()){
+            RecommendedTreatmentModel newChosenTreatment = new RecommendedTreatmentModel(paradigm2, duration2, electrodeType2, "No recommendation");
+            return newChosenTreatment;
+        } 
+        else if(chooseTreatment1.isSelected()){
+            RecommendedTreatmentModel newChosenTreatment = new RecommendedTreatmentModel(paradigm3, duration3, electrodeType3, "No recommendation");
+            return newChosenTreatment;
+        }
+        else (!chooseTreatment1.isSelected() || !chooseTreatment2.isSelected() || !chooseTreatment3.isSelected()) {
+            // giv advarsel om at én behandling skal vælges 
+            RecommendedTreatmentModel newChosenTreatment = new RecommendedTreatmentModel("No recommendation", "No recommendation", "No recommendation", "No recommendation");
+            return newChosenTreatment;
+        }
+    }
+    
 }
+
+
+// RecommendedTreatmentModel chosenTreatment = new RecommendedTreatmentModel(paradigm, duration, electrode, intensity);
