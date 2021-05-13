@@ -26,7 +26,7 @@
                </image>
             </ImageView>
             <Separator layoutX="403.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="0.0" />
-            <TextField fx:id="patientName" layoutX="95.0" layoutY="174.0" prefHeight="32.0" prefWidth="289.0" promptText="Patient name">
+            <TextField fx:id="patientName" layoutX="95.0" layoutY="174.0" prefHeight="32.0" prefWidth="289.0" promptText="Enter first and last name">
                <font>
                   <Font size="12.0" />
                </font>
@@ -36,7 +36,7 @@
                   <Font size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="patientGender" layoutX="94.0" layoutY="253.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter patient gender - either male or female">
+            <TextField fx:id="patientGender" layoutX="94.0" layoutY="253.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter gender - either female or female">
                <font>
                   <Font size="12.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="patientAge" layoutX="93.0" layoutY="291.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter patient age between 18-125">
+            <TextField fx:id="patientAge" layoutX="93.0" layoutY="291.0" prefHeight="32.0" prefWidth="291.0" promptText="Enter age between 18-125">
                <font>
                   <Font size="12.0" />
                </font>
