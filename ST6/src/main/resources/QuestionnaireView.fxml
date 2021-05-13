@@ -135,12 +135,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="goBackButton" layoutX="195.0" layoutY="9.0" mnemonicParsing="false" onAction="#goBackButtonPressed" prefHeight="45.0" prefWidth="166.0" style="-fx-background-color: #89aed9 #89aed9;" text="Go back to previous page">
+            <Button fx:id="goBackButton" layoutX="195.0" layoutY="25.0" mnemonicParsing="false" onAction="#goBackButtonPressed" prefHeight="45.0" prefWidth="166.0" style="-fx-background-color: #89aed9 #89aed9;" text="Go back to previous page">
                <font>
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="logOutButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="45.0" prefWidth="172.0" style="-fx-background-color: #89aed9;" text="Log out ">
+            <Button fx:id="logOutButton" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="45.0" prefWidth="172.0" style="-fx-background-color: #89aed9;" text="Log out ">
                <font>
                   <Font size="12.0" />
                </font>

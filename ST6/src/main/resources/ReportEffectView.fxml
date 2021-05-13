@@ -67,7 +67,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="87.0" layoutY="297.0" onKeyPressed="#patientAge_enter" prefHeight="32.0" prefWidth="205.0" promptText="Patient age">
+                  <TextField fx:id="patientAge" layoutX="87.0" layoutY="297.0" onKeyPressed="#patientAge_enter" prefHeight="32.0" prefWidth="205.0" promptText="Patient age">
                      <font>
                         <Font size="12.0" />
                      </font>
@@ -134,25 +134,25 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="goBackButton" layoutX="162.0" layoutY="29.0" mnemonicParsing="false" onAction="#goBackButtonPressed" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #89aed9;" text="Go back to previous page">
+                  <Button fx:id="goBackButton" layoutX="162.0" layoutY="20.0" mnemonicParsing="false" onAction="#goBackButtonPressed" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #89aed9;" text="Go back to previous page">
                      <font>
                         <Font size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="logOutButton" layoutX="8.0" layoutY="29.0" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #89aed9;" text="Log out ">
+                  <Button fx:id="logOutButton" layoutX="8.0" layoutY="20.0" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #89aed9;" text="Log out ">
                      <font>
                         <Font size="12.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="799.0" prefWidth="464.0" style="-fx-background-color: darkgrey;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="799.0" prefWidth="464.0" style="-fx-background-color: lightgrey;">
                <children>
                   <Button fx:id="treatmentNotFollowedButton" layoutX="20.0" layoutY="704.0" mnemonicParsing="false" onAction="#TreatmentNotFollowedButtonPressed" prefHeight="23.0" prefWidth="143.0" text="Treatment has NOT been followed" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                  <TextField alignment="CENTER" editable="false" layoutX="196.0" layoutY="17.0" style="-fx-background-color: darkgrey;" text="Data on current use of treatment" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="20.0">
+                  <TextField alignment="CENTER" editable="false" layoutX="-4.0" layoutY="17.0" prefHeight="45.0" prefWidth="486.0" style="-fx-background-color: darkgrey;" text="Data on current use of treatment" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="20.0">
                      <effect>
                         <Blend />
                      </effect>
@@ -212,7 +212,7 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="763.0" prefWidth="468.0" style="-fx-background-color: Lightgray;">
                <children>
-                  <TextField alignment="CENTER" editable="false" layoutX="7.0" layoutY="14.0" style="-fx-background-color: lightgrey;" text="Treatment effect" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="20.0">
+                  <TextField alignment="CENTER" editable="false" layoutX="-5.0" layoutY="14.0" prefHeight="45.0" prefWidth="477.0" style="-fx-background-color: darkgrey;" text="Treatment effect" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="20.0">
                      <effect>
                         <Blend />
                      </effect>

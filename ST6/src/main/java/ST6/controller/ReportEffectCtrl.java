@@ -1,4 +1,6 @@
 package ST6.controller;
+import ST6.controller.*;
+import ST6.model.*;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import ST6.App;
@@ -42,6 +44,9 @@ public class ReportEffectCtrl {
 
     @FXML
     private TextField patientGender;
+
+    @FXML
+    private TextField patientAge;
 
     @FXML
     private TextField currentParadigm;
@@ -325,11 +330,12 @@ public class ReportEffectCtrl {
     }
 
     @FXML
-    void initialize() {
+    void initialize()throws IOException {
         assert viewTreatmentHistoryButton != null : "fx:id=\"viewTreatmentHistoryButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert patientName != null : "fx:id=\"patientName\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert patientCPR != null : "fx:id=\"patientCPR\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert patientGender != null : "fx:id=\"patientGender\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert patientAge != null : "fx:id=\"patientAge\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert currentParadigm != null : "fx:id=\"currentParadigm\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert currentIntensity != null : "fx:id=\"currentIntensity\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert currentDuration != null : "fx:id=\"currentDuration\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
@@ -362,61 +368,21 @@ public class ReportEffectCtrl {
         assert bc300After != null : "fx:id=\"bc300After\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert bc500After != null : "fx:id=\"bc500After\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert bcUnknownAfter != null : "fx:id=\"bcUnknownAfter\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        
+        //Metoder der opdaterer brugergrænsefladen med information
+        updatePatientProfileFields(); // opdaterer felterne til patient profile 
+    }
+
+     // Metode til at opdatere felterne under patient profilen
+     public void updatePatientProfileFields() throws IOException {   // hvis patienten allerede er i databasen 
+        if (RecommendedTreatmentCtrl.savedTreatment == "1"){
+            patientName.setText(QuestionnaireCtrl.nyPatient.getName()); 
+            patientCPR.setText(QuestionnaireCtrl.nyPatient.getCprNumber());
+            patientGender.setText(QuestionnaireCtrl.nyPatient.getGender());
+            patientAge.setText(QuestionnaireCtrl.nyPatient.getAge());
+        }
+        else { // hvis ikke patienten allerede er i databasen 
+            //patientCPR.setText(PatientProfileModel.getCprInput()); //indsætter det CPR nummer som er blevet givet som input til viewet: "Search patient"
+        }
     }
 }
-
-
-/*
-public class ReportEffectCtrl {
-
-    @FXML
-    void TreatmentNotFollowedButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-
-        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
-        LoginCtrl.stage.show(); // Vi viser den nye stage
-    }
-
-    @FXML
-    void estimateNewButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-
-        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
-        LoginCtrl.stage.show(); // Vi viser den nye stage
-    }
-
-    @FXML
-    void goBackButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-
-        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
-        LoginCtrl.stage.show(); // Vi viser den nye stage
-    }
-
-    @FXML
-    void logOutButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/LoginView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-
-        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
-        LoginCtrl.stage.show(); // Vi viser den nye stage
-    }
-
-    @FXML
-    void saveReportButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-
-        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
-        LoginCtrl.stage.show(); // Vi viser den nye stage
-    }
-
-*/
