@@ -181,7 +181,7 @@ public class QuestionnaireCtrl {
             // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
             Alert alert3 = new Alert(AlertType.CONFIRMATION);
             alert3.setTitle("UDecide - UCon decision support");
-            alert3.setHeaderText("Do you want to save the patient profile informaiton and questionnaire answers?");
+            alert3.setHeaderText("Do you want to save the patient profile information and questionnaire answers?");
             alert3.setContentText("On the next page you will be able to see the recommended treatments estimated for " + savePatientProfile().getName()+ ".");
             ((Button) alert3.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
             ((Button) alert3.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("No");

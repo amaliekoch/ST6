@@ -118,7 +118,7 @@
                         <Font size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="CurrentElectrode" editable="false" layoutX="131.0" layoutY="549.0" prefHeight="37.0" prefWidth="180.0" promptText="Current electrode">
+                  <TextField fx:id="currentElectrode" editable="false" layoutX="131.0" layoutY="549.0" prefHeight="37.0" prefWidth="180.0" promptText="Current electrode">
                      <font>
                         <Font size="12.0" />
                      </font>
@@ -237,11 +237,11 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="skinIrritationCheckbox" layoutX="27.0" layoutY="547.0" mnemonicParsing="false" onKeyPressed="#skinIrritationCheckbox_enter" prefHeight="18.0" prefWidth="154.0" text="Skin irritation" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="228.0">
+                  <CheckBox fx:id="skinIrritationCheckbox" layoutX="27.0" layoutY="547.0" mnemonicParsing="false" onAction="#handleSkinIrritation" prefHeight="18.0" prefWidth="154.0" text="Skin irritation" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="228.0">
                      <font>
                         <Font size="14.0" />
                      </font></CheckBox>
-                  <CheckBox fx:id="painCheckbox" layoutX="155.0" layoutY="547.0" mnemonicParsing="false" onKeyPressed="#painCheckbox_enter" prefHeight="19.0" prefWidth="90.0" text="Pain" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="220.0">
+                  <CheckBox fx:id="painCheckbox" layoutX="155.0" layoutY="547.0" mnemonicParsing="false" onAction="#handlePain" prefHeight="19.0" prefWidth="90.0" text="Pain" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="220.0">
                      <font>
                         <Font size="14.0" />
                      </font></CheckBox>
@@ -326,7 +326,7 @@
                         <Font size="14.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="worseningSymptomsCheckbox" layoutX="250.0" layoutY="544.0" mnemonicParsing="false" onKeyPressed="#worseningSymptomsCheckbox_enter" prefHeight="26.0" prefWidth="197.0" text="Worsening of symptoms">
+                  <CheckBox fx:id="worseningSymptomsCheckbox" layoutX="250.0" layoutY="544.0" mnemonicParsing="false" onAction="#HandleWorseningSymptoms" prefHeight="26.0" prefWidth="197.0" text="Worsening of symptoms">
                      <font>
                         <Font size="14.0" />
                      </font></CheckBox>

@@ -361,7 +361,7 @@ public class RecommendedTreatmentCtrl extends Algorithm{
         // Pop-op vidue med warning om at information er gemt og at man kommer tilbage til questionnaire
         Alert alert5 = new Alert(AlertType.CONFIRMATION);
         alert5.setTitle("UDecide - UCon decision support");
-        alert5.setHeaderText("The chosen treatment have been saved for: " + QuestionnaireCtrl.nyPatient.getName());
+        alert5.setHeaderText("The chosen treatment has been saved for: " + QuestionnaireCtrl.nyPatient.getName());
         alert5.setContentText("When clicking 'Ok', you will return to the questionnaire screen.");
         ((Button) alert5.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
         ((Button) alert5.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");

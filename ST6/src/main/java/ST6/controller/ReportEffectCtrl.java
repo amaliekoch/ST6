@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -31,6 +32,11 @@ public class ReportEffectCtrl {
     public static String bladderCapacityAfter = "default";
     public static String detrusorOveractivityAfter = "default";
     public static String qolValueEnteredAfter = "default";
+    public static String painAfter = "default";
+    public static String skinIrritationAfter = "default";
+    public static String worseningSymptomsAfter = "default";
+    public static String adverseEventsScaleEnteredAfter = "default";
+    //public static String otherAdverseEventsAfter = "default";
     public static TreatmentEffectModel nyTreatmentEffectReport;
     public static String savedTreatmentEffect = "0";
 
@@ -65,7 +71,7 @@ public class ReportEffectCtrl {
     private TextField currentDuration;
 
     @FXML
-    private TextField CurrentElectrode;
+    private TextField currentElectrode;
 
     @FXML
     private Button goBackButton;
@@ -368,15 +374,44 @@ public class ReportEffectCtrl {
         // her kan vi indsætte at input skal tjekkes (eksempelvis at input skal være mellem 0-30)
     }
 
+    // Metode til at håndtere adverse event check-box
+    @FXML
+    void handlePain(ActionEvent event) throws IOException{
+        if(painCheckbox.isSelected()){
+            painAfter = "Yes";
+        }
+        else {
+            painAfter = "default"; 
+        }
+    }
+
+     // Metode til at håndtere adverse event check-box
+     @FXML
+     void handleSkinIrritation(ActionEvent event) throws IOException{
+         if(skinIrritationCheckbox.isSelected()){
+            skinIrritationAfter = "Yes";
+         }
+         else {
+            skinIrritationAfter = "default"; 
+         }
+     }
+
+      // Metode til at håndtere adverse event check-box
+    @FXML
+    void HandleWorseningSymptoms(ActionEvent event) throws IOException{
+        if(worseningSymptomsCheckbox.isSelected()){
+            worseningSymptomsAfter = "Yes";
+        }
+        else {
+            worseningSymptomsAfter = "default"; 
+        }
+    }
+
     @FXML
     void otherAdverseEvents_enter(KeyEvent event) {
         // her kan vi indsætte at input skal tjekkes 
     }
 
-    @FXML
-    void painCheckbox_enter(KeyEvent event) {
-
-    }
 
     @FXML
     void patientAge_enter(KeyEvent event) {
@@ -405,31 +440,27 @@ public class ReportEffectCtrl {
 
     @FXML
     void saveReportButtonPressed(ActionEvent event) throws IOException{
-        saveTreatmentReport() // gemmer de indtastede informationer
-
-        //Kommer tilbage til Questionnaire screen
-        FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
-        fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
-        final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
-
-        LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
-        LoginCtrl.stage.show(); // Vi viser den nye stage
-    }
-
-    @FXML
-    void skinIrritationCheckbox_enter(KeyEvent event) {
-
+        if(checkInputtedFields()) { //Tjek at alle felter er udfyldt  
+            // hvis alle felter er udfyldt: 
+            nyTreatmentEffectReport = saveTreatmentReport(); // gemmer de indtastede informationer
+            showSavedReportWarning(); // warning der fortæller at informationen er gemt og at man ved at trykkr "ok" kommer tilbage til questionnaire skærmen
+        }
+        else { // Hvis ikke alle felter er udfyldt
+            Alert alert7 = new Alert(AlertType.WARNING);
+            alert7.setTitle("UDecide - UCon decision support");
+            alert7.setHeaderText("There are missing information in the report of treatment effect. Please enter information in all the fields?");
+            alert7.setContentText("Please enter the missing information to save the effect report of the treatment.");
+            ((Button) alert7.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
+            alert7.show();
+        }
     }
 
     @FXML
     void viewTreatmentHistoryButtonPressed(ActionEvent event) {
-
+        //Ikke implementeret. 
+        //Ved tryk på denne knap, skal en historik over alle tidligere behandlinger vises 
     }
 
-    @FXML
-    void worseningSymptomsCheckbox_enter(KeyEvent event) {
-
-    }
 
     @FXML
     void initialize()throws IOException {
@@ -441,7 +472,7 @@ public class ReportEffectCtrl {
         assert currentParadigm != null : "fx:id=\"currentParadigm\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert currentIntensity != null : "fx:id=\"currentIntensity\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert currentDuration != null : "fx:id=\"currentDuration\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
-        assert CurrentElectrode != null : "fx:id=\"CurrentElectrode\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert currentElectrode != null : "fx:id=\"currentElectrode\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert goBackButton != null : "fx:id=\"goBackButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert logOutButton != null : "fx:id=\"logOutButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert treatmentNotFollowedButton != null : "fx:id=\"treatmentNotFollowedButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
@@ -474,6 +505,7 @@ public class ReportEffectCtrl {
         //Metoder der opdaterer brugergrænsefladen med information
         updatePatientProfileFields(); // opdaterer felterne til patient profile 
         updateCurrentTreatmentFields(); //opdaterer current treatment informationer på interfacet 
+        updateUConData(); 
     }
 
      // Metode til at opdatere felterne under patient profilen
@@ -524,12 +556,55 @@ public class ReportEffectCtrl {
 
     public TreatmentEffectModel saveTreatmentReport() throws IOException { 
         // gemmer de input, som er blevet givet til report effect
-        TreatmentEffectModel nyTreatmentEffectReport = new TreatmentEffectModel();
+        qolValueEnteredAfter = String.valueOf(qolScaleAfter.getValue());
+        adverseEventsScaleEnteredAfter = String.valueOf(adverseEventsScale);
+        
+        TreatmentEffectModel nyTreatmentEffectReport = new TreatmentEffectModel(numberIEdayAfter.getText(), numberUrinationDayAfter.getText(), numberNocturiaDayAfter.getText(), numberUrgeDayAfter.getText(), bladderCapacityAfter, detrusorOveractivityAfter, qolValueEnteredAfter, painAfter, skinIrritationAfter, worseningSymptomsAfter, adverseEventsScaleEnteredAfter, otherAdverseEvents.getText());
 
         // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "nyTreatmentReport" I DATABASEN
         
         savedTreatmentEffect = "1"; 
         return nyTreatmentEffectReport; 
+    }
+
+    public void showSavedReportWarning() throws IOException {
+        // Pop-op vidue med warning om at information er gemt og at man kommer tilbage til questionnaire
+        Alert alert6 = new Alert(AlertType.CONFIRMATION);
+        alert6.setTitle("UDecide - UCon decision support");
+        alert6.setHeaderText("The reported effect of the treatment has been saved for: " + QuestionnaireCtrl.nyPatient.getName());
+        alert6.setContentText("When clicking 'Ok', you will return to the questionnaire screen.");
+        ((Button) alert6.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
+        ((Button) alert6.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
+
+        Optional<ButtonType> result6 = alert6.showAndWait();
+        if (result6.get() == ButtonType.OK) { // Hvis "ok" vælges 
+            //Kommer tilbage til Questionnaire screen
+            FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
+            fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
+            final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
+
+            LoginCtrl.stage.setScene(new Scene(root)); //Sætter scenen "ovenpå" vores stage (stage = stage defineret i LoginCtrl) (scenen = root = Questionnaire view)
+            LoginCtrl.stage.show(); // Vi viser den nye stage
+            }
+        else { // Hvis "cancel" vælges -> bliver på report effect screen
+            System.out.println("Do nothing");
+        }
+    }
+
+    public boolean checkInputtedFields() throws IOException { //tjekker at der er udfyldt noget i alle felterne inden der kan fortsættes
+        if (!numberIEdayAfter.getText().isEmpty() && !numberUrinationDayAfter.getText().isEmpty() && !numberNocturiaDayAfter.getText().isEmpty() && !numberUrgeDayAfter.getText().isEmpty() && bladderCapacityAfter != "default" && detrusorOveractivityAfter != "default" && qolValueEnteredAfter != "default" && painAfter != "default" && skinIrritationAfter != "default" && worseningSymptomsAfter != "default" && adverseEventsScaleEnteredAfter != "default" && otherAdverseEvents.getText().isEmpty()) {
+                return true;
+            }
+            else {
+                return false; 
+            }
+        }
+
+    public void updateUConData() throws IOException {
+        //numberOfButtonPress; 
+        //durationOfStimulation; 
+        //meanIntensityLevel; 
+        //graphStimTimeDay; 
     }
 
 }
