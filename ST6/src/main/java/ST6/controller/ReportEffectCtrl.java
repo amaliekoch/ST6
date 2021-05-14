@@ -10,6 +10,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
@@ -440,6 +443,8 @@ public class ReportEffectCtrl {
 
     @FXML
     void saveReportButtonPressed(ActionEvent event) throws IOException{
+        qolValueEnteredAfter = String.valueOf(qolScaleAfter.getValue());
+        adverseEventsScaleEnteredAfter = String.valueOf(adverseEventsScale);
         if(checkInputtedFields()) { //Tjek at alle felter er udfyldt  
             // hvis alle felter er udfyldt: 
             nyTreatmentEffectReport = saveTreatmentReport(); // gemmer de indtastede informationer
@@ -556,8 +561,6 @@ public class ReportEffectCtrl {
 
     public TreatmentEffectModel saveTreatmentReport() throws IOException { 
         // gemmer de input, som er blevet givet til report effect
-        qolValueEnteredAfter = String.valueOf(qolScaleAfter.getValue());
-        adverseEventsScaleEnteredAfter = String.valueOf(adverseEventsScale);
         
         TreatmentEffectModel nyTreatmentEffectReport = new TreatmentEffectModel(numberIEdayAfter.getText(), numberUrinationDayAfter.getText(), numberNocturiaDayAfter.getText(), numberUrgeDayAfter.getText(), bladderCapacityAfter, detrusorOveractivityAfter, qolValueEnteredAfter, painAfter, skinIrritationAfter, worseningSymptomsAfter, adverseEventsScaleEnteredAfter, otherAdverseEvents.getText());
 
@@ -592,7 +595,7 @@ public class ReportEffectCtrl {
     }
 
     public boolean checkInputtedFields() throws IOException { //tjekker at der er udfyldt noget i alle felterne inden der kan fortsættes
-        if (!numberIEdayAfter.getText().isEmpty() && !numberUrinationDayAfter.getText().isEmpty() && !numberNocturiaDayAfter.getText().isEmpty() && !numberUrgeDayAfter.getText().isEmpty() && bladderCapacityAfter != "default" && detrusorOveractivityAfter != "default" && qolValueEnteredAfter != "default" && painAfter != "default" && skinIrritationAfter != "default" && worseningSymptomsAfter != "default" && adverseEventsScaleEnteredAfter != "default" && otherAdverseEvents.getText().isEmpty()) {
+        if (!numberIEdayAfter.getText().isEmpty() && !numberUrinationDayAfter.getText().isEmpty() && !numberNocturiaDayAfter.getText().isEmpty() && !numberUrgeDayAfter.getText().isEmpty() && bladderCapacityAfter != "default" && detrusorOveractivityAfter != "default" && qolValueEnteredAfter != "default" && adverseEventsScaleEnteredAfter != "default") {
                 return true;
             }
             else {
@@ -605,6 +608,5 @@ public class ReportEffectCtrl {
         //durationOfStimulation; 
         //meanIntensityLevel; 
         //graphStimTimeDay; 
-    }
-
+    } 
 }
