@@ -334,7 +334,6 @@ public class RecommendedTreatmentCtrl extends Algorithm{
     }
     
     public RecommendedTreatmentModel saveChosenTreatment() throws IOException {
-        System.out.println("kommer jeg hertil?");
         if(chooseTreatment1.isSelected()){
             RecommendedTreatmentModel newChosenTreatment = new RecommendedTreatmentModel(paradigm1, duration1, electrodeType1, "No recommendation");
             savedTreatment = "1";

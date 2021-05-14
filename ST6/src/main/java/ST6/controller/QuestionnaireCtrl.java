@@ -134,7 +134,6 @@ public class QuestionnaireCtrl {
         else {
             detrusorOveractivity = "default"; 
         }
-        System.out.println(detrusorOveractivity);
     }
 
     // Metode til at håndtere detrusor overaktivitet check-box

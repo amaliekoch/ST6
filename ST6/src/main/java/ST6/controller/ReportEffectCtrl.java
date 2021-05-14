@@ -1,6 +1,7 @@
 package ST6.controller;
 import ST6.controller.*;
 import ST6.model.*;
+import ST6.model.TreatmentEffectModel;
 
 //IMPORT DER BRUGES TIL SCENEBUILDER 
 import ST6.App;
@@ -26,6 +27,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 public class ReportEffectCtrl {
+
+    public static String bladderCapacityAfter = "default";
+    public static String detrusorOveractivityAfter = "default";
+    public static String qolValueEnteredAfter = "default";
+    public static TreatmentEffectModel nyTreatmentEffectReport;
+    public static String savedTreatmentEffect = "0";
 
     @FXML
     private ResourceBundle resources;
@@ -174,6 +181,7 @@ public class ReportEffectCtrl {
 
     }
 
+    // Metode til at håndtere hvis knap: "Estimate new" trykkes på
     @FXML
     void estimateNewButtonPressed(ActionEvent event) throws IOException{
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
@@ -184,6 +192,7 @@ public class ReportEffectCtrl {
         LoginCtrl.stage.show(); // Vi viser den nye stage
     }
 
+    // Metode til at håndtere hvis knap: "go back" trykkes på
     @FXML
     void goBackButtonPressed(ActionEvent event) throws IOException {
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
@@ -194,49 +203,139 @@ public class ReportEffectCtrl {
         LoginCtrl.stage.show(); // Vi viser den nye stage
     }
 
+    // Metode til at håndtere bladder capacity check-boxes
     @FXML
-    void handleBC200After(ActionEvent event) {
-
+    void handleBC200After(ActionEvent event) throws IOException{
+        if(bc200After.isSelected()){
+            bladderCapacityAfter = "0-200 ml";
+            bc300After.setSelected(false);
+            bc400After.setSelected(false);
+            bc500After.setSelected(false);
+            bcOver500After.setSelected(false);
+            bcUnknownAfter.setSelected(false);
+        }
+        else {
+            bladderCapacityAfter = "default"; 
+        }
     }
 
+    // Metode til at håndtere bladder capacity check-boxes
     @FXML
-    void handleBC300After(ActionEvent event) {
-
+    void handleBC300After(ActionEvent event) throws IOException{
+        if(bc300After.isSelected()){
+            bladderCapacityAfter = "200-300 ml";
+            bc200After.setSelected(false);
+            bc400After.setSelected(false);
+            bc500After.setSelected(false);
+            bcOver500After.setSelected(false);
+            bcUnknownAfter.setSelected(false);
+        }
+        else {
+            bladderCapacityAfter = "default"; 
+        }
     }
 
+    // Metode til at håndtere bladder capacity check-boxes
     @FXML
-    void handleBC400After(ActionEvent event) {
-
+    void handleBC400After(ActionEvent event) throws IOException{
+        if(bc400After.isSelected()){
+            bladderCapacityAfter = "300-400 ml";
+            bc200After.setSelected(false);
+            bc300After.setSelected(false);
+            bc500After.setSelected(false);
+            bcOver500After.setSelected(false);
+            bcUnknownAfter.setSelected(false);
+        }
+        else {
+            bladderCapacityAfter = "default"; 
+        }
     }
 
+    // Metode til at håndtere bladder capacity check-boxes
     @FXML
-    void handleBC500After(ActionEvent event) {
-
+    void handleBC500After(ActionEvent event)throws IOException{
+        if(bc500After.isSelected()){
+            bladderCapacityAfter = "400-500 ml";
+            bc200After.setSelected(false);
+            bc300After.setSelected(false);
+            bc400After.setSelected(false);
+            bcOver500After.setSelected(false);
+            bcUnknownAfter.setSelected(false);
+        }
+        else {
+            bladderCapacityAfter = "default"; 
+        }
     }
 
+    // Metode til at håndtere bladder capacity check-boxes
     @FXML
-    void handleBCover500After(ActionEvent event) {
-
+    void handleBCover500After(ActionEvent event) throws IOException{
+        if(bcOver500After.isSelected()){
+            bladderCapacityAfter = "+500 ml";
+            bc200After.setSelected(false);
+            bc300After.setSelected(false);
+            bc400After.setSelected(false);
+            bc500After.setSelected(false);
+            bcUnknownAfter.setSelected(false);
+        }
+        else {
+            bladderCapacityAfter = "default"; 
+        }
     }
 
+    // Metode til at håndtere bladder capacity check-boxes
     @FXML
-    void handleBCunknownAfter(ActionEvent event) {
-
+    void handleBCunknownAfter(ActionEvent event) throws IOException{
+        if(bcUnknownAfter.isSelected()){
+            bladderCapacityAfter = "Unknown";
+            bc200After.setSelected(false);
+            bc300After.setSelected(false);
+            bc400After.setSelected(false);
+            bc500After.setSelected(false);
+            bcOver500After.setSelected(false);
+        }
+        else {
+            bladderCapacityAfter = "default"; 
+        }
     }
 
+    // Metode til at håndtere detrusor overaktivitet check-box
     @FXML
-    void handleDOnoAfter(ActionEvent event) {
-
+    void handleDOnoAfter(ActionEvent event) throws IOException{
+        if(DOnoAfter.isSelected()){
+            detrusorOveractivityAfter = "No";
+            DOyesAfter.setSelected(false);
+            DOunknownAfter.setSelected(false);
+        }
+        else {
+            detrusorOveractivityAfter = "default"; 
+        }
     }
 
+    // Metode til at håndtere detrusor overaktivitet check-box
     @FXML
-    void handleDOunknownAfter(ActionEvent event) {
-
+    void handleDOunknownAfter(ActionEvent event) throws IOException{
+        if(DOunknownAfter.isSelected()){
+            detrusorOveractivityAfter = "Unknown";
+            DOyesAfter.setSelected(false);
+            DOnoAfter.setSelected(false);
+        }
+        else {
+           detrusorOveractivityAfter = "default"; 
+       }
     }
 
+    // Metode til at håndtere detrusor overaktivitet check-box
     @FXML
-    void handleDOyesAfter(ActionEvent event) {
-
+    void handleDOyesAfter(ActionEvent event) throws IOException{
+        if(DOyesAfter.isSelected()){
+            detrusorOveractivityAfter = "Yes";
+            DOnoAfter.setSelected(false);
+            DOunknownAfter.setSelected(false);
+        }
+        else {
+            detrusorOveractivityAfter = "default"; 
+        }
     }
 
     @FXML
@@ -251,27 +350,27 @@ public class ReportEffectCtrl {
 
     @FXML
     void numberIEdayAfter_enter(KeyEvent event) {
-
+        // her kan vi indsætte at input skal tjekkes (eksempelvis at input skal være mellem 0-30)
     }
 
     @FXML
     void numberNocturiaDayAfter_enter(KeyEvent event) {
-
+        // her kan vi indsætte at input skal tjekkes (eksempelvis at input skal være mellem 0-50)
     }
 
     @FXML
     void numberUrgeDayAfter_enter(KeyEvent event) {
-
+        // her kan vi indsætte at input skal tjekkes (eksempelvis at input skal være mellem 0-100)
     }
 
     @FXML
     void numberUrinationDayAfter_enter(KeyEvent event) {
-
+        // her kan vi indsætte at input skal tjekkes (eksempelvis at input skal være mellem 0-30)
     }
 
     @FXML
     void otherAdverseEvents_enter(KeyEvent event) {
-
+        // her kan vi indsætte at input skal tjekkes 
     }
 
     @FXML
@@ -281,22 +380,22 @@ public class ReportEffectCtrl {
 
     @FXML
     void patientAge_enter(KeyEvent event) {
-
+        // den her metode kan slettes, hvis vi sætter begrænsning på at man kun kan kommer til denne side, hvis man har oprettet en profil 
     }
 
     @FXML
     void patientCPR_enter(KeyEvent event) {
-
+        //den her metode kan slettes (se "patientAge_enter")
     }
 
     @FXML
     void patientGender_enter(KeyEvent event) {
-
+        //den her metode kan slettes (se "patientAge_enter")
     }
 
     @FXML
     void patientName_enter(KeyEvent event) {
-
+        //den her metode kan slettes (se "patientAge_enter")
     }
 
     @FXML
@@ -306,6 +405,9 @@ public class ReportEffectCtrl {
 
     @FXML
     void saveReportButtonPressed(ActionEvent event) throws IOException{
+        saveTreatmentReport() // gemmer de indtastede informationer
+
+        //Kommer tilbage til Questionnaire screen
         FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
         fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
         final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -371,6 +473,7 @@ public class ReportEffectCtrl {
         
         //Metoder der opdaterer brugergrænsefladen med information
         updatePatientProfileFields(); // opdaterer felterne til patient profile 
+        updateCurrentTreatmentFields(); //opdaterer current treatment informationer på interfacet 
     }
 
      // Metode til at opdatere felterne under patient profilen
@@ -382,7 +485,51 @@ public class ReportEffectCtrl {
             patientAge.setText(QuestionnaireCtrl.nyPatient.getAge());
         }
         else { // hvis ikke patienten allerede er i databasen 
-            //patientCPR.setText(PatientProfileModel.getCprInput()); //indsætter det CPR nummer som er blevet givet som input til viewet: "Search patient"
+            // Hvis vi implementerer at man kun kan komme til denne side, hvis en patient profilen er oprettet, skal der ikke være noget her
         }
     }
+
+    // Metode til at opdatere felterne under current treatment 
+    public void updateCurrentTreatmentFields() throws IOException { 
+        if (SearchPatientCtrl.registeredPatient.equals("yes") && (RecommendedTreatmentCtrl.savedTreatment == "0")){ // hvis patienten allerede er i databasen 
+            // Nedenstående information skal hentes fra databasen (indtastet manuelt lige nu)
+            currentParadigm.setText("On-Demand");
+            currentIntensity.setText("15 mA");
+            currentDuration.setText("15 minutes");
+            currentElectrode.setText("Surface");
+        }
+        else if ((SearchPatientCtrl.registeredPatient.equals("yes")) && (RecommendedTreatmentCtrl.savedTreatment == "1")) {
+            // Nedenstående skal hentes fra gemte variable
+            currentParadigm.setText(RecommendedTreatmentCtrl.newChosenTreatment.getParadigm()); // 
+            currentIntensity.setText(RecommendedTreatmentCtrl.newChosenTreatment.getIntensity());
+            currentDuration.setText(RecommendedTreatmentCtrl.newChosenTreatment.getDuration());
+            currentElectrode.setText(RecommendedTreatmentCtrl.newChosenTreatment.getElectrode());
+        }
+        else if ((SearchPatientCtrl.registeredPatient.equals("no")) && (RecommendedTreatmentCtrl.savedTreatment == "1")) {
+            // Nedenstående skal hentes fra gemte variable
+            System.out.println(RecommendedTreatmentCtrl.newChosenTreatment.getParadigm());
+            currentParadigm.setText(RecommendedTreatmentCtrl.newChosenTreatment.getParadigm()); // 
+            currentIntensity.setText(RecommendedTreatmentCtrl.newChosenTreatment.getIntensity());
+            currentDuration.setText(RecommendedTreatmentCtrl.newChosenTreatment.getDuration());
+            currentElectrode.setText(RecommendedTreatmentCtrl.newChosenTreatment.getElectrode());
+        }
+        else { // hvis ikke patienten allerede er i databasen og hvis ikke der er valg en treatment under recommended treatment
+            //Hvis vi implementerer at det ikke er muligt at komme hertil uden en patient profil som har en eksisterende behandling, så er nedenstående overflødigt
+            currentParadigm.setText("The patient has no current paradigm"); 
+            currentIntensity.setText("The patient has no current intensity");
+            currentDuration.setText("The patient has no current duration");
+            currentElectrode.setText("The patient has no current electrode");
+        }
+    }
+
+    public TreatmentEffectModel saveTreatmentReport() throws IOException { 
+        // gemmer de input, som er blevet givet til report effect
+        TreatmentEffectModel nyTreatmentEffectReport = new TreatmentEffectModel();
+
+        // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "nyTreatmentReport" I DATABASEN
+        
+        savedTreatmentEffect = "1"; 
+        return nyTreatmentEffectReport; 
+    }
+
 }
