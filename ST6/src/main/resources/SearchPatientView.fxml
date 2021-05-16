@@ -9,19 +9,19 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #3C3C3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ST6.controller.LoginCtrl">
    <children>
-      <AnchorPane layoutX="421.0" layoutY="82.0" prefHeight="436.0" prefWidth="415.0" style="-fx-background-color: lightgrey;">
+      <AnchorPane layoutX="293.0" layoutY="82.0" prefHeight="432.0" prefWidth="543.0" style="-fx-background-color: #a1cdff;">
          <children>
-            <TextField fx:id="EnteredCprNumer" layoutX="40.0" layoutY="170.0" prefHeight="39.0" prefWidth="336.0" promptText="Enter CPR-number">
+            <TextField fx:id="EnteredCprNumer" layoutX="104.0" layoutY="168.0" prefHeight="39.0" prefWidth="336.0" promptText="Enter CPR-number">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Text fill="WHITE" layoutX="106.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for Patient" textAlignment="CENTER">
+            <Text layoutX="160.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for Patient" textAlignment="CENTER">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="SearchButton" layoutX="129.0" layoutY="267.0" mnemonicParsing="false" onAction="#SearchButtonPressed" prefHeight="50.0" prefWidth="178.0" style="-fx-background-color: #3C3C3C;" text="Search" textFill="WHITE">
+            <Button fx:id="SearchButton" layoutX="183.0" layoutY="269.0" mnemonicParsing="false" onAction="#SearchButtonPressed" prefHeight="50.0" prefWidth="178.0" style="-fx-background-color: #89aed9;" text="Search">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
-            <Text layoutX="44.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPR-number example: 1304081203" />
+            <Text layoutX="104.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPR-number example: 1304081203" />
          </children>
       </AnchorPane>
    </children>

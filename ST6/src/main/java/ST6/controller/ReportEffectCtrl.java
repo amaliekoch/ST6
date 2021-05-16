@@ -39,9 +39,11 @@ public class ReportEffectCtrl {
     public static String skinIrritationAfter = "default";
     public static String worseningSymptomsAfter = "default";
     public static String adverseEventsScaleEnteredAfter = "default";
-    //public static String otherAdverseEventsAfter = "default";
     public static TreatmentEffectModel nyTreatmentEffectReport;
     public static String savedTreatmentEffect = "0";
+    public static String durationString = "default"; 
+    public static int stimDuration = "default"; 
+    public static int UConButtonPresses = "default"; 
 
     @FXML
     private ResourceBundle resources;
@@ -86,13 +88,13 @@ public class ReportEffectCtrl {
     private Button treatmentNotFollowedButton;
 
     @FXML
-    private TextField numberOfButtonPress;
+    private java.awt.TextField numberOfButtonPress;
 
     @FXML
-    private TextField durationOfStimulation;
+    private java.awt.TextField durationOfStimulation;
 
     @FXML
-    private TextField meanIntensityLevel;
+    private java.awt.TextField meanIntensityLevel;
 
     @FXML
     private BarChart<?, ?> graphStimTimeDay;
@@ -603,10 +605,35 @@ public class ReportEffectCtrl {
             }
         }
 
-    public void updateUConData() throws IOException {
-        //numberOfButtonPress; 
-        //durationOfStimulation; 
-        //meanIntensityLevel; 
-        //graphStimTimeDay; 
+    public void updateUConData() throws IOException {//DENNE METODE MANGLER AT BLIVE TESTET
+        //alt nedenstående data, skal hentes fra databasen. 
+        UConButtonPresses = 10; 
+        numberOfButtonPress.setText(String.valueOf(UConButtonPresses));
+        calculateDuration(); //beregner den samlede duration of stimulation & opdaterer brugergrænsefladen 
+        meanIntensityLevel.setText("12" + " mA");  
+        //graphStimTimeDay; //mangler at skrive kode til opdatering af grafen 
     } 
+
+    public void calculateDuration() throws IOException { //DENNE METODE MANGLER AT BLIVE TESTET
+        durationString = RecommendedTreatmentCtrl.newChosenTreatment.getDuration();
+
+        if(durationString == "60 seconds") {
+            stimDuration = 1; 
+        }
+        else if(durationString == "15 minutes") {
+            stimDuration = 15; 
+        }
+        else if(durationString == "30 minutes") {
+            stimDuration = 30;
+        }
+        else if(durationString == "4 hours") {
+            stimDuration = 240;
+        }
+        else {
+            stimDuration = "constant";
+        }
+
+        stimDuration = ((stimDuration*UConButtonPresses)/60);
+        durationOfStimulation.setText(String.valueOf(stimDuration));
+    }
 }
