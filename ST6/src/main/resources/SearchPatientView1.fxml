@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
-            <Text layoutX="149.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPR-number example: 1304081203" />
+            <Text layoutX="149.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPR-number example:  9876543210" />
          </children>
       </AnchorPane>
    </children>
