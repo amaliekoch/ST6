@@ -100,7 +100,7 @@ public class SearchPatientCtrl {
              Alert alert2 = new Alert(AlertType.CONFIRMATION);
              alert2.setTitle("UDecide - UCon decision support");
              alert2.setHeaderText("The CPR-number does not match a patient in the system. Do you want to create a new patient?                     ");
-             alert2.setContentText("On the next page you will be able to create a new patient by entering patient information about the patient with CPR-number: " + EnteredCprNumer.getText() + ". If you click on 'Accept' you confirm, that it is the right patient and that you have consent from the patient to use patient information.");
+             alert2.setContentText("If you click on 'Accept' you confirm, that " + EnteredCprNumer.getText() + " is the right patient and that you have consent from the patient to use patient information.");
              ((Button) alert2.getDialogPane().lookupButton(ButtonType.OK)).setText("Accept");
              ((Button) alert2.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
  
