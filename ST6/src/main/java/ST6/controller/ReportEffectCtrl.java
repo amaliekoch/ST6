@@ -42,8 +42,8 @@ public class ReportEffectCtrl {
     public static TreatmentEffectModel nyTreatmentEffectReport;
     public static String savedTreatmentEffect = "0";
     public static String durationString = "default"; 
-    public static int stimDuration = "default"; 
-    public static int UConButtonPresses = "default"; 
+    public static double stimDuration; 
+    public static double UConButtonPresses; 
 
     @FXML
     private ResourceBundle resources;
@@ -88,13 +88,13 @@ public class ReportEffectCtrl {
     private Button treatmentNotFollowedButton;
 
     @FXML
-    private java.awt.TextField numberOfButtonPress;
+    private TextField numberOfButtonPress;
 
     @FXML
-    private java.awt.TextField durationOfStimulation;
+    private TextField durationOfStimulation;
 
     @FXML
-    private java.awt.TextField meanIntensityLevel;
+    private TextField meanIntensityLevel;
 
     @FXML
     private BarChart<?, ?> graphStimTimeDay;
@@ -607,7 +607,7 @@ public class ReportEffectCtrl {
 
     public void updateUConData() throws IOException {//DENNE METODE MANGLER AT BLIVE TESTET
         //alt nedenstående data, skal hentes fra databasen. 
-        UConButtonPresses = 10; 
+        UConButtonPresses = 130; 
         numberOfButtonPress.setText(String.valueOf(UConButtonPresses));
         calculateDuration(); //beregner den samlede duration of stimulation & opdaterer brugergrænsefladen 
         meanIntensityLevel.setText("12" + " mA");  
@@ -618,22 +618,26 @@ public class ReportEffectCtrl {
         durationString = RecommendedTreatmentCtrl.newChosenTreatment.getDuration();
 
         if(durationString == "60 seconds") {
-            stimDuration = 1; 
+            stimDuration = 1.0; 
         }
         else if(durationString == "15 minutes") {
-            stimDuration = 15; 
+            stimDuration = 15.0; 
         }
         else if(durationString == "30 minutes") {
-            stimDuration = 30;
+            stimDuration = 30.0;
         }
         else if(durationString == "4 hours") {
-            stimDuration = 240;
+            stimDuration = 240.0;
         }
         else {
-            stimDuration = "constant";
+            stimDuration = 1440.0;
         }
 
         stimDuration = ((stimDuration*UConButtonPresses)/60);
-        durationOfStimulation.setText(String.valueOf(stimDuration));
+        //durationString = String.valueOf(stimDuration);
+        durationOfStimulation.setText(String.valueOf(stimDuration) + " hours");
+        //durationOfStimulation.setText(String.format("%.2f",durationString)+" hours") // + " hours");
+
+        //String.format("%.2f",d))
     }
 }
