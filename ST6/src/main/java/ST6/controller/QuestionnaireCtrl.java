@@ -41,6 +41,7 @@ public class QuestionnaireCtrl {
     public static QuestionnaireModel nyQuestionnaire;
     public static String savedQuestionnaire = "0";
     public static String savedPatient = "0";
+    public static String sqlString;
 
     @FXML
     private ResourceBundle resources;
@@ -177,6 +178,7 @@ public class QuestionnaireCtrl {
             PatientProfileHandler.patientGender = patientGender.getText();
             PatientProfileHandler.patientName = patientName.getText();
             nyPatient = savePatientProfile(); 
+            sqlString = savePatientInDatabase();
             nyQuestionnaire = saveQuestionnaire();
             // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
             Alert alert3 = new Alert(AlertType.CONFIRMATION);
@@ -466,16 +468,21 @@ public class QuestionnaireCtrl {
     // Metode til at opdatere felterne under patient profilen
     public PatientProfileModel savePatientProfile() throws IOException {  // hvis patienten allerede er i databasen 
         PatientProfileModel newPatient = new PatientProfileModel(PatientProfileHandler.patientCPR, PatientProfileHandler.patientName, PatientProfileHandler.patientGender, PatientProfileHandler.patientAge);
+        return newPatient;
+    }
+
+    public String savePatientInDatabase() throws IOException { 
         if (SearchPatientCtrl.registeredPatient.equals("yes")){
             System.out.println("Do nothing");
         }
         else { // hvis ikke patienten allerede er i databasen, så gemmes informationerne der er blevet indtastet  
             System.out.println("Save new patient profile in the UDecide database");
             // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "newPatient" I DATABASEN
-            PatientProfileModel.insertPatientProfiledata();
+            sqlString = PatientProfileModel.insertPatientProfiledata();
+            System.out.println("Patient profile saved!!!!!");
         }
         savedPatient = "1";
-        return newPatient;
+        return sqlString;
     }
 
     public QuestionnaireModel saveQuestionnaire() throws IOException { 
