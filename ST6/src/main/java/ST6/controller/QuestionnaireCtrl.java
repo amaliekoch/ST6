@@ -178,7 +178,7 @@ public class QuestionnaireCtrl {
             PatientProfileHandler.patientGender = patientGender.getText();
             PatientProfileHandler.patientName = patientName.getText();
             nyPatient = savePatientProfile(); 
-            sqlString = savePatientInDatabase();
+            savePatientInDatabase();
             nyQuestionnaire = saveQuestionnaire();
             // Pop-op vidue med spørgsmål om man vil gemme og komme videre til recommended treatment 
             Alert alert3 = new Alert(AlertType.CONFIRMATION);
@@ -471,18 +471,17 @@ public class QuestionnaireCtrl {
         return newPatient;
     }
 
-    public String savePatientInDatabase() throws IOException { 
+    public void savePatientInDatabase() throws IOException { 
         if (SearchPatientCtrl.registeredPatient.equals("yes")){
             System.out.println("Do nothing");
         }
         else { // hvis ikke patienten allerede er i databasen, så gemmes informationerne der er blevet indtastet  
             System.out.println("Save new patient profile in the UDecide database");
             // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "newPatient" I DATABASEN
-            sqlString = PatientProfileModel.insertPatientProfiledata();
+            PatientProfileModel.insertPatientProfiledata();
             System.out.println("Patient profile saved!!!!!");
         }
         savedPatient = "1";
-        return sqlString;
     }
 
     public QuestionnaireModel saveQuestionnaire() throws IOException { 
