@@ -44,6 +44,13 @@ public class ReportEffectCtrl {
     public static String durationString = "default"; 
     public static double stimDuration; 
     public static double UConButtonPresses; 
+    public static Double effectOfTreatment; 
+    public static Double IEmax = 100.0; 
+    public static Double noctMax = 30.0;
+    public static Double urgeMax = 100.0;
+    public static Double freqMax = 50.0;
+    public static Double QOLmax = 10.0;
+
 
     @FXML
     private ResourceBundle resources;
@@ -447,10 +454,12 @@ public class ReportEffectCtrl {
     void saveReportButtonPressed(ActionEvent event) throws IOException{
         qolValueEnteredAfter = String.valueOf(qolScaleAfter.getValue());
         adverseEventsScaleEnteredAfter = String.valueOf(adverseEventsScale);
-        if(checkInputtedFields()) { //Tjek at alle felter er udfyldt  
+        if(checkInputtedFields()) { //Tjekker at alle felter er udfyldt  
             // hvis alle felter er udfyldt: 
             nyTreatmentEffectReport = saveTreatmentReport(); // gemmer de indtastede informationer
+            calculateEffectOfTreatment(); //beregner patientens effectiveness score
             showSavedReportWarning(); // warning der fortæller at informationen er gemt og at man ved at trykkr "ok" kommer tilbage til questionnaire skærmen
+             
         }
         else { // Hvis ikke alle felter er udfyldt
             Alert alert7 = new Alert(AlertType.WARNING);
@@ -577,7 +586,7 @@ public class ReportEffectCtrl {
         Alert alert6 = new Alert(AlertType.CONFIRMATION);
         alert6.setTitle("UDecide - UCon decision support");
         alert6.setHeaderText("The reported effect of the treatment has been saved for: " + QuestionnaireCtrl.nyPatient.getName());
-        alert6.setContentText("When clicking 'Ok', you will return to the questionnaire screen.");
+        alert6.setContentText("The effect of the treatment has been estimated to an overall improvement of: " + String.format("%.1f", effectOfTreatment) + "%. When clicking 'Ok', you will return to the questionnaire screen."); 
         ((Button) alert6.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
         ((Button) alert6.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
 
@@ -614,7 +623,7 @@ public class ReportEffectCtrl {
         //graphStimTimeDay; //mangler at skrive kode til opdatering af grafen 
     } 
 
-    public void calculateDuration() throws IOException { //DENNE METODE MANGLER AT BLIVE TESTET
+    public void calculateDuration() throws IOException { 
         durationString = RecommendedTreatmentCtrl.newChosenTreatment.getDuration();
 
         if(durationString == "60 seconds") {
@@ -639,5 +648,11 @@ public class ReportEffectCtrl {
         //durationOfStimulation.setText(String.format("%.2f",durationString)+" hours") // + " hours");
 
         //String.format("%.2f",d))
+    }
+
+    public double calculateEffectOfTreatment() throws IOException { 
+        effectOfTreatment = (((((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberIEday())/IEmax)*1.5)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberNocturiaDay())/noctMax)*1.3)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberUrgeDay())/urgeMax)*1.2)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberUrinationDay())/freqMax))-((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getQolscale())/QOLmax)))*100)/6)-(((((Double.valueOf(nyTreatmentEffectReport.getNumberIEdayAfter())/IEmax)*1.5)+((Double.valueOf(nyTreatmentEffectReport.getNumberNocturiaDayAfter())/noctMax)*1.3)+((Double.valueOf(nyTreatmentEffectReport.getNumberUrgeDayAfter())/urgeMax)*1.2)+((Double.valueOf(nyTreatmentEffectReport.getNumberUrinationDayAfter())/freqMax))-((Double.valueOf(nyTreatmentEffectReport.getQolscaleAfter())/QOLmax)))*100)/6);
+        System.out.println("The treatment effect is: " + effectOfTreatment);
+        return effectOfTreatment;
     }
 }
