@@ -472,6 +472,7 @@ public class QuestionnaireCtrl {
         else { // hvis ikke patienten allerede er i databasen, så gemmes informationerne der er blevet indtastet  
             System.out.println("Save new patient profile in the UDecide database");
             // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "newPatient" I DATABASEN
+            PatientProfileModel.insertPatientProfiledata();
         }
         savedPatient = "1";
         return newPatient;

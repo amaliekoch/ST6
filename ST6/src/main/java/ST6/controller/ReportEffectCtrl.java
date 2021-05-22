@@ -579,9 +579,8 @@ public class ReportEffectCtrl {
         }
     }
 
-    public TreatmentEffectModel saveTreatmentReport() throws IOException { 
-        // gemmer de input, som er blevet givet til report effect
-        
+    public TreatmentEffectModel saveTreatmentReport() throws IOException { // gemmer de input, som er blevet givet til report effect
+
         TreatmentEffectModel nyTreatmentEffectReport = new TreatmentEffectModel(numberIEdayAfter.getText(), numberUrinationDayAfter.getText(), numberNocturiaDayAfter.getText(), numberUrgeDayAfter.getText(), bladderCapacityAfter, detrusorOveractivityAfter, qolValueEnteredAfter, painAfter, skinIrritationAfter, worseningSymptomsAfter, adverseEventsScaleEnteredAfter, otherAdverseEvents.getText());
 
         // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "nyTreatmentReport" I DATABASEN
@@ -623,8 +622,8 @@ public class ReportEffectCtrl {
             }
         }
 
-    public void updateUConData() throws IOException {//DENNE METODE MANGLER AT BLIVE TESTET
-        //alt nedenstående data, skal hentes fra databasen. 
+    public void updateUConData() throws IOException {
+        //Data i denne metode, skal hentes fra databasen. 
         calculateDuration(); //beregner den samlede duration of stimulation & opdaterer brugergrænsefladen 
         meanIntensityLevel.setText("12" + " mA");  
         graphStimTimeDay(); //mangler at skrive kode til opdatering af grafen 
@@ -670,23 +669,23 @@ public class ReportEffectCtrl {
     public void graphStimTimeDay() throws IOException { 
         XYChart.Series set1 = new XYChart.Series();
         set1.setName("Stimulation per day - week 1");
-        set1.getData().add(new XYChart.Data("Monday", 3.5));
-        set1.getData().add(new XYChart.Data("Tuesday", 2.5));
-        set1.getData().add(new XYChart.Data("Wednesday", 5.5));
-        set1.getData().add(new XYChart.Data("Thursday", 2.5));
+        set1.getData().add(new XYChart.Data("Monday", 5.5));
+        set1.getData().add(new XYChart.Data("Tuesday", 4.5));
+        set1.getData().add(new XYChart.Data("Wednesday", 6.5));
+        set1.getData().add(new XYChart.Data("Thursday", 6.5));
         set1.getData().add(new XYChart.Data("Friday", 4.5));
-        set1.getData().add(new XYChart.Data("Saturday", 1.5));
+        set1.getData().add(new XYChart.Data("Saturday", 3.5));
         set1.getData().add(new XYChart.Data("Sunday", 3.5));
         graphStimTimeDay.getData().addAll(set1); 
 
         XYChart.Series set2 = new XYChart.Series();
         set2.setName("Stimulation per day - week 2");
-        set2.getData().add(new XYChart.Data("Monday", 2.0));
-        set2.getData().add(new XYChart.Data("Tuesday", 2.0));
+        set2.getData().add(new XYChart.Data("Monday", 4.0));
+        set2.getData().add(new XYChart.Data("Tuesday", 3.0));
         set2.getData().add(new XYChart.Data("Wednesday", 4.5));
-        set2.getData().add(new XYChart.Data("Thursday", 2.5));
+        set2.getData().add(new XYChart.Data("Thursday", 3.5));
         set2.getData().add(new XYChart.Data("Friday", 3.0));
-        set2.getData().add(new XYChart.Data("Saturday", 1.5));
+        set2.getData().add(new XYChart.Data("Saturday", 2.5));
         set2.getData().add(new XYChart.Data("Sunday", 2.0));
         graphStimTimeDay.getData().addAll(set2); 
     }

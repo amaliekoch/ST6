@@ -71,4 +71,10 @@ public class PatientProfileModel {
         DatabaseManipulator.executeQueryWithResultSet(ph);
     }
 
+    //METODE DER INDSÆTTER INFORMATION OM PATIENTEN I DATABASEN 
+    public static void insertPatientProfiledata(){
+        PatientProfileInsertHandler ph2 = new PatientProfileInsertHandler();             
+        DatabaseManipulator.executeQueryWithResultSet(ph2);
+    }
+
 }

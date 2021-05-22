@@ -189,10 +189,10 @@
                      </font></TextField>
                   <BarChart fx:id="graphStimTimeDay" layoutX="10.0" layoutY="283.0" prefHeight="357.0" prefWidth="385.0" title="Stimulation time per day" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis label="Day" side="BOTTOM" fx:id="x_axis" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis label="Time (minutes)" side="LEFT">
+                      <NumberAxis fx:id="y_axis" label="Stimulation time (hours)" side="LEFT">
                            <tickLabelFont>
                               <Font size="12.0" />
                            </tickLabelFont></NumberAxis>
