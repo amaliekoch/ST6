@@ -163,15 +163,15 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="41.0" layoutY="125.0" prefHeight="26.0" prefWidth="222.0" text="Number of buttonpresses:" AnchorPane.leftAnchor="41.0">
+                  <Label layoutX="41.0" layoutY="120.0" prefHeight="26.0" prefWidth="222.0" text="Number of buttonpresses:" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label layoutX="41.0" layoutY="165.0" prefHeight="26.0" prefWidth="222.0" text="Duration of stimulation:" AnchorPane.leftAnchor="41.0">
+                  <Label layoutX="41.0" layoutY="174.0" prefHeight="26.0" prefWidth="222.0" text="Duration of stimulation:" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label layoutX="41.0" layoutY="205.0" prefHeight="26.0" prefWidth="222.0" text="Mean intensity level:" AnchorPane.leftAnchor="41.0">
+                  <Label layoutX="41.0" layoutY="226.0" prefHeight="26.0" prefWidth="222.0" text="Intensity level:" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
@@ -179,11 +179,11 @@
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField fx:id="durationOfStimulation" editable="false" layoutX="201.0" layoutY="159.0" prefHeight="37.0" prefWidth="239.0" promptText="min" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
+                  <TextField fx:id="durationOfStimulation" editable="false" layoutX="201.0" layoutY="173.0" prefHeight="37.0" prefWidth="239.0" promptText="min" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField fx:id="meanIntensityLevel" editable="false" layoutX="201.0" layoutY="199.0" prefHeight="37.0" prefWidth="239.0" promptText="mA" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
+                  <TextField fx:id="meanIntensityLevel" editable="false" layoutX="201.0" layoutY="227.0" prefHeight="37.0" prefWidth="239.0" promptText="mA" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="39.0">
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
@@ -208,6 +208,9 @@
                         <Font size="12.0" />
                      </font>
                   </Text>
+                  <Label layoutX="41.0" layoutY="138.0" text="(mean per day)" />
+                  <Label layoutX="41.0" layoutY="192.0" text="(mean per day) " />
+                  <Label layoutX="41.0" layoutY="249.0" text="(mean per day)" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="763.0" prefWidth="468.0" style="-fx-background-color: Lightgray;">

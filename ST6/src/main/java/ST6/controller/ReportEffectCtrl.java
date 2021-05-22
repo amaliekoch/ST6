@@ -616,11 +616,9 @@ public class ReportEffectCtrl {
 
     public void updateUConData() throws IOException {//DENNE METODE MANGLER AT BLIVE TESTET
         //alt nedenstående data, skal hentes fra databasen. 
-        UConButtonPresses = 130; 
-        numberOfButtonPress.setText(String.valueOf(UConButtonPresses));
         calculateDuration(); //beregner den samlede duration of stimulation & opdaterer brugergrænsefladen 
         meanIntensityLevel.setText("12" + " mA");  
-        //graphStimTimeDay; //mangler at skrive kode til opdatering af grafen 
+        graphStimTimeDay; //mangler at skrive kode til opdatering af grafen 
     } 
 
     public void calculateDuration() throws IOException { 
@@ -628,31 +626,39 @@ public class ReportEffectCtrl {
 
         if(durationString == "60 seconds") {
             stimDuration = 1.0; 
+            UConButtonPresses = 130; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else if(durationString == "15 minutes") {
             stimDuration = 15.0; 
+            UConButtonPresses = 20; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else if(durationString == "30 minutes") {
             stimDuration = 30.0;
+            UConButtonPresses = 5; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else if(durationString == "4 hours") {
             stimDuration = 240.0;
+            UConButtonPresses = 2; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else {
             stimDuration = 1440.0;
+            UConButtonPresses = 1; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
 
         stimDuration = ((stimDuration*UConButtonPresses)/60);
-        //durationString = String.valueOf(stimDuration);
-        durationOfStimulation.setText(String.valueOf(stimDuration) + " hours");
-        //durationOfStimulation.setText(String.format("%.2f",durationString)+" hours") // + " hours");
-
-        //String.format("%.2f",d))
+        durationOfStimulation.setText(String.format("%.1f", stimDuration) + " hours");
     }
 
     public double calculateEffectOfTreatment() throws IOException { 
         effectOfTreatment = (((((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberIEday())/IEmax)*1.5)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberNocturiaDay())/noctMax)*1.3)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberUrgeDay())/urgeMax)*1.2)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberUrinationDay())/freqMax))-((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getQolscale())/QOLmax)))*100)/6)-(((((Double.valueOf(nyTreatmentEffectReport.getNumberIEdayAfter())/IEmax)*1.5)+((Double.valueOf(nyTreatmentEffectReport.getNumberNocturiaDayAfter())/noctMax)*1.3)+((Double.valueOf(nyTreatmentEffectReport.getNumberUrgeDayAfter())/urgeMax)*1.2)+((Double.valueOf(nyTreatmentEffectReport.getNumberUrinationDayAfter())/freqMax))-((Double.valueOf(nyTreatmentEffectReport.getQolscaleAfter())/QOLmax)))*100)/6);
-        System.out.println("The treatment effect is: " + effectOfTreatment);
         return effectOfTreatment;
+    }
+    public void graphStimTimeDay() throws IOException { 
+
     }
 }
