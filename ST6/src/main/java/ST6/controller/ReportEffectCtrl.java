@@ -50,6 +50,7 @@ public class ReportEffectCtrl {
     public static Double urgeMax = 100.0;
     public static Double freqMax = 50.0;
     public static Double QOLmax = 10.0;
+    private  XYChart.Series<String, Double> set1;
 
 
     @FXML
@@ -104,7 +105,13 @@ public class ReportEffectCtrl {
     private TextField meanIntensityLevel;
 
     @FXML
-    private BarChart<?, ?> graphStimTimeDay;
+    private BarChart<String, Double> graphStimTimeDay;
+
+    @FXML
+    private CategoryAxis x_axis; 
+
+    @FXML
+    private NumberAxis y_axis;
 
     @FXML
     private Slider qolScaleAfter;
@@ -496,6 +503,8 @@ public class ReportEffectCtrl {
         assert durationOfStimulation != null : "fx:id=\"durationOfStimulation\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert meanIntensityLevel != null : "fx:id=\"meanIntensityLevel\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert graphStimTimeDay != null : "fx:id=\"graphStimTimeDay\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert x_axis != null : "fx:id=\"x_axis\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert y_axis != null : "fx:id=\"y_axis\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert qolScaleAfter != null : "fx:id=\"qolScaleAfter\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert saveReportButton != null : "fx:id=\"saveReportButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert skinIrritationCheckbox != null : "fx:id=\"skinIrritationCheckbox\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
@@ -618,7 +627,7 @@ public class ReportEffectCtrl {
         //alt nedenstående data, skal hentes fra databasen. 
         calculateDuration(); //beregner den samlede duration of stimulation & opdaterer brugergrænsefladen 
         meanIntensityLevel.setText("12" + " mA");  
-        graphStimTimeDay; //mangler at skrive kode til opdatering af grafen 
+        graphStimTimeDay(); //mangler at skrive kode til opdatering af grafen 
     } 
 
     public void calculateDuration() throws IOException { 
@@ -659,6 +668,26 @@ public class ReportEffectCtrl {
         return effectOfTreatment;
     }
     public void graphStimTimeDay() throws IOException { 
+        XYChart.Series set1 = new XYChart.Series();
+        set1.setName("Stimulation per day - week 1");
+        set1.getData().add(new XYChart.Data("Monday", 3.5));
+        set1.getData().add(new XYChart.Data("Tuesday", 2.5));
+        set1.getData().add(new XYChart.Data("Wednesday", 5.5));
+        set1.getData().add(new XYChart.Data("Thursday", 2.5));
+        set1.getData().add(new XYChart.Data("Friday", 4.5));
+        set1.getData().add(new XYChart.Data("Saturday", 1.5));
+        set1.getData().add(new XYChart.Data("Sunday", 3.5));
+        graphStimTimeDay.getData().addAll(set1); 
 
+        XYChart.Series set2 = new XYChart.Series();
+        set2.setName("Stimulation per day - week 2");
+        set2.getData().add(new XYChart.Data("Monday", 2.0));
+        set2.getData().add(new XYChart.Data("Tuesday", 2.0));
+        set2.getData().add(new XYChart.Data("Wednesday", 4.5));
+        set2.getData().add(new XYChart.Data("Thursday", 2.5));
+        set2.getData().add(new XYChart.Data("Friday", 3.0));
+        set2.getData().add(new XYChart.Data("Saturday", 1.5));
+        set2.getData().add(new XYChart.Data("Sunday", 2.0));
+        graphStimTimeDay.getData().addAll(set2); 
     }
 }
