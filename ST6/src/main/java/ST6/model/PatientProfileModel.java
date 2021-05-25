@@ -1,5 +1,6 @@
 package ST6.model;
 import ST6.handler.*;
+import ST6.controller.QuestionnaireCtrl;
 //import ST6.handler.PatientProfileHandler;
 import ST6.database.DatabaseManipulator;
 
@@ -69,6 +70,18 @@ public class PatientProfileModel {
     public static void getPatientProfiledata(String cprNumber){              // Opretter "handler" og henter data
         PatientProfileHandler ph = new PatientProfileHandler();             
         DatabaseManipulator.executeQueryWithResultSet(ph);
+    }
+
+    //METODE DER INDSÆTTER INFORMATION OM PATIENTEN I DATABASEN 
+    public static void insertPatientProfiledata(){
+        //String sqlString = "INSERT INTO `PInfo`(`cprNumber`, `name`, `gender`, `age`) VALUES (1178225633,'Steen Stensen','Male',35)"; 
+        int cprNumber = Integer.valueOf(QuestionnaireCtrl.nyPatient.getCprNumber());
+        String name = QuestionnaireCtrl.nyPatient.getName();
+        String gender = QuestionnaireCtrl.nyPatient.getGender();
+        int age = Integer.valueOf(QuestionnaireCtrl.nyPatient.getAge());
+
+        String sqlString = "INSERT INTO `PInfo`(`cprNumber`, `name`, `gender`, `age`) VALUES ("+cprNumber+",'"+name+"','"+gender+"',"+age+")";             
+        DatabaseManipulator.executeInsertQuery(sqlString);
     }
 
 }

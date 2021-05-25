@@ -44,6 +44,14 @@ public class ReportEffectCtrl {
     public static String durationString = "default"; 
     public static double stimDuration; 
     public static double UConButtonPresses; 
+    public static Double effectOfTreatment; 
+    public static Double IEmax = 100.0; 
+    public static Double noctMax = 30.0;
+    public static Double urgeMax = 100.0;
+    public static Double freqMax = 50.0;
+    public static Double QOLmax = 10.0;
+    private  XYChart.Series<String, Double> set1;
+
 
     @FXML
     private ResourceBundle resources;
@@ -97,7 +105,13 @@ public class ReportEffectCtrl {
     private TextField meanIntensityLevel;
 
     @FXML
-    private BarChart<?, ?> graphStimTimeDay;
+    private BarChart<String, Double> graphStimTimeDay;
+
+    @FXML
+    private CategoryAxis x_axis; 
+
+    @FXML
+    private NumberAxis y_axis;
 
     @FXML
     private Slider qolScaleAfter;
@@ -447,10 +461,12 @@ public class ReportEffectCtrl {
     void saveReportButtonPressed(ActionEvent event) throws IOException{
         qolValueEnteredAfter = String.valueOf(qolScaleAfter.getValue());
         adverseEventsScaleEnteredAfter = String.valueOf(adverseEventsScale);
-        if(checkInputtedFields()) { //Tjek at alle felter er udfyldt  
+        if(checkInputtedFields()) { //Tjekker at alle felter er udfyldt  
             // hvis alle felter er udfyldt: 
             nyTreatmentEffectReport = saveTreatmentReport(); // gemmer de indtastede informationer
+            calculateEffectOfTreatment(); //beregner patientens effectiveness score
             showSavedReportWarning(); // warning der fortæller at informationen er gemt og at man ved at trykkr "ok" kommer tilbage til questionnaire skærmen
+             
         }
         else { // Hvis ikke alle felter er udfyldt
             Alert alert7 = new Alert(AlertType.WARNING);
@@ -487,6 +503,8 @@ public class ReportEffectCtrl {
         assert durationOfStimulation != null : "fx:id=\"durationOfStimulation\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert meanIntensityLevel != null : "fx:id=\"meanIntensityLevel\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert graphStimTimeDay != null : "fx:id=\"graphStimTimeDay\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert x_axis != null : "fx:id=\"x_axis\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
+        assert y_axis != null : "fx:id=\"y_axis\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert qolScaleAfter != null : "fx:id=\"qolScaleAfter\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert saveReportButton != null : "fx:id=\"saveReportButton\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
         assert skinIrritationCheckbox != null : "fx:id=\"skinIrritationCheckbox\" was not injected: check your FXML file 'ReportEffectView.fxml'.";
@@ -561,9 +579,8 @@ public class ReportEffectCtrl {
         }
     }
 
-    public TreatmentEffectModel saveTreatmentReport() throws IOException { 
-        // gemmer de input, som er blevet givet til report effect
-        
+    public TreatmentEffectModel saveTreatmentReport() throws IOException { // gemmer de input, som er blevet givet til report effect
+
         TreatmentEffectModel nyTreatmentEffectReport = new TreatmentEffectModel(numberIEdayAfter.getText(), numberUrinationDayAfter.getText(), numberNocturiaDayAfter.getText(), numberUrgeDayAfter.getText(), bladderCapacityAfter, detrusorOveractivityAfter, qolValueEnteredAfter, painAfter, skinIrritationAfter, worseningSymptomsAfter, adverseEventsScaleEnteredAfter, otherAdverseEvents.getText());
 
         // HER MANGLER DER KODE, SOM KALDER METODE, DER GEMMER "nyTreatmentReport" I DATABASEN
@@ -577,7 +594,7 @@ public class ReportEffectCtrl {
         Alert alert6 = new Alert(AlertType.CONFIRMATION);
         alert6.setTitle("UDecide - UCon decision support");
         alert6.setHeaderText("The reported effect of the treatment has been saved for: " + QuestionnaireCtrl.nyPatient.getName());
-        alert6.setContentText("When clicking 'Ok', you will return to the questionnaire screen.");
+        alert6.setContentText("The effect of the treatment has been estimated to an overall improvement of: " + String.format("%.1f", effectOfTreatment) + "%. When clicking 'Ok', you will return to the questionnaire screen."); 
         ((Button) alert6.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
         ((Button) alert6.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
 
@@ -605,39 +622,71 @@ public class ReportEffectCtrl {
             }
         }
 
-    public void updateUConData() throws IOException {//DENNE METODE MANGLER AT BLIVE TESTET
-        //alt nedenstående data, skal hentes fra databasen. 
-        UConButtonPresses = 130; 
-        numberOfButtonPress.setText(String.valueOf(UConButtonPresses));
+    public void updateUConData() throws IOException {
+        //Data i denne metode, skal hentes fra databasen. 
         calculateDuration(); //beregner den samlede duration of stimulation & opdaterer brugergrænsefladen 
         meanIntensityLevel.setText("12" + " mA");  
-        //graphStimTimeDay; //mangler at skrive kode til opdatering af grafen 
+        graphStimTimeDay(); //mangler at skrive kode til opdatering af grafen 
     } 
 
-    public void calculateDuration() throws IOException { //DENNE METODE MANGLER AT BLIVE TESTET
+    public void calculateDuration() throws IOException { 
         durationString = RecommendedTreatmentCtrl.newChosenTreatment.getDuration();
 
         if(durationString == "60 seconds") {
             stimDuration = 1.0; 
+            UConButtonPresses = 130; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else if(durationString == "15 minutes") {
             stimDuration = 15.0; 
+            UConButtonPresses = 20; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else if(durationString == "30 minutes") {
             stimDuration = 30.0;
+            UConButtonPresses = 5; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else if(durationString == "4 hours") {
             stimDuration = 240.0;
+            UConButtonPresses = 2; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
         else {
             stimDuration = 1440.0;
+            UConButtonPresses = 1; 
+            numberOfButtonPress.setText(String.format("%.0f", UConButtonPresses)+ " buttonpresses");
         }
 
         stimDuration = ((stimDuration*UConButtonPresses)/60);
-        //durationString = String.valueOf(stimDuration);
-        durationOfStimulation.setText(String.valueOf(stimDuration) + " hours");
-        //durationOfStimulation.setText(String.format("%.2f",durationString)+" hours") // + " hours");
+        durationOfStimulation.setText(String.format("%.1f", stimDuration) + " hours");
+    }
 
-        //String.format("%.2f",d))
+    public double calculateEffectOfTreatment() throws IOException { 
+        effectOfTreatment = (((((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberIEday())/IEmax)*1.5)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberNocturiaDay())/noctMax)*1.3)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberUrgeDay())/urgeMax)*1.2)+((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getNumberUrinationDay())/freqMax))-((Double.valueOf(QuestionnaireCtrl.nyQuestionnaire.getQolscale())/QOLmax)))*100)/6)-(((((Double.valueOf(nyTreatmentEffectReport.getNumberIEdayAfter())/IEmax)*1.5)+((Double.valueOf(nyTreatmentEffectReport.getNumberNocturiaDayAfter())/noctMax)*1.3)+((Double.valueOf(nyTreatmentEffectReport.getNumberUrgeDayAfter())/urgeMax)*1.2)+((Double.valueOf(nyTreatmentEffectReport.getNumberUrinationDayAfter())/freqMax))-((Double.valueOf(nyTreatmentEffectReport.getQolscaleAfter())/QOLmax)))*100)/6);
+        return effectOfTreatment;
+    }
+    public void graphStimTimeDay() throws IOException { 
+        XYChart.Series set1 = new XYChart.Series();
+        set1.setName("Stimulation per day - week 1");
+        set1.getData().add(new XYChart.Data("Monday", 5.5));
+        set1.getData().add(new XYChart.Data("Tuesday", 4.5));
+        set1.getData().add(new XYChart.Data("Wednesday", 6.5));
+        set1.getData().add(new XYChart.Data("Thursday", 6.5));
+        set1.getData().add(new XYChart.Data("Friday", 4.5));
+        set1.getData().add(new XYChart.Data("Saturday", 3.5));
+        set1.getData().add(new XYChart.Data("Sunday", 3.5));
+        graphStimTimeDay.getData().addAll(set1); 
+
+        XYChart.Series set2 = new XYChart.Series();
+        set2.setName("Stimulation per day - week 2");
+        set2.getData().add(new XYChart.Data("Monday", 4.0));
+        set2.getData().add(new XYChart.Data("Tuesday", 3.0));
+        set2.getData().add(new XYChart.Data("Wednesday", 4.5));
+        set2.getData().add(new XYChart.Data("Thursday", 3.5));
+        set2.getData().add(new XYChart.Data("Friday", 3.0));
+        set2.getData().add(new XYChart.Data("Saturday", 2.5));
+        set2.getData().add(new XYChart.Data("Sunday", 2.0));
+        graphStimTimeDay.getData().addAll(set2); 
     }
 }

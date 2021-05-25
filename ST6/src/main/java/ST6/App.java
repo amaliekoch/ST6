@@ -26,7 +26,7 @@ public class App extends Application {
         App.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("/LoginView.fxml")); // Loader Login view via fxml filen som ligger under "Resources"
         primaryStage.setTitle("UDecide - Ucon decision support - Login screen"); // Sætter titel på "vinduet" som vises
-        primaryStage.setScene(new Scene(root, 900, 900)); //definerer størrelsen på vinduet og sætter scenen (scenen = root = Login view) 
+        primaryStage.setScene(new Scene(root, 1000, 1000)); //definerer størrelsen på vinduet og sætter scenen (scenen = root = Login view) 
         showLoginView(); //kalder metoder "showLoginView" som viser vinduet. 
         }
  
@@ -41,13 +41,5 @@ public class App extends Application {
  
     public static void main(String[] args) {
         launch(args);
-
-        //DatabaseManipulator.getConnection(); 
-        //PatientProfileModel.getPatientProfiledata("1002199902"); <-- Hanne Hansen
-        //PatientProfileModel.getPatientProfiledata("1304081203"); // <-- Viggo Viggosen 
-        //System.out.println(PatientProfileHandler.patientCPR); // Test - printer cpr i terminalen
-        //System.out.println(PatientProfileHandler.patientName); // Test - printer navn i terminalen
-        //System.out.println(PatientProfileHandler.patientAge); //Test - printer alder i terminalen
-        //System.out.println(PatientProfileHandler.patientGender); //Test - printer køn i terminalen
     }
 }

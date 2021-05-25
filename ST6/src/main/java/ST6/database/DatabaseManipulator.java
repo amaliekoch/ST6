@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import ST6.controller.QuestionnaireCtrl;
+import ST6.model.PatientProfileModel;
+
 public class DatabaseManipulator {
         
     // tjekker forbindelsen til "com.mysql.cj.jdbc.Driver"
@@ -65,4 +68,26 @@ public class DatabaseManipulator {
             }
         }
     }
+
+        // opretter forbindelse til databasen og insætter data via SQL statement
+        public static void executeInsertQuery(String sqlStatement){
+            Connection conn = getConnection();
+            Statement stmt = null;
+            
+            if (conn != null) {
+                try {
+                    stmt = conn.createStatement();
+                    stmt.executeUpdate(sqlStatement);  
+                } catch (SQLException sqlex) {
+                    System.out.println(sqlex.getMessage());
+                }
+                finally {
+                    try {
+                        conn.close();                        
+                    } catch (SQLException sqlex) {
+                        System.out.println(sqlex.getMessage());
+                    }
+                }
+            }
+        }
 }

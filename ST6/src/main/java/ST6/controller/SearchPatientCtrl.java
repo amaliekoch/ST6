@@ -106,7 +106,7 @@ public class SearchPatientCtrl {
  
              Optional<ButtonType> result2 = alert2.showAndWait();
              if (result2.get() == ButtonType.OK) {
-                 // ...If the user chose "accept" kommer man videre til "questionnaire"
+                 //If the user chose "accept" kommer man videre til "questionnaire"
                  FXMLLoader fxmlloader = new FXMLLoader(); // Ny loader instantieres - skal bruges til at hente viewet
                  fxmlloader.setLocation(getClass().getResource("/QuestionnaireView.fxml")); // definerer stie til fxml filen som ligger under "Resources"
                  final Parent root = fxmlloader.load(); // Loader (henter) fxml filen, som indeholdet det view vi gerne vil vise
@@ -115,7 +115,7 @@ public class SearchPatientCtrl {
                  LoginCtrl.stage.show(); // Vi viser den nye stage
              }
              else {
-                EnteredCprNumer.clear(); // ... user chose CANCEL
+                EnteredCprNumer.clear(); //user choose CANCEL
             }
         } 
     }
