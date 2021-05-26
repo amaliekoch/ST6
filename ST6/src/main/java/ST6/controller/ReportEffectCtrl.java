@@ -45,10 +45,10 @@ public class ReportEffectCtrl {
     public static double stimDuration; 
     public static double UConButtonPresses; 
     public static Double effectOfTreatment; 
-    public static Double IEmax = 100.0; 
-    public static Double noctMax = 30.0;
-    public static Double urgeMax = 100.0;
-    public static Double freqMax = 50.0;
+    public static Double IEmax = 20.0; 
+    public static Double noctMax = 10.0;
+    public static Double urgeMax = 20.0;
+    public static Double freqMax = 20.0;
     public static Double QOLmax = 10.0;
     private  XYChart.Series<String, Double> set1;
 
