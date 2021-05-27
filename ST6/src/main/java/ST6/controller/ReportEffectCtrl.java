@@ -465,7 +465,7 @@ public class ReportEffectCtrl {
             // hvis alle felter er udfyldt: 
             nyTreatmentEffectReport = saveTreatmentReport(); // gemmer de indtastede informationer
             calculateEffectOfTreatment(); //beregner patientens effectiveness score
-            showSavedReportWarning(); // warning der fortæller at informationen er gemt og at man ved at trykkr "ok" kommer tilbage til questionnaire skærmen
+            showEffectAlert(); // warning der fortæller at informationen er gemt og at man ved at trykkr "ok" kommer tilbage til questionnaire skærmen
              
         }
         else { // Hvis ikke alle felter er udfyldt
@@ -589,12 +589,12 @@ public class ReportEffectCtrl {
         return nyTreatmentEffectReport; 
     }
 
-    public void showSavedReportWarning() throws IOException {
+    public void showEffectAlert() throws IOException {
         // Pop-op vidue med warning om at information er gemt og at man kommer tilbage til questionnaire
         Alert alert6 = new Alert(AlertType.CONFIRMATION);
         alert6.setTitle("UDecide - UCon decision support");
         alert6.setHeaderText("The reported effect of the treatment has been saved for: " + QuestionnaireCtrl.nyPatient.getName());
-        alert6.setContentText("The effect of the treatment has been estimated to an overall improvement of: " + String.format("%.1f", effectOfTreatment) + "%. When clicking 'Ok', you will return to the questionnaire screen."); 
+        alert6.setContentText("The effect of the treatment is estimated to an overall improvement of: " + String.format("%.1f", effectOfTreatment) + " percentage point. When clicking 'Ok', you will return to the questionnaire screen."); 
         ((Button) alert6.getDialogPane().lookupButton(ButtonType.OK)).setText("Ok");
         ((Button) alert6.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
 
@@ -623,7 +623,7 @@ public class ReportEffectCtrl {
         }
 
     public void updateUConData() throws IOException {
-        //Data i denne metode, skal hentes fra databasen. 
+        //Data i denne metode, skal hentes fra databasen.  
         calculateDuration(); //beregner den samlede duration of stimulation & opdaterer brugergrænsefladen 
         meanIntensityLevel.setText("12" + " mA");  
         graphStimTimeDay(); //mangler at skrive kode til opdatering af grafen 
