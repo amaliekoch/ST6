@@ -1,8 +1,7 @@
 package ST6.controller;
 import ST6.App;
 import ST6.controller.SearchPatientCtrl;
-//import ST6.model.SpecialistModel;
-import main.java.ST6.model.SpecialistModel; // den her skal fikses til ovenstående 
+import main.java.ST6.model.SpecialistModel; 
 import ST6.handler.*;
 import ST6.controller.*;
 
@@ -98,7 +97,6 @@ public class LoginCtrl {
             stage.setScene(new Scene(root1)); // Sætter scenen på vores stage (scenen = root = SearchPatient view)
             stage.show(); // Viser den nye stage
             stage.setTitle("UDecide - UCon Decision support"); // Sætter titel på "vinduet" som vises   
-            
         }
         else { //hvis username og password er forker --> viser fejl meddelelse
             Alert alert = new Alert(AlertType.ERROR); //Fejldiaglogboks loades 
