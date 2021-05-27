@@ -437,9 +437,9 @@ public class QuestionnaireCtrl {
     public void updateCurrentTreatmentFields() throws IOException { 
         if (SearchPatientCtrl.registeredPatient.equals("yes") && (RecommendedTreatmentCtrl.savedTreatment == "0")){ // hvis patienten allerede er i databasen 
             // Nedenstående information skal hentes fra databasen
-            currentParadigm.setText("On-Demand");
-            currentIntensity.setText("15 mA");
-            currentDuration.setText("15 minutes");
+            currentParadigm.setText("Time limited");
+            currentIntensity.setText("No recommendation");
+            currentDuration.setText("4 hours");
             currentElectrode.setText("Surface");
         }
         else if ((SearchPatientCtrl.registeredPatient.equals("yes")) && (RecommendedTreatmentCtrl.savedTreatment == "1")) {

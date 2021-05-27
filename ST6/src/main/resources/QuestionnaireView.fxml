@@ -165,7 +165,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="numberIEday" layoutX="431.0" layoutY="159.0" onKeyPressed="#numberIEday_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-100" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
+            <TextField fx:id="numberIEday" layoutX="431.0" layoutY="159.0" onKeyPressed="#numberIEday_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-20" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -180,7 +180,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="numberUrinationDay" layoutX="431.0" layoutY="272.0" onKeyPressed="#numberUrinationDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-50" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
+            <TextField fx:id="numberUrinationDay" layoutX="431.0" layoutY="272.0" onKeyPressed="#numberUrinationDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-20" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -190,7 +190,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="numberNocturiaDay" layoutX="431.0" layoutY="325.0" onKeyPressed="#numberNocturiaDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-30" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
+            <TextField fx:id="numberNocturiaDay" layoutX="431.0" layoutY="325.0" onKeyPressed="#numberNocturiaDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-10" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -201,7 +201,7 @@
                </font>
             </Label>
             <Label layoutX="192.0" layoutY="293.0" prefHeight="20.0" prefWidth="217.0" text="(Do not include nocturia and IEs)" AnchorPane.leftAnchor="192.0" />
-            <TextField fx:id="numberUrgeDay" layoutX="430.0" layoutY="382.0" onKeyPressed="#numberUrgeDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-100" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="261.0">
+            <TextField fx:id="numberUrgeDay" layoutX="430.0" layoutY="382.0" onKeyPressed="#numberUrgeDay_enter" prefHeight="32.0" prefWidth="230.0" promptText="Enter a number between 0-20" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="261.0">
                <font>
                   <Font size="12.0" />
                </font>
